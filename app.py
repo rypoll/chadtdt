@@ -65,6 +65,8 @@ from helper_functions import detect_phone_number, contains_emoji, emoji_reducer,
 import tkinter as tk
 from tkinter import ttk
 from threading import Thread
+import sv_ttk
+from ttkthemes import ThemedTk 
 
 chromedriver_path = r'04-assets\\chromedriver.exe'
 extension_path2 = r'04-assets\\uBlock-Origin.crx'
@@ -75,12 +77,15 @@ chrome_options.add_argument('--start-maximized')
 
 
 class RedirectStdout:
-    def __init__(self, text_widget):
-        self.text_widget = text_widget
+    def __init__(self, widget):
+        self.widget = widget
 
-    def write(self, string):
-        self.text_widget.insert(tk.END, string)
-        self.text_widget.see(tk.END)
+    def write(self, s):
+        self.widget.insert(tk.END, s)
+        self.widget.see(tk.END)
+
+    def flush(self):
+        pass  # Add a flush method to avoid the error
 
 # Long-running functions
 should_run = {'first_messages': True, 'conversations': True}
@@ -266,9 +271,9 @@ def execute_first_messages():
                 actions.send_keys(random_line).perform()
                 print(f"Send message {random_line}")
                 time.sleep(random.uniform(3, 6))
-                #actions.send_keys(Keys.RETURN)  # Sending the Enter key
+                actions.send_keys(Keys.RETURN)  # Sending the Enter key
 
-                #actions.perform()  # Perform the action
+                actions.perform()  # Perform the action
                 print(f"Pressed Enter")
 
 
@@ -726,9 +731,9 @@ def execute_conversations():
                             actions.send_keys(assistant_reply).perform()
                             print(f"Send message {assistant_reply}")
                             #time.sleep(random.uniform(20, 40))
-                            #actions.send_keys(Keys.RETURN)  # Sending the Enter key
+                            actions.send_keys(Keys.RETURN)  # Sending the Enter key
 
-                            #actions.perform()  # Perform the action
+                            actions.perform()  # Perform the action
                             print(f"Pressed Enter") # send to open ai and get best response
 
                         else: 
@@ -773,51 +778,261 @@ def stop_execution(func_name):
     should_run[func_name] = False
 
 
-# Initialize Tkinter App
-app = tk.Tk()
+def create_tooltip(widget, text):
+    def on_enter(event):
+        tooltip = tk.Toplevel(widget)
+        tooltip.wm_overrideredirect(True)
+        tooltip.wm_geometry("+%d+%d" % (event.x_root, event.y_root))
+        ttk.Label(tooltip, text=text, background="#FFFFFF").pack()
+        widget._tooltip = tooltip
+
+    def on_leave(event):
+        widget._tooltip.destroy()
+
+    widget.bind("<Enter>", on_enter)
+    widget.bind("<Leave>", on_leave)
+
+# Initialize Tkinter App with ThemedTk
+app = ThemedTk(theme="arc")  # Replace tk.Tk() with ThemedTk and specify the theme
 app.title("ChadTDT - The Date Texter")
 
+app.set_theme_advanced(
+    theme_name='arc',  # Base theme
+    hue=0.15,  # Change this value to shift the hue towards red
+    brightness=1.0,  # Keep it at default
+    saturation=1.0,  # Keep it at default
+    preserve_transparency=True  # Preserves transparency
+)
 
 
-# Label and Entry for days_threshold
-days_label = tk.Label(app, text="Enter Days Threshold (last message >= D days ago will not be messaged)")
-days_label.pack()
-days_entry = tk.Entry(app)
-days_entry.pack()
+# Get the background color of the app
+bg_color = app.cget("background")
+dark_grey = "#2A2A2A"  # Slightly darker than the original dark grey
+light_grey = "#3A3A3A"   # Slightly darker than the original light grey
 
-# Label and ComboBox for language
-language_label = tk.Label(app, text="Select Language:")
-language_label.pack()
-language_combo = ttk.Combobox(app, values=["English", "Spanish"])
-language_combo.pack()
 
-# # Label and Entry for API Key
-# api_key_label = tk.Label(app, text="Enter OpenAI API Key:")
-# api_key_label.pack()
-# api_key_entry = tk.Entry(app)
-# api_key_entry.pack()
 
-# Redirect stdout to text widget
-output_text = tk.Text(app, wrap=tk.WORD, width=50, height=10)
-output_text.pack()
-sys.stdout = RedirectStdout(output_text)
+###### 1. Title and description #############
 
-# Frame for First Messages Control
-first_messages_frame = tk.Frame(app)
-first_messages_frame.pack(side=tk.LEFT, padx=5, pady=5)
-tk.Label(first_messages_frame, text="Execute First Messages - Cold Openers").pack()
-first_messages_play_button = tk.Button(first_messages_frame, text="Play", command=lambda: start_execution('first_messages'))
-first_messages_play_button.pack(side=tk.LEFT)
-first_messages_stop_button = tk.Button(first_messages_frame, text="Stop", command=lambda: stop_execution('first_messages'))
-first_messages_stop_button.pack(side=tk.LEFT)
 
-# Frame for Conversations Control
-conversations_frame = tk.Frame(app)
-conversations_frame.pack(side=tk.RIGHT, padx=5, pady=5)
-tk.Label(conversations_frame, text="Execute Conversations - Send messages to already opened people").pack()
-conversations_play_button = tk.Button(conversations_frame, text="Play", command=lambda: start_execution('conversations'))
-conversations_play_button.pack(side=tk.LEFT)
-conversations_stop_button = tk.Button(conversations_frame, text="Stop", command=lambda: stop_execution('conversations'))
-conversations_stop_button.pack(side=tk.LEFT)
+
+# Then use this color for your labels
+# Left-align the title
+title_label = tk.Label(app, text="AutoFlirt", font=("Arial", 32), background=bg_color, anchor="w", justify="left", foreground=dark_grey)
+title_label.pack(fill="x", padx=20, pady=10)  # Fill the available horizontal space and pad 20 pixels on each side
+
+# Left-align the description
+description_label = tk.Label(app, text="Automate your Tinder experience! AutoFlirt sends flirty replies, sets up dates, and collects phone numbers for you.", wraplength=400, font=("Arial", 10), background=bg_color, anchor="w", justify="left", foreground=light_grey)
+description_label.pack(fill="x", padx=20, pady=10)  # Fill the available horizontal space and pad 20 pixels on each side
+
+
+
+
+
+###### 1. End Title and Description #########
+
+
+
+####### 1a Line Breaker #######################
+
+# Initialize a Canvas for the line break
+line_break1a = tk.Canvas(app, bg=bg_color, height=2, bd=0, highlightthickness=0)
+line_break1a.pack(fill=tk.X, padx=5, pady=10)  # Add some padding around the line
+
+def whiteraw_line(event):
+    line_break1a.delete("all")  # Remove the old line
+    line_break1a.create_line(10, 2, event.width - 10, 2, fill="#b8b7b6", width=3)  # Create a new line with padding
+
+line_break1a.bind("<Configure>", whiteraw_line)
+
+
+######### 1a. End Line Break        #########
+
+
+
+
+
+
+
+
+
+
+
+######### 2. Preferences            #########
+
+# Preferences Title and Divider 
+preferences_title = tk.Label(app, text="1. Preferences", font=("Arial", 16), bg=bg_color, foreground=dark_grey)
+preferences_title.pack(anchor=tk.W, padx=20, pady=10)
+
+
+
+
+
+
+# Create a Canvas with the background color
+canvas = tk.Canvas(app, bg=bg_color, highlightthickness=0, highlightbackground=bg_color, highlightcolor=bg_color, height=150)
+canvas.pack(side=tk.TOP, padx=20, pady=10, fill=tk.BOTH)  # Changed padx to 20
+
+# Create a Frame (tk.Frame) to add to the Canvas
+preferences_frame = tk.Frame(canvas, bg=bg_color, bd=0)
+canvas_frame = canvas.create_window((0, 0), window=preferences_frame, anchor=tk.NW)
+
+# Configure column widths
+preferences_frame.grid_columnconfigure(0, minsize=150)  # Set minimum column width to 150 pixels
+
+# For debugging
+#preferences_frame.config(bg='red')
+#canvas.config(bg='green')
+
+
+# Short Label for Days Threshold using tk.Label
+days_label = tk.Label(preferences_frame, text="Days Limit: ", bg=bg_color, font=("Arial", 10), foreground=light_grey)
+days_label.grid(row=0, column=0, sticky=tk.W, padx=(20, 0))  # Added tuple for padx
+
+# Entry for Days Threshold
+days_entry = ttk.Entry(preferences_frame, width=20)  # Specified width
+days_entry.grid(row=0, column=2, sticky=tk.E)
+days_entry.insert(0, "7")  # Default value
+
+# Extra info under the "Days Limit" label
+extra_info_label = tk.Label(preferences_frame, 
+                            text="Set the maximum days since last message for replies. If the last message from someone exceeds this limit, the bot will not respond.",
+                            bg=bg_color, 
+                            font=("Arial", 8), 
+                            wraplength=350,  # Adjust this value based on your layout
+                            justify=tk.LEFT,
+                            foreground=light_grey) # Text justification
+extra_info_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, padx=(20, 0), pady=(0, 10))  # Added pady
+
+
+# Language Selection Label using tk.Label
+language_label = tk.Label(preferences_frame, text="Select Language:", bg=bg_color, font=("Arial", 10), foreground=light_grey)
+language_label.grid(row=2, column=0, sticky=tk.W, padx=(20, 0), pady=(10, 0))  # Added pady and changed row to 2
+
+
+# Language Selection ComboBox
+language_combo = ttk.Combobox(preferences_frame, values=["English", "Spanish"], width=18)  # Specified width to match Entry
+language_combo.grid(row=2, column=2, sticky=tk.E, pady=(10, 0))  # Change row to 2
+language_combo.set("English")  # Set the default value
+
+# Extra info under the "Days Limit" label
+extra_info_label_lang = tk.Label(preferences_frame, 
+                            text="Set the language. The assistant automatically responds in the conversation language but selecting the language you improve the assistant's responses",
+                            bg=bg_color, 
+                            font=("Arial", 8), 
+                            wraplength=350,  # Adjust this value based on your layout
+                            justify=tk.LEFT,
+                            foreground=light_grey) # Text justification
+extra_info_label_lang.grid(row=3, column=0, columnspan=3, sticky=tk.W, padx=(20, 0), pady=(0, 10))  # Added pady
+
+# Update Canvas scroll region
+preferences_frame.update_idletasks()
+canvas.config(scrollregion=canvas.bbox(tk.ALL))
+
+
+
+
+
+######### 2. End Preferences         #########
+
+
+
+####### 2a Line Breaker #######################
+
+# Initialize a Canvas for the line break
+line_break2a = tk.Canvas(app, bg=bg_color, height=2, bd=0, highlightthickness=0)
+line_break2a.pack(fill=tk.X, padx=5, pady=10)  # Add some padding around the line
+
+def whiteraw_line(event):
+    line_break2a.delete("all")  # Remove the old line
+    line_break2a.create_line(10, 2, event.width - 10, 2, fill="#dee0df", width=3)  # Create a new line with padding
+
+line_break2a.bind("<Configure>", whiteraw_line)
+
+
+######### 2a. End Line Break        #########
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######### 3. START Operations New Section #########
+
+# Preferences Title and Divider 
+preferences_title = tk.Label(app, text="2. Select Operation", font=("Arial", 16), bg=bg_color, foreground=dark_grey)
+preferences_title.pack(anchor=tk.W, padx=20, pady=10)
+
+
+
+def update_vert_line(event):
+    # Update the vertical line to match the new height of the new_section_frame
+    vert_line_break.coords(line, 2, 0, 2, event.height)
+
+# Create a new Frame for the new section
+new_section_frame = tk.Frame(app, bg=bg_color)
+new_section_frame.pack(side=tk.TOP, padx=20, pady=10, fill=tk.X)
+
+new_section_frame.bind("<Configure>", update_vert_line)
+
+# Create left child frame
+left_frame = tk.Frame(new_section_frame, bg=bg_color, width=200)
+left_frame.pack(side=tk.LEFT, fill=tk.Y, expand=True)
+
+# Vertical Line Breaker
+vert_line_break = tk.Canvas(new_section_frame, bg=bg_color, width=2, bd=0, highlightthickness=0)
+vert_line_break.pack(side=tk.LEFT, fill=tk.Y, padx=10)  # Add some padding around the line
+line = vert_line_break.create_line(2, 0, 2, 100, fill="#dee0df", width=3)  # Create a new line with padding
+
+# Create right child frame
+right_frame = tk.Frame(new_section_frame, bg=bg_color, width=200)
+right_frame.pack(side=tk.RIGHT, fill=tk.Y, expand=True)
+
+# Title and description on the left side
+left_title = tk.Label(left_frame, text="A. First Messages", bg=bg_color, font=("Arial", 13), justify="center", foreground=dark_grey)
+left_title.pack(anchor=tk.W, pady=5)
+
+left_desc = tk.Label(left_frame, text="Description for First Messages.", bg=bg_color, font=("Arial", 9), justify="center", foreground=light_grey)
+left_desc.pack(anchor=tk.W, pady=5)
+
+
+
+
+
+
+# Title and description on the right side
+right_title = tk.Label(right_frame, text="B. Respond to Messages", bg=bg_color, font=("Arial", 13), justify="center", foreground=dark_grey)
+right_title.pack(anchor=tk.W, pady=5)
+
+right_desc = tk.Label(right_frame, text="Description for Respond to Messages.", bg=bg_color, font=("Arial", 9), justify="center", foreground=light_grey)
+right_desc.pack(anchor=tk.W, pady=5)
+
+######### 3. End New Section #########
+
+####### 3a Line Breaker #######################
+
+# Initialize a Canvas for the line break
+line_break3a = tk.Canvas(app, bg=bg_color, height=2, bd=0, highlightthickness=0)
+line_break3a.pack(fill=tk.X, padx=5, pady=10)  # Add some padding around the line
+
+def line3a_draw(event):
+    line_break3a.delete("all")  # Remove the old line
+    line_break3a.create_line(10, 2, event.width - 10, 2, fill="#dee0df", width=3)  # Create a new line with padding
+
+line_break3a.bind("<Configure>", line3a_draw)
+
+######### 3a. End Line Break #########
+
 
 app.mainloop()
