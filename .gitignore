@@ -2,3 +2,6 @@
 profiles
 profiles2
 profiles3
+build/
+dist/
+dist.zip

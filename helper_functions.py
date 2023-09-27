@@ -78,7 +78,7 @@ def detect_phone_number(conversation_text, name):
 
             # Store to CSV
             now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            df = pd.DataFrame({'name': [name], 'number': [phone_number], 'date': [now]})
+            df = pd.DataFrame({'name': [name], 'number': [phone_number], 'date': [now], 'conversation': [formatted_text2]})
             print("Data to output: ", df)
             
             try:
