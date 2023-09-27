@@ -991,7 +991,7 @@ title_frame = tk.Frame(home_tab, bg=bg_color)
 title_frame.pack(fill="x", padx=20, pady=10)
 
 # Title
-title_label = tk.Label(title_frame, text="AutoFlirt", font=("Arial", 32), background=bg_color, anchor="w", justify="left", foreground=dark_grey)
+title_label = tk.Label(title_frame, text="AutoFlirt", font=("Arial", 14), background=bg_color, anchor="w", justify="left", foreground=dark_grey)
 title_label.pack(side=tk.LEFT, fill="x")
 
 # Toggle button
@@ -1010,8 +1010,8 @@ toggle_description = tk.Label(toggle_frame, text="Unchecked: Test mode - to ensu
 toggle_description.pack(side=tk.TOP, fill="x")
 
 # Description
-description_label = tk.Label(home_tab, text="Automate your Tinder experience! AutoFlirt sends flirty replies, sets up dates, and collects phone numbers for you.", wraplength=400, font=("Arial", 10), background=bg_color, anchor="w", justify="left", foreground=light_grey)
-description_label.pack(fill="x", padx=20, pady=10)
+# description_label = tk.Label(home_tab, text="Automate your Tinder experience! AutoFlirt sends flirty replies, sets up dates, and collects phone numbers for you.", wraplength=400, font=("Arial", 9), background=bg_color, anchor="w", justify="left", foreground=light_grey)
+# description_label.pack(fill="x", padx=20, pady=10)
 ###### 1. End Title and Description #########
 
 
@@ -1021,13 +1021,13 @@ description_label.pack(fill="x", padx=20, pady=10)
 
 # Initialize a Canvas for the line break
 line_break1a = tk.Canvas(home_tab, bg=bg_color, height=2, bd=0, highlightthickness=0)
-line_break1a.pack(fill=tk.X, padx=5, pady=10)  # Add some padding around the line
+line_break1a.pack(fill=tk.X, padx=5, pady=5)  # Add some padding around the line
 
-def whiteraw_line(event):
+def whiteraw_line_tit(event):
     line_break1a.delete("all")  # Remove the old line
     line_break1a.create_line(10, 2, event.width - 10, 2, fill="#b8b7b6", width=3)  # Create a new line with padding
 
-line_break1a.bind("<Configure>", whiteraw_line)
+line_break1a.bind("<Configure>", whiteraw_line_tit)
 
 
 ######### 1a. End Line Break        #########
@@ -1045,8 +1045,8 @@ line_break1a.bind("<Configure>", whiteraw_line)
 ######### 2. Preferences            #########
 
 # Preferences Title and Divider 
-preferences_title = tk.Label(home_tab, text="1. Preferences", font=("Arial", 16), bg=bg_color, foreground=dark_grey)
-preferences_title.pack(anchor=tk.W, padx=20, pady=10)
+preferences_title = tk.Label(home_tab, text="1. Preferences", font=("Arial", 12), bg=bg_color, foreground=dark_grey)
+preferences_title.pack(anchor=tk.W, padx=20, pady=5)
 
 
 
@@ -1055,7 +1055,7 @@ preferences_title.pack(anchor=tk.W, padx=20, pady=10)
 
 # Create a Canvas with the background color
 canvas = tk.Canvas(home_tab, bg=bg_color, highlightthickness=0, highlightbackground=bg_color, highlightcolor=bg_color, height=150)
-canvas.pack(side=tk.TOP, padx=20, pady=10, fill=tk.BOTH)  # Changed padx to 20
+canvas.pack(side=tk.TOP, padx=20, pady=5, fill=tk.BOTH)  # Changed padx to 20
 
 # Create a Frame (tk.Frame) to add to the Canvas
 preferences_frame = tk.Frame(canvas, bg=bg_color, bd=0)
@@ -1136,6 +1136,30 @@ line_break2a.bind("<Configure>", whiteraw_line)
 
 ######### 2a. End Line Break        #########
 
+cust_title = tk.Label(home_tab, text="2. Customize conversation", font=("Arial", 12), bg=bg_color, foreground=dark_grey)
+cust_title.pack(anchor=tk.W, padx=20, pady=0)
+
+
+# Description
+description_label_cust = tk.Label(home_tab, text="Go to the Customize tab in order to make covnersations personal to you", wraplength=400, font=("Arial", 10), background=bg_color, anchor="w", justify="left", foreground=light_grey)
+description_label_cust.pack(fill="x", padx=20, pady=0)
+
+
+
+####### 2a Line Breaker #######################
+
+# Initialize a Canvas for the line break
+line_break2b = tk.Canvas(home_tab, bg=bg_color, height=2, bd=0, highlightthickness=0)
+line_break2b.pack(fill=tk.X, padx=5, pady=10)  # Add some padding around the line
+
+def whiteraw_line(event):
+    line_break2b.delete("all")  # Remove the old line
+    line_break2b.create_line(10, 2, event.width - 10, 2, fill="#dee0df", width=3)  # Create a new line with padding
+
+line_break2b.bind("<Configure>", whiteraw_line)
+
+
+######### 2a. End Line Break        #########
 
 
 
@@ -1148,10 +1172,7 @@ line_break2a.bind("<Configure>", whiteraw_line)
 
 
 
-
-
-
-op_title = tk.Label(home_tab, text="2. Select Operation", font=("Arial", 16), bg=bg_color, foreground=dark_grey)
+op_title = tk.Label(home_tab, text="3. Select Operation", font=("Arial", 12), bg=bg_color, foreground=dark_grey)
 op_title.pack(anchor=tk.W, padx=20, pady=10)
 manual_login_var = tk.IntVar()
 manual_login_button = ttk.Checkbutton(home_tab, text="First time use: Manual Log-in", variable=manual_login_var, style='TCheckbutton')
@@ -1194,16 +1215,16 @@ right_frame = tk.Frame(new_section_frame, bg=bg_color, width=200)
 right_frame.pack(side=tk.RIGHT, fill=tk.Y, expand=True)
 
 # Title and description on the left side
-left_title = tk.Label(left_frame, text="a. First Messages", bg=bg_color, font=("Arial", 13), justify="center", foreground=dark_grey)
+left_title = tk.Label(left_frame, text="a. First Messages", bg=bg_color, font=("Arial", 12), justify="center", foreground=dark_grey)
 left_title.pack(anchor=tk.W, pady=5)
 
 # Setting wraplength for left_desc
-left_desc = tk.Label(left_frame, text="Sends first messages to people you have matched with.", bg=bg_color, font=("Arial", 9), justify="left", foreground=light_grey, wraplength=190)
+left_desc = tk.Label(left_frame, text="Sends first messages to people you have matched with.", bg=bg_color, font=("Arial", 8), justify="left", foreground=light_grey, wraplength=190)
 left_desc.pack(anchor=tk.W, pady=5)
 
 
-status_label_left = tk.Label(left_frame, text="", bg=bg_color, font=("Arial", 9), foreground=light_grey)
-status_label_right = tk.Label(right_frame, text="", bg=bg_color, font=("Arial", 9), foreground=light_grey)
+status_label_left = tk.Label(left_frame, text="", bg=bg_color, font=("Arial", 8), foreground=light_grey)
+status_label_right = tk.Label(right_frame, text="", bg=bg_color, font=("Arial", 8), foreground=light_grey)
 
 # Adding Start and Stop buttons under left_desc
 # Uncomment the line below to use an image for the Start button
@@ -1219,11 +1240,11 @@ status_label_left.pack_forget()  # Initially hide the status label
 
 
 # Title and description on the right side
-right_title = tk.Label(right_frame, text="b. Respond to Messages", bg=bg_color, font=("Arial", 13), justify="center", foreground=dark_grey)
+right_title = tk.Label(right_frame, text="b. Respond to Messages", bg=bg_color, font=("Arial", 12), justify="center", foreground=dark_grey)
 right_title.pack(anchor=tk.W, pady=5)
 
 # Setting wraplength for right_desc
-right_desc = tk.Label(right_frame, text="Replies to received messages using our custom-trained bot.", bg=bg_color, font=("Arial", 9), justify="left", foreground=light_grey, wraplength=190)
+right_desc = tk.Label(right_frame, text="Replies to received messages using our custom-trained bot.", bg=bg_color, font=("Arial", 8), justify="left", foreground=light_grey, wraplength=190)
 right_desc.pack(anchor=tk.W, pady=5)
 
 # Adding Start and Stop buttons under right_desc
@@ -1287,13 +1308,13 @@ def show_customisation_window():
     tk.Frame(new_window, width=1, bg="gray").grid(row=0, column=1, rowspan=7, sticky="ns")
 
     # Title for Profile
-    title1 = tk.Label(new_window, text="1. Customize profile", font=("Arial", 16), anchor="w", bg=bg_color)
+    title1 = tk.Label(new_window, text="1. Customize profile", font=("Arial", 12), anchor="w", bg=bg_color)
     title1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
     # Elements for Profile
     description_label1 = tk.Label(new_window, text="• Enter your profile in the text box below\n• The model will use this to personalise your conversartions\n• Talk in the second person e.g 'He is from Iceland' \n• Use the below numbered list as a guide \n\n1. Where you're from\n2. Age\n3. Past education/career info (short)\n4. Current job\n5. Hobbies\n6. Life Achievements\n7. Where you live now.", anchor="w", bg=bg_color, justify=tk.LEFT)  # Your text here
     description_label1.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-    text_entry1 = tk.Text(new_window, height=10, width=40, font=("Arial", 12))
+    text_entry1 = tk.Text(new_window, height=10, width=40, font=("Arial", 10))
     
     text_entry1.grid(row=2, column=0, padx=10, pady=10)
     text_entry1.insert(tk.END, profile_text)
@@ -1303,13 +1324,13 @@ def show_customisation_window():
     saved_label1.grid(row=4, column=0)
     
     # Title for Skills
-    title2 = tk.Label(new_window, text="2. Customize your skills", font=("Arial", 16), anchor="w", bg=bg_color)
+    title2 = tk.Label(new_window, text="2. Customize your skills", font=("Arial", 12), anchor="w", bg=bg_color)
     title2.grid(row=0, column=2, padx=10, pady=10, sticky="w")
 
     # Elements for Skills
     description_label2 = tk.Label(new_window, text="• Add your skills in Bullet point form \n• For example '* Great painter' is one bullet", anchor="w", bg=bg_color, justify=tk.LEFT)  # Your text here
     description_label2.grid(row=1, column=2, padx=10, pady=10, sticky="w")
-    text_entry2 = tk.Text(new_window, height=10, width=40, font=("Arial", 12))
+    text_entry2 = tk.Text(new_window, height=10, width=40, font=("Arial", 10))
     text_entry2.grid(row=2, column=2, padx=10, pady=10)
     text_entry2.insert(tk.END, skills_text)
     save_button2 = ttk.Button(new_window, text="Save Skills", command=lambda: save_profile(text_entry2, saved_label2, "# \"A\"'s skills:"))
@@ -1324,7 +1345,7 @@ def show_cold_customisation__window():
     new_window.configure(bg=bg_color)
 
     # Title for Cold Openers
-    title1 = tk.Label(new_window, text="1. Customize Cold Openers", font=("Arial", 16), anchor="w", bg=bg_color)
+    title1 = tk.Label(new_window, text="1. Customize Cold Openers", font=("Arial", 12), anchor="w", bg=bg_color)
     title1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
     # Elements for Cold Openers
@@ -1340,7 +1361,7 @@ def show_cold_customisation__window():
 
 
     
-    text_entry1 = tk.Text(new_window, height=10, width=40, font=("Arial", 12))
+    text_entry1 = tk.Text(new_window, height=10, width=40, font=("Arial", 10))
     text_entry1.grid(row=3, column=0, padx=10, pady=10)
 
     def load_content():
@@ -1422,7 +1443,7 @@ section_frame = tk.Frame(customize_tab, bg=bg_color)
 section_frame.grid(row=0, column=0)
 
 # Add title
-title_label = tk.Label(section_frame, text="1. Customize your profile", bg=bg_color, font=("Arial", 16), anchor="w", justify=tk.LEFT)
+title_label = tk.Label(section_frame, text="1. Customize your profile", bg=bg_color, font=("Arial", 12), anchor="w", justify=tk.LEFT)
 title_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
 # Add description
@@ -1433,8 +1454,8 @@ description_label = tk.Label(
     wraplength=400,
     font=("Arial", 10),
     anchor="w",
-    justify=tk.LEFT
-)
+    justify=tk.LEFT,
+    foreground=light_grey)
 description_label.grid(row=1, column=0, sticky="w", padx=10, pady=10)
 
 # Add button
@@ -1446,7 +1467,7 @@ line_break1a = tk.Canvas(section_frame, bg=bg_color, height=2, bd=0, highlightth
 line_break1a.grid(row=3, column=0, sticky="ew", padx=5, pady=10)
 
 # Add second title
-title_label2 = tk.Label(section_frame, text="2. Customize cold openers", bg=bg_color, font=("Arial", 16), anchor="w", justify=tk.LEFT)
+title_label2 = tk.Label(section_frame, text="2. Customize cold openers", bg=bg_color, font=("Arial", 12), anchor="w", justify=tk.LEFT)
 title_label2.grid(row=4, column=0, padx=10, pady=10, sticky="w")
 
 # Add second description
@@ -1457,7 +1478,8 @@ description_label2 = tk.Label(
     wraplength=400,
     font=("Arial", 10),
     anchor="w",
-    justify=tk.LEFT
+    justify=tk.LEFT,
+    foreground=light_grey
 )
 description_label2.grid(row=5, column=0, sticky="w", padx=10, pady=10)
 
@@ -1474,6 +1496,9 @@ customise_openers_button.grid(row=6, column=0)
 #app.geometry("800x600")
 app.resizable(True, True)
 
+# screen_width = app.winfo_screenwidth()
+# screen_height = app.winfo_screenheight()
+# app.geometry(f"{int(screen_width * 0.4)}x{int(screen_height * 0.4)}")
 
 
 app.mainloop()
