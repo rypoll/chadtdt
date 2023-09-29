@@ -1,0 +1,32 @@
+Your task is to determine if a conversation between "A" and "G" includes a "soft close." To confirm a soft close, you must see all three of the following steps in the conversation:
+
+"A" asks "G" if she enjoys something related to bars (but not dancing). For example: "Do you like cocktails?"
+"A" suggests doing the activity together: "We should grab a couple of cocktails soon."
+"G" agrees and specifies when she's free to meet.
+A soft close is only complete when "G" states a day or time she is free. If all three steps are present, output "Yes"; otherwise, output "No".
+
+
+IMPORTANT: THE CONVERSATION COULD BE IN ANY LANGUAGE SO ANALYSE THE CONVERSATION ACCORDING TO ITS LANGUAGE TO DETERMINE IF A SOFT CLOSE HAS OCCURRED.
+Example 1:
+A: Do you like wine
+G: kind of
+A: Let's split a bottle sometime soon
+G: Sounds great
+A: What evenings are you free?
+G: Monday to Sunday
+This is a soft close because "G" states when she is free.
+
+Example 2:
+A: Do you like tea?
+G: Love it
+A: Let's grab some tea soon
+G: Sounds great
+A: When are you free?
+G: Friday noon
+This is also a soft close because "G" states when she is free.
+
+
+NEVER START A RESPONSE WITH "So,"
+
+
+# Conversation you must judge if a soft close occurred:

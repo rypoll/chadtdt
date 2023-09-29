@@ -1,87 +1,24 @@
 import tkinter as tk
 from tkinter import ttk
-#from tkinter import messagebox
 import sys
-#import numpy as np
-import pandas as pd
-#import json
-#from googleapiclient.discovery import build
-#from google.oauth2.credentials import Credentials
-#import base64
-#from google_auth_oauthlib import flow
-import openai
-import re
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import pandas as pd
-import time  # Import the time module
-from urllib.parse import urlparse
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import pandas as pd
 import time
-#import ast
+from datetime import datetime, timedelta, timezone
 import os
-#import gspread
-from gspread_dataframe import set_with_dataframe
-#import selenium
-import pandas as pd
-from datetime import datetime, timedelta
-#import ast
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from datetime import timedelta, datetime
-#from google.cloud import storage
-#from git import Repo, Git
-import random
-#import pickle
-from selenium.webdriver.common.action_chains import ActionChains
-import openai
-#import json
-from datetime import datetime
-import pandas as pd
 import platform
 import subprocess
 import stat
-import openai
-import sys
-import re
-import os
-from selenium import webdriver
-from datetime import datetime, timedelta, timezone
-from dateutil.parser import parse
-import os
-from selenium import webdriver
-from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines
-import tkinter as tk
-from tkinter import ttk
 from threading import Thread
-#import sv_ttk
 from ttkthemes import ThemedTk 
-#from tkinter import PhotoImage
-import platform
-#import ctypes
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException
-from tkinter import simpledialog
 
 
 
 
-chromedriver_path = r'04-assets\\chromedriver.exe'
-extension_path2 = r'04-assets\\uBlock-Origin.crx'
-chrome_options = webdriver.ChromeOptions()
-#chrome_options.add_extension(extension_path2)
-chrome_options.add_argument('--start-maximized') 
+
+# chromedriver_path = r'04-assets\\chromedriver.exe'
+# extension_path2 = r'04-assets\\uBlock-Origin.crx'
+# chrome_options = webdriver.ChromeOptions()
+# #chrome_options.add_extension(extension_path2)
+# chrome_options.add_argument('--start-maximized') 
 
 
 
@@ -111,14 +48,24 @@ def update_status_label(frame, label, text):
 
 
 def execute_first_messages():
+
+    from webdriver_manager.chrome import ChromeDriverManager
+    from selenium.common.exceptions import NoSuchElementException
+    import random
+    from selenium.webdriver.common.action_chains import ActionChains
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
     language = language_combo.get()
     try:
         #print("Executing first messages...")
         chromedriver_path = r'04-assets\\chromedriver.exe'
         extension_path2 = r'04-assets\\uBlock-Origin.crx'
-        chrome_options = webdriver.ChromeOptions()
+        #chrome_options = webdriver.ChromeOptions()
         #chrome_options.add_extension(extension_path2)
-        chrome_options.add_argument('--start-maximized') 
+        #chrome_options.add_argument('--start-maximized') 
                 
 
         # Your profile folder name
@@ -152,8 +99,10 @@ def execute_first_messages():
         # Check if the directory is empty
         is_empty = not bool(os.listdir(profile_directory))
 
-        
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--start-maximized') 
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
+        
 
         try:
             driver.quit()
@@ -168,12 +117,19 @@ def execute_first_messages():
             try:
                 # service = webdriver.chrome.service.Service(executable_path=chromedriver_path)
                 # service.start()
-                driver = webdriver.Chrome(ChromeDriverManager().install(), options = chrome_options)
+                driver_path = ChromeDriverManager().install()
+                print(f"Driver path: {driver_path}")
+                print(f"Driver path type: {type(driver_path)}")
+                driver = webdriver.Chrome(driver_path, options=chrome_options)
+                print(f"Successfully initialized WebDriver")
                 print(f"Successfully initialized WebDriver on attempt {attempt}")
                 time.sleep(random.uniform(3, 6))
                 break  # Exit the loop if initialization is successful
             except Exception as e:
                 print(f"Failed to initialize WebDriver on attempt {attempt}: {e}")
+                print(f"Failed to initialize WebDriver: {e}")
+                import traceback
+                traceback.print_exc()
                 try:
                     driver.quit()
                 except:
@@ -288,9 +244,14 @@ def execute_first_messages():
             
             ###############################  START 2. Click First Match
 
-            print(f"Locating the {i} 'li' in the first 'ul'.")
-            third_li = wait.until(EC.element_to_be_clickable((By.XPATH, f"(//ul)[1]/li[{first_match}]")))
-
+            print(f"Locating the {i} 'li'.")
+            first_li = wait.until(EC.element_to_be_clickable((By.XPATH, f"//li[@style='width: 33.33%;'][1]")))
+            print("is the element displayed?", li_elements_with_style[first_match].is_displayed())
+            print("is the element enabled?", li_elements_with_style[first_match].is_enabled())
+            #third_li = driver.find_element(By.XPATH, f"//li[@style='width: 33.33%;'][{first_match}]")
+            third_li = li_elements_with_style[first_match-1]
+            driver.execute_script("arguments[0].scrollIntoView();", third_li)
+            #time.sleep(1000)
             try:
                 print(f"Clicking the {i} 'li'.")
                 third_li.click()
@@ -393,6 +354,19 @@ def execute_first_messages():
     time.sleep(1)
 
 def execute_conversations():
+    import pandas as pd
+    import openai
+    import re
+    from webdriver_manager.chrome import ChromeDriverManager
+    from selenium.common.exceptions import TimeoutException
+    from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines
+    import random
+    from selenium.webdriver.common.action_chains import ActionChains
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
     global days_entry, language_combo
     days_threshold = int(days_entry.get())
     language = language_combo.get()
@@ -433,6 +407,9 @@ def execute_conversations():
         is_empty = not bool(os.listdir(profile_directory))
 
         #chrome_options = webdriver.ChromeOptions()
+        chrome_options = webdriver.ChromeOptions()
+        #chrome_options.add_extension(extension_path2)
+        chrome_options.add_argument('--start-maximized')
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
 
         try:
@@ -468,9 +445,23 @@ def execute_conversations():
                     
                     
                     
-                    
+        driver.get('https://www.tinder.com/')    
         # Open the website
-        driver.get('https://www.tinder.com/')
+        max_attempts = 3
+        for attempt in range(1, max_attempts + 1):
+            try:
+                time.sleep(5)
+                driver.get('https://www.tinder.com/')
+                print(f"Successfully navigated to Tinder.com on attempt {attempt}")
+                break  # Break the loop if the site is successfully loaded
+            except WebDriverException as e:
+                print(f"Failed to navigate to Tinder.com on attempt {attempt}: {e}")
+                if attempt < max_attempts:
+                    print("Retrying...")
+                    time.sleep(5)  # Wait for 5 seconds before retrying
+                else:
+                    print("Max attempts reached. Exiting.")
+            # You may choose to close the driver or handle the exception in another way
 
         # If it's the first time or the directory was empty, ask the user to log in manually
 
@@ -545,10 +536,11 @@ def execute_conversations():
                 )
             )
             total_elements = len(elements)
-            print(f"Total number of elements found: {total_elements}")
+            print(f"Total number of elements/chats found: {total_elements}")
 
             for i, element in enumerate(elements): # chats 
-                if not should_run['first_messages']:
+                print("what is should run", should_run['conversations'])
+                if not should_run['conversations']:
                     print("Stopping Messaging execution...")
                     break  # This will exit the loop and stop the execution
                 print(f"Processing element {i+1} out of {total_elements}")
@@ -795,7 +787,8 @@ def execute_conversations():
                         assistant_reply = assistant_reply.replace("!", "")
                         assistant_reply = assistant_reply.replace("¡", "")
                         assistant_reply = assistant_reply.replace("A:", "")
-                        assistant_reply = assistant_reply.replace("A:", "¿")
+                        assistant_reply = assistant_reply.replace("¿", "")
+                        assistant_reply = assistant_reply.replace("?", "")
                         #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
                         assistant_reply = assistant_reply.lower()
                         assistant_reply = assistant_reply.replace("\"", "")
@@ -886,7 +879,7 @@ log_area = None  # Declare a global variable to hold the log area
 def show_log_window():
     global log_area  # Use the global variable
     log_window = tk.Toplevel(app)
-    log_window.title("3. Observe Logs")
+    log_window.title("4. Observe Logs")
     
     log_area = tk.Text(log_window, height=20, width=50)
     log_area.pack(padx=5, pady=5)
@@ -900,6 +893,7 @@ def show_log_window():
 def start_execution(func_name):
     show_log_window()  # Show log window
     should_run[func_name] = True
+    print("what is should run", should_run[func_name] )
     t = Thread(target=eval(f"execute_{func_name}"))
     t.start()
     if func_name == 'first_messages':

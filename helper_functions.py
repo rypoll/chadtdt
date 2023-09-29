@@ -1,66 +1,9 @@
-import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
-import sys
-import numpy as np
 import pandas as pd
-import json
-from googleapiclient.discovery import build
-from google.oauth2.credentials import Credentials
-import base64
-from google_auth_oauthlib import flow
-import openai
-import re
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import pandas as pd
-import time  # Import the time module
-from urllib.parse import urlparse
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import pandas as pd
-import time
-import ast
-import os
-import gspread
-from gspread_dataframe import set_with_dataframe
-import selenium
-import pandas as pd
-from datetime import datetime, timedelta
-import ast
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from datetime import timedelta, datetime
-from google.cloud import storage
-from git import Repo, Git
 import random
-import pickle
-from selenium.webdriver.common.action_chains import ActionChains
-import openai
-import json
-from datetime import datetime
-import pandas as pd
-import platform
-import subprocess
-import stat
-import openai
-import sys
 import re
-import os
-from selenium import webdriver
-from datetime import datetime, timedelta, timezone
-from dateutil.parser import parse
-import os
-from selenium import webdriver
+from datetime import datetime
+
+
 
 
 def count_A_lines(text):

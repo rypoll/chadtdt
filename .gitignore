@@ -5,3 +5,4 @@ profiles3
 build/
 dist/
 dist.zip
+myenv/
