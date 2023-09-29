@@ -21,7 +21,7 @@ def detect_phone_number(conversation_text, name):
 
             # Store to CSV
             now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            df = pd.DataFrame({'name': [name], 'number': [phone_number], 'date': [now], 'conversation': [formatted_text2]})
+            df = pd.DataFrame({'name': [name], 'number': [phone_number], 'date': [now], 'conversation': [conversation_text]})
             print("Data to output: ", df)
             
             try:
@@ -68,7 +68,7 @@ def should_ask_question(conversation_text):
 
 
 
-def find_and_replace_questions(reply, day_of_week, english_question_list, spanish_question_list):
+def find_and_replace_questions(reply, day_of_week, english_question_list, spanish_question_list, language):
     sentences = re.findall(r'(A: )([\w\sÁÉÍÓÚáéíóú,\'"¿\?;:\-—\U00010000-\U0010ffff]*)', reply)
     
     questions_found = [sent for pre, sent in sentences if '?' in sent]
@@ -87,17 +87,46 @@ def find_and_replace_questions(reply, day_of_week, english_question_list, spanis
             'Saturday': 'Sábado',
             'Sunday': 'Domingo'
         }
+        
+        
+        spanish_daily_question_list = [
+            "de donde eres originalmente?",
+            "pregunta del dia",
+            "Cómo te trata el Lunes de Lujo?",
+            "Cómo va tu Martes Maravilloso?",
+            "Cómo te va en el Miércoles Melódico?",
+            "Cómo va tu Jueves Jugoso?",
+            "Cómo va tu Viernes de Vino?",
+            "Qué tal el Sábado de Sofá?",
+            "Cómo te trata el Domingo Dulce?"
+        ]
+        
+        
+        english_daily_question_list = [
+            "Where are you from originally?", 
+            "daily question",
+            "How goes your funday sunday?",
+            "How goes your taco tuesday?",
+            "How's your Mocha Monday treating you?",
+            "How's your wonderful wednesday?",
+            "How's your thirsty Thursday treating you?",
+            "How's your Fabulous Friday going?",
+            "How goes your soulful Saturday?",
+            "How's your sunday funday?"
+        ]
 
-        using_spanish = any("¿" in question for question in questions_found)
-        if using_spanish:
+        #using_spanish = any("¿" in question for question in questions_found)
+        if language=='Spanish':
+            print("This is the day of the week before translation: ", day_of_week)
             day_of_week = day_translation.get(day_of_week, day_of_week)
+            print("This is the day of the week after translation: ", day_of_week)
             replacement = random.choice(spanish_question_list)
             if replacement == "pregunta del dia":
-                replacement = [q for q in spanish_question_list if day_of_week.lower() in q.lower()][0]
+                replacement = [q for q in spanish_daily_question_list if day_of_week.lower() in q.lower()][0]
         else:
             replacement = random.choice(filtered_english_questions)
             if replacement == "daily question":
-                replacement = [q for q in english_question_list if day_of_week.lower() in q.lower()][0]
+                replacement = [q for q in english_daily_question_list if day_of_week.lower() in q.lower()][0]
 
         replacement = re.sub(r'[\U00010000-\U0010ffff]', '', replacement)
         replacement = "A: " + replacement

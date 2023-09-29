@@ -11,7 +11,7 @@ a = Analysis(
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    noarchive=True,
+    noarchive=False,
 )
 pyz = PYZ(a.pure)
 
@@ -20,9 +20,9 @@ exe = EXE(
     a.scripts,
     a.binaries,
     a.datas,
-    [('v', None, 'OPTION')],
+    [],
     name='AutoFlirt',
-    debug=True,
+    debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,

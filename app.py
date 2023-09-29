@@ -51,6 +51,7 @@ def execute_first_messages():
 
     from webdriver_manager.chrome import ChromeDriverManager
     from selenium.common.exceptions import NoSuchElementException
+    from selenium.common.exceptions import TimeoutException
     import random
     from selenium.webdriver.common.action_chains import ActionChains
     from selenium import webdriver
@@ -102,6 +103,8 @@ def execute_first_messages():
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--start-maximized') 
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        chrome_options.add_argument("--disable-logging")
         
 
         try:
@@ -168,7 +171,15 @@ def execute_first_messages():
         # wait.until(EC.invisibility_of_element((By.CSS_SELECTOR, "obstructing_element_selector")))
 
 
-
+        try:
+            # Try to find the "Allow" button and click it if it exists
+            wait = WebDriverWait(driver, 3)  # Wait for up to 3 seconds
+            allow_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[text()='Maybe later']")))
+            print("Maybe laber clicked")
+            allow_button.click()
+        except TimeoutException:
+            # If the "Allow" button doesn't appear in 3 seconds, continue with the rest of the code
+            print("Maybe later button not found. Continuing...")
 
 
 
@@ -242,32 +253,55 @@ def execute_first_messages():
                 break  # This will exit the loop and stop the execution
             print(f"Loop iteration {i+1}")
             
+            # ###############################  START 2. Click First Match
+
+            # print(f"Locating the {i} 'li'.")
+            # first_li = wait.until(EC.element_to_be_clickable((By.XPATH, f"//li[@style='width: 33.33%;'][1]")))
+            # print("is the element displayed?", li_elements_with_style[first_match].is_displayed())
+            # print("is the element enabled?", li_elements_with_style[first_match].is_enabled())
+            # #third_li = driver.find_element(By.XPATH, f"//li[@style='width: 33.33%;'][{first_match}]")
+            # third_li = li_elements_with_style[first_match]
+            # driver.execute_script("arguments[0].scrollIntoView();", third_li)
+            # #time.sleep(1000)
+            # try:
+            #     print(f"Clicking the {i} 'li'.")
+            #     third_li.click()
+            #     print(f"{i} 'li' clicked.")
+            # except Exception as e:
+            #     print(f"Failed to click {i} 'li': {e}. Trying JavaScript click.")
+            #     driver.execute_script("arguments[0].click();", third_li)
+            #     print(f"{i} 'li' clicked using JavaScript.")
+
+
+
+
+            # ###############################  END 2. Click First Match 
+
+
+
             ###############################  START 2. Click First Match
 
-            print(f"Locating the {i} 'li'.")
-            first_li = wait.until(EC.element_to_be_clickable((By.XPATH, f"//li[@style='width: 33.33%;'][1]")))
-            print("is the element displayed?", li_elements_with_style[first_match].is_displayed())
-            print("is the element enabled?", li_elements_with_style[first_match].is_enabled())
-            #third_li = driver.find_element(By.XPATH, f"//li[@style='width: 33.33%;'][{first_match}]")
-            third_li = li_elements_with_style[first_match-1]
-            driver.execute_script("arguments[0].scrollIntoView();", third_li)
-            #time.sleep(1000)
+            print("Locating the third 'li' in the first 'ul'.")
+            third_li = wait.until(EC.element_to_be_clickable((By.XPATH, f"(//ul)[1]/li[{first_match}]")))
+
             try:
-                print(f"Clicking the {i} 'li'.")
+                print("Clicking the third 'li'.")
                 third_li.click()
-                print(f"{i} 'li' clicked.")
+                time.sleep(random.uniform(3, 6))
+                print("Third 'li' clicked.")
             except Exception as e:
-                print(f"Failed to click {i} 'li': {e}. Trying JavaScript click.")
+                print(f"Failed to click third 'li': {e}. Trying JavaScript click.")
                 driver.execute_script("arguments[0].click();", third_li)
-                print(f"{i} 'li' clicked using JavaScript.")
+                print("Third 'li' clicked using JavaScript.")
+                
+            
+
+
 
 
 
 
             ###############################  END 2. Click First Match 
-
-
-
 
 
 
@@ -280,9 +314,11 @@ def execute_first_messages():
             if language == 'Spanish':
                 with open('messages/01-cold-openers-es.txt', 'r') as file:
                     lines = file.readlines()
+                lines = [line for line in lines if line.strip()]
             else: 
                 with open('messages/01-cold-openers.txt', 'r') as file:
                     lines = file.readlines()
+                lines = [line for line in lines if line.strip()]
                 
 
             # Remove any leading/trailing whitespace from each line
@@ -290,6 +326,7 @@ def execute_first_messages():
 
             # Randomly pick a line from the list
             random_line = random.choice(lines)
+            print("Line to send: ", random_line)
 
             # Assuming 'driver' is your initialized WebDriver instance
             actions = ActionChains(driver)
@@ -297,9 +334,9 @@ def execute_first_messages():
 
             actions.send_keys(random_line).perform()
             print(f"Send message {random_line}")
-            time.sleep(random.uniform(3, 6))
+            time.sleep(random.uniform(4, 8))
             actions.send_keys(Keys.RETURN)  # Sending the Enter key
-
+            time.sleep(random.uniform(4, 8))
             if toggle_var.get() == 1:
                 actions.perform()  # Perform the action
             else: 
@@ -335,7 +372,7 @@ def execute_first_messages():
                 driver.execute_script("arguments[0].click();", matches_button)
                 print("'Matches' button clicked using JavaScript.")    
             # Now to click the third li in the first ul
-            first_match+=1  
+            #first_match+=1  
 
 
             ############################### END  4. Need to go back to matches to send more colds
@@ -369,6 +406,7 @@ def execute_conversations():
     from selenium.webdriver.support import expected_conditions as EC
     global days_entry, language_combo
     days_threshold = int(days_entry.get())
+    convs_amt = int(conversations_entry.get())
     language = language_combo.get()
     try:
         #print("Executing conversations...")
@@ -411,6 +449,8 @@ def execute_conversations():
         #chrome_options.add_extension(extension_path2)
         chrome_options.add_argument('--start-maximized')
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        chrome_options.add_argument("--disable-logging")
 
         try:
             driver.quit()
@@ -478,6 +518,15 @@ def execute_conversations():
             messages_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Messages']")))
 
 
+        try:
+            # Try to find the "Allow" button and click it if it exists
+            wait = WebDriverWait(driver, 10)  # Wait for up to 3 seconds
+            allow_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[text()='Maybe later']")))
+            print("Maybe laber clicked")
+            allow_button.click()
+        except TimeoutException:
+            # If the "Allow" button doesn't appear in 3 seconds, continue with the rest of the code
+            print("Maybe later button not found. Continuing...")
 
         ###############################  START 1. Click Messages
         try:
@@ -535,156 +584,138 @@ def execute_conversations():
                     (By.XPATH, "//a[@draggable='false' and contains(@class, 'messageListItem')]")
                 )
             )
-            total_elements = len(elements)
-            print(f"Total number of elements/chats found: {total_elements}")
+            while should_run['conversations']:
+                total_elements = len(elements)
+                print(f"Total number of elements/chats found: {total_elements}")
+                
+                print("this is the first x elements", elements[:min(convs_amt, total_elements)])
+                elements = elements[:min(convs_amt, total_elements)]
+                for i, element in enumerate(elements): # chats 
+                    print("what is should run", should_run['conversations'])
+                    if not should_run['conversations']:
+                        print("Stopping Messaging execution...")
+                        break  # This will exit the loop and stop the execution
+                    print(f"Processing element {i+1} out of {len(elements)}")
+                    try:
+                        element.click()
+                        print(f"Chat {i+1} clicked and being processed")
+                            ############################### START 3. Extract conversation
+                        
+                        
+                        # Extract the name from the h3 tag within the clicked element
+                        name_element = element.find_element(By.CSS_SELECTOR, "h3.messageListItem__name")
+                        name = name_element.text
+                        print(f"Name found: {name}") # This is used to save phone numbers
+                        
+                        
+                        time.sleep(random.uniform(3, 6))
+                        # Create an empty dataframe to store the datetime and text data
+                        df = pd.DataFrame(columns=['datetime', 'text'])
 
-            for i, element in enumerate(elements): # chats 
-                print("what is should run", should_run['conversations'])
-                if not should_run['conversations']:
-                    print("Stopping Messaging execution...")
-                    break  # This will exit the loop and stop the execution
-                print(f"Processing element {i+1} out of {total_elements}")
-                try:
-                    element.click()
-                    print(f"Chat {i+1} clicked and being processed")
-                        ############################### START 3. Extract conversation
-                    
-                    
-                    # Extract the name from the h3 tag within the clicked element
-                    name_element = element.find_element(By.CSS_SELECTOR, "h3.messageListItem__name")
-                    name = name_element.text
-                    print(f"Name found: {name}") # This is used to save phone numbers
-                    
-                    
-                    time.sleep(random.uniform(3, 6))
-                    # Create an empty dataframe to store the datetime and text data
-                    df = pd.DataFrame(columns=['datetime', 'text'])
+                        # Print the total number of divs with msgHelper in their class string
+                        div_elements = driver.find_elements(By.XPATH, "//div[contains(@class, 'msgHelper')]")
+                        #print(f"Total number of msgHelper div elements: {len(div_elements)}")
 
-                    # Print the total number of divs with msgHelper in their class string
-                    div_elements = driver.find_elements(By.XPATH, "//div[contains(@class, 'msgHelper')]")
-                    #print(f"Total number of msgHelper div elements: {len(div_elements)}")
+                        for i, div in enumerate(div_elements):  # messages 
+                            try:
+                                print(f"\nProcessing message div element {i + 1}/{len(div_elements)}...")  # Prints which div element is being processed
 
-                    for i, div in enumerate(div_elements):  # messages 
-                        try:
-                            print(f"\nProcessing message div element {i + 1}/{len(div_elements)}...")  # Prints which div element is being processed
+                                # Debug: Print the HTML content of the div
+                                #print(f"HTML content of div: {div.get_attribute('outerHTML')}")
 
-                            # Debug: Print the HTML content of the div
-                            #print(f"HTML content of div: {div.get_attribute('outerHTML')}")
+                                # Extract the datetime value
+                                time_element = div.find_element(By.TAG_NAME, "time")
+                                datetime_value = time_element.get_attribute("datetime")
+                                #print(f"Extracted datetime: {datetime_value}")
 
-                            # Extract the datetime value
-                            time_element = div.find_element(By.TAG_NAME, "time")
-                            datetime_value = time_element.get_attribute("datetime")
-                            #print(f"Extracted datetime: {datetime_value}")
+                                # Extract the text value
+                                span_element = div.find_element(By.XPATH, ".//span[contains(@class, 'text')]")
+                                text_value = span_element.text
+                                #print(f"Extracted text: {text_value}")
 
-                            # Extract the text value
-                            span_element = div.find_element(By.XPATH, ".//span[contains(@class, 'text')]")
-                            text_value = span_element.text
-                            #print(f"Extracted text: {text_value}")
+                                # Check inner div classes
+                                inner_div_elements = div.find_elements(By.TAG_NAME, "div")
+                                author_value = "unknown"
 
-                            # Check inner div classes
-                            inner_div_elements = div.find_elements(By.TAG_NAME, "div")
-                            author_value = "unknown"
+                                for inner_div in inner_div_elements:
+                                    inner_class = inner_div.get_attribute("class")
 
-                            for inner_div in inner_div_elements:
-                                inner_class = inner_div.get_attribute("class")
+                                    # Debug: Print the classes of inner divs
+                                    #print(f"Classes of inner div: {inner_class}")
 
-                                # Debug: Print the classes of inner divs
-                                #print(f"Classes of inner div: {inner_class}")
+                                    if re.search(r'\bsend\b', inner_class):
+                                        author_value = "sender"
+                                        break
+                                    elif re.search(r'\breceive\b', inner_class):
+                                        author_value = "receiver"
+                                        break
 
-                                if re.search(r'\bsend\b', inner_class):
-                                    author_value = "sender"
-                                    break
-                                elif re.search(r'\breceive\b', inner_class):
-                                    author_value = "receiver"
-                                    break
+                                # Append data to dataframe
+                                new_row = pd.DataFrame({'datetime': [datetime_value], 'text': [text_value], 'author': [author_value]})
+                                df = pd.concat([df, new_row], ignore_index=True)
+                                #print(f"Appended new row to DataFrame with author {author_value}.")
 
-                            # Append data to dataframe
-                            new_row = pd.DataFrame({'datetime': [datetime_value], 'text': [text_value], 'author': [author_value]})
-                            df = pd.concat([df, new_row], ignore_index=True)
-                            #print(f"Appended new row to DataFrame with author {author_value}.")
-
-                        except Exception as e:
-                            print(f"An error occurred while extracting messages: {e}")
-
-
-
-                    ############################## END 3. Extract conversation
-
-
-                    ############################## START 4. GET NEXT RESPONSE FROM OPENAI 
-                    # Initialize an empty list to collect rows
-
-                    print("-------END EXTRACTING CONVO --------")
-                    
-                    
-                    # Put option to not message older people
-
-                    df['datetime'] = pd.to_datetime(df['datetime'])
-                    last_message_datetime = df['datetime'].iloc[-1]
-
-                    current_datetime = datetime.utcnow().replace(tzinfo=timezone.utc)  # Now offset-aware
-                    #days_threshold = 7  # This can be changed as needed
-
-                    time_difference = current_datetime - last_message_datetime.to_pydatetime()
-                    print(f"Last message was on {last_message_datetime}")
-                    if time_difference > timedelta(days=days_threshold):
-
-                        print(f"Skipping this iteration because the last message is more than {days_threshold} days old.")
-                        continue  # Skip to the next iteration in the outer loop
-                    
-                    
-                    text_rows = []
-
-                    # Iterate through the rows of the DataFrame
-                    for _, row in df.iterrows():
-                        author = row['author']
-                        text = row['text']
-
-                        # Apply the desired format based on the author
-                        if author == 'sender':
-                            text_rows.append(f"A: {text}")
-                        elif author == 'receiver':
-                            text_rows.append(f"G: {text}")
-
-                    # Join the formatted strings to create the text
-                    formatted_text = "\n".join(text_rows)
-
-                    print("This is current convo: ", formatted_text)
-
-                    formatted_text2 = formatted_text
-                    
-                    
-                    if detect_phone_number(formatted_text2, name):
-                        print("Passing due to phone number given.")
-                        #exit() # this one works in a normal python script.
-                        continue  # Use sys.exit() to terminate the entire script
-                    if df.iloc[-1]['author'] == 'receiver':
-                        print("The last message was by the lover so we send to OPENAI to get the next best response") 
-
-                        # Define name of the person talkign to here:
-                        #name = "G"
-                        language = 'Spanish'
+                            except Exception as e:
+                                print(f"An error occurred while extracting messages: {e}")
 
 
 
+                        ############################## END 3. Extract conversation
 
 
+                        ############################## START 4. GET NEXT RESPONSE FROM OPENAI 
+                        # Initialize an empty list to collect rows
 
+                        print("-------END EXTRACTING CONVO --------")
+                        
+                        
+                        # Put option to not message older people
 
+                        df['datetime'] = pd.to_datetime(df['datetime'])
+                        last_message_datetime = df['datetime'].iloc[-1]
 
+                        current_datetime = datetime.utcnow().replace(tzinfo=timezone.utc)  # Now offset-aware
+                        #days_threshold = 7  # This can be changed as needed
 
+                        time_difference = current_datetime - last_message_datetime.to_pydatetime()
+                        print(f"Last message was on {last_message_datetime}")
+                        if time_difference > timedelta(days=days_threshold):
 
-                        # Define parameterized variables at the top for easy modification
-                        if language != 'Spanish':
-                            OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
-                            GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-                            SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
-                            HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
-                        else:
-                            OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
-                            GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
-                            SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
-                            HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+                            print(f"Skipping this iteration because the last message is more than {days_threshold} days old.")
+                            continue  # Skip to the next iteration in the outer loop
+                        
+                        
+                        text_rows = []
+
+                        # Iterate through the rows of the DataFrame
+                        for _, row in df.iterrows():
+                            author = row['author']
+                            text = row['text']
+
+                            # Apply the desired format based on the author
+                            if author == 'sender':
+                                text_rows.append(f"A: {text}")
+                            elif author == 'receiver':
+                                text_rows.append(f"G: {text}")
+
+                        # Join the formatted strings to create the text
+                        formatted_text = "\n".join(text_rows)
+
+                        print("This is current convo: ", formatted_text)
+
+                        formatted_text2 = formatted_text
+                        
+                        
+                        if detect_phone_number(formatted_text2, name):
+                            print("Passing due to phone number given.")
+                            #exit() # this one works in a normal python script.
+                            continue  # Use sys.exit() to terminate the entire script
+                        if df.iloc[-1]['author'] == 'receiver':
+                            print("The last message was by the lover so we send to OPENAI to get the next best response") 
+
+                            # Define name of the person talkign to here:
+                            #name = "G"
+                            #language = 'Spanish'
 
 
 
@@ -695,152 +726,158 @@ def execute_conversations():
 
 
 
+                            # Define parameterized variables at the top for easy modification
+                            if language != 'Spanish':
+                                OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
+                                GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
+                                SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
+                                HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+                            else:
+                                OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
+                                GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
+                                SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
+                                HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
 
 
 
 
-                        # Configure OpenAI API client
-                        with open("00-credentials/00-openai-key.txt", "r") as f:
-                            api_key = f.read().strip()
 
-                        openai.api_key = api_key
 
-                        # Determine which system message file to read based on conditions
-                        num_A_lines = count_A_lines(formatted_text2)
 
-                        day_of_week = datetime.now().strftime('%A')
 
-                        english_question_list = [
-                            "Where are you from originally?", 
-                            "daily question",
-                            "How goes your funday sunday?",
-                            "How goes your taco tuesday?",
-                            "How's your Mocha Monday treating you?",
-                            "How's your wonderful wednesday?",
-                            "How's your thirsty Thursday treating you?",
-                            "How's your Fabulous Friday going?",
-                            "How goes your soulful Saturday?",
-                            "How's your sunday funday?"
-                        ]
 
-                        spanish_question_list = [
-                            "de donde eres originalmente?",
-                            "pregunta del dia",
-                            "Cómo te trata el Lunes de Lujo?",
-                            "Cómo va tu Martes Maravilloso?",
-                            "Cómo te va en el Miércoles Melódico?",
-                            "Cómo va tu Jueves Jugoso?",
-                            "Cómo va tu Viernes de Vino?",
-                            "Qué tal el Sábado de Sofá?",
-                            "Cómo te trata el Domingo Dulce?"
-                        ]
 
-                        print("Number of A lines:", num_A_lines)
-                        if num_A_lines <= 2:
-                            system_message_file = OPENER_FILE
 
-                        elif 3 <= num_A_lines <= 6:
-                            system_message_file = GETTING_TO_KNOW_FILE
-                            #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
 
-                        else:
-                            # Run a completion to determine "Yes" or "No"
-                            with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
-                                temp_system_message = f.read().strip()
 
-                            content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
+
+                            # Configure OpenAI API client
+                            with open("00-credentials/00-openai-key.txt", "r") as f:
+                                api_key = f.read().strip()
+
+                            openai.api_key = api_key
+
+                            # Determine which system message file to read based on conditions
+                            num_A_lines = count_A_lines(formatted_text2)
+
+                            day_of_week = datetime.now().strftime('%A')
+
+                            english_question_list = [
+                                "Where are you from originally?", 
+                                "daily question",
+                            ]
+
+                            spanish_question_list = [
+                                "de donde eres originalmente?",
+                                "pregunta del dia"
+                            ]
+
+                            print("Number of A lines:", num_A_lines)
+                            if num_A_lines <= 2:
+                                system_message_file = OPENER_FILE
+
+                            elif 3 <= num_A_lines <= 6:
+                                system_message_file = GETTING_TO_KNOW_FILE
+                                #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
+
+                            else:
+                                # Run a completion to determine "Yes" or "No"
+                                with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
+                                    temp_system_message = f.read().strip()
+
+                                content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
+                                messages = [{"role": "user", "content": content}]
+                                response = openai.ChatCompletion.create(
+                                    model="gpt-3.5-turbo",
+                                    messages=messages
+                                )
+                                assistant_reply = response['choices'][0]['message']['content']
+
+                                if assistant_reply == "No":
+                                    system_message_file = SOFT_CLOSE_MID_FILE
+                                else:
+                                    system_message_file = HARD_CLOSE_FILE
+
+                            # Read the selected system message
+                            with open(system_message_file, "r") as f:
+                                system_message = f.read().strip()
+
+                            # Define the messages list with the {text} field
+                            content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
                             messages = [{"role": "user", "content": content}]
+
+                            # Use openai.ChatCompletion.create() with the updated messages list
                             response = openai.ChatCompletion.create(
                                 model="gpt-3.5-turbo",
                                 messages=messages
                             )
+
                             assistant_reply = response['choices'][0]['message']['content']
 
-                            if assistant_reply == "No":
-                                system_message_file = SOFT_CLOSE_MID_FILE
-                            else:
-                                system_message_file = HARD_CLOSE_FILE
+                            # Modify assistant reply based on conditions
+                            if system_message_file == GETTING_TO_KNOW_FILE:
+                                if should_ask_question(formatted_text2):
+                                    assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list, language)
 
-                        # Read the selected system message
-                        with open(system_message_file, "r") as f:
-                            system_message = f.read().strip()
-
-                        # Define the messages list with the {text} field
-                        content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
-                        messages = [{"role": "user", "content": content}]
-
-                        # Use openai.ChatCompletion.create() with the updated messages list
-                        response = openai.ChatCompletion.create(
-                            model="gpt-3.5-turbo",
-                            messages=messages
-                        )
-
-                        assistant_reply = response['choices'][0]['message']['content']
-
-                        # Modify assistant reply based on conditions
-                        if system_message_file == GETTING_TO_KNOW_FILE:
-                            if should_ask_question(formatted_text2):
-                                assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
-
-                        # Call emoji_reducer function to modify assistant_reply
-                        assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
-                        assistant_reply = assistant_reply.replace("!", "")
-                        assistant_reply = assistant_reply.replace("¡", "")
-                        assistant_reply = assistant_reply.replace("A:", "")
-                        assistant_reply = assistant_reply.replace("¿", "")
-                        assistant_reply = assistant_reply.replace("?", "")
-                        #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
-                        assistant_reply = assistant_reply.lower()
-                        assistant_reply = assistant_reply.replace("\"", "")
-                        assistant_reply = assistant_reply.split('\n')[0]
+                            # Call emoji_reducer function to modify assistant_reply
+                            assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
+                            assistant_reply = assistant_reply.replace("!", "")
+                            assistant_reply = assistant_reply.replace("¡", "")
+                            assistant_reply = assistant_reply.replace("A:", "")
+                            assistant_reply = assistant_reply.replace("¿", "")
+                            assistant_reply = assistant_reply.replace("?", "")
+                            #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
+                            assistant_reply = assistant_reply.lower()
+                            assistant_reply = assistant_reply.replace("\"", "")
+                            assistant_reply = assistant_reply.split('\n')[0]
 
 
 
 
-                        print("File used:", system_message_file)
-                        print("Assistant reply:", assistant_reply)
+                            print("File used:", system_message_file)
+                            print("Assistant reply:", assistant_reply)
 
 
 
 
-                    ############################## END 4. GET NEXT RESPONSE FROM OPENAI 
+                        ############################## END 4. GET NEXT RESPONSE FROM OPENAI 
 
 
 
 
 
-                        ############################## START 5. SEND THE OPENAI NEXT BEST MESSAGE
+                            ############################## START 5. SEND THE OPENAI NEXT BEST MESSAGE
 
-                        # Assuming 'driver' is your initialized WebDriver instance
-                        actions = ActionChains(driver)
-                        actions.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
-                        actions.send_keys(assistant_reply).perform()
-                        print(f"Send message {assistant_reply}")
-                        #time.sleep(random.uniform(20, 40))
-                        actions.send_keys(Keys.RETURN)  # Sending the Enter key
+                            # Assuming 'driver' is your initialized WebDriver instance
+                            actions = ActionChains(driver)
+                            actions.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
+                            actions.send_keys(assistant_reply).perform()
+                            print(f"Send message {assistant_reply}")
+                            #time.sleep(random.uniform(20, 40))
+                            actions.send_keys(Keys.RETURN)  # Sending the Enter key
 
-                        if toggle_var.get() == 1:
-                            actions.perform()  # Perform the action
+                            if toggle_var.get() == 1:
+                                actions.perform()  # Perform the action
+                            else: 
+                                print("Active Mode OFF - Message will not be sent")
+                                
+                            print(f"Pressed Enter") # send to open ai and get best response
+
                         else: 
-                            print("Active Mode OFF - Message will not be sent")
-                            
-                        print(f"Pressed Enter") # send to open ai and get best response
-
-                    else: 
-                        print("She hasn't responded yet, so move on")
-                        continue
+                            print("She hasn't responded yet, so move on")
+                            continue
 
 
-                    ############################## END 5. SEND THE OPENAI NEXT BEST MESSAGE
-                    
-                    
-                    
-                    
-                except Exception as e:
-                    print(f"Failed to click element {i+1}: {e}")
-                    driver.execute_script("arguments[0].click();", element)
-                    print(f"Chat  {i+1} clicked using JavaScript.")
-            
+                        ############################## END 5. SEND THE OPENAI NEXT BEST MESSAGE
+                        
+                        
+                        
+                        
+                    except Exception as e:
+                        print(f"Failed to click element {i+1}: {e}")
+                        driver.execute_script("arguments[0].click();", element)
+                        print(f"Chat  {i+1} clicked using JavaScript.")
+                
         ############################## END 2. Click the first chat 
 
 
@@ -908,8 +945,16 @@ def stop_execution(func_name):
     if func_name == 'first_messages':
         
         update_status_label(left_frame, status_label_left, "Stopping...")
+        try:
+            driver.quit()
+        except Exception as e:
+            pass
     else:
         update_status_label(right_frame, status_label_right, "Stopping...")
+        try:
+            driver.quit()
+        except Exception as e:
+            pass
 
 
 
@@ -1048,7 +1093,7 @@ preferences_title.pack(anchor=tk.W, padx=20, pady=5)
 
 
 # Create a Canvas with the background color
-canvas = tk.Canvas(home_tab, bg=bg_color, highlightthickness=0, highlightbackground=bg_color, highlightcolor=bg_color, height=150)
+canvas = tk.Canvas(home_tab, bg=bg_color, highlightthickness=0, highlightbackground=bg_color, highlightcolor=bg_color,  height=150)
 canvas.pack(side=tk.TOP, padx=20, pady=5, fill=tk.BOTH)  # Changed padx to 20
 
 # Create a Frame (tk.Frame) to add to the Canvas
@@ -1056,7 +1101,12 @@ preferences_frame = tk.Frame(canvas, bg=bg_color, bd=0)
 canvas_frame = canvas.create_window((0, 0), window=preferences_frame, anchor=tk.NW)
 
 # Configure column widths
-preferences_frame.grid_columnconfigure(0, minsize=150)  # Set minimum column width to 150 pixels
+preferences_frame.grid_columnconfigure(0, minsize=150)
+preferences_frame.grid_columnconfigure(1, minsize=50)  # Spacer column
+preferences_frame.grid_columnconfigure(2, minsize=50)  # Entry column
+preferences_frame.grid_columnconfigure(3, minsize=150)  # New label column
+preferences_frame.grid_columnconfigure(4, minsize=50)  # New spacer column
+preferences_frame.grid_columnconfigure(5, minsize=50)  # New entry column
 
 # For debugging
 #preferences_frame.config(bg='red')
@@ -1108,7 +1158,30 @@ preferences_frame.update_idletasks()
 canvas.config(scrollregion=canvas.bbox(tk.ALL))
 
 
+# Short Label for Conversation Amount using tk.Label
+conversations_label = tk.Label(preferences_frame, text="Conversation Amount: ", bg=bg_color, font=("Arial", 10), foreground=light_grey)
+conversations_label.grid(row=0, column=3, sticky=tk.W, padx=(20, 0))
 
+# Entry for Conversation Amount
+conversations_entry = ttk.Entry(preferences_frame, width=20)  # Specified width
+conversations_entry.grid(row=0, column=5, sticky=tk.E)  # Adjusted column
+conversations_entry.insert(0, "20")  # Default value
+
+# Extra info under the "Conversation Amount" label
+extra_info_label_conversations = tk.Label(preferences_frame, 
+                            text="The first x conversations to interact with",
+                            bg=bg_color, 
+                            font=("Arial", 8), 
+                            wraplength=350,  # Adjust this value based on your layout
+                            justify=tk.LEFT,
+                            foreground=light_grey)  # Text justification
+extra_info_label_conversations.grid(row=1, column=3, columnspan=2, sticky=tk.W, padx=(20, 0), pady=(0, 10))  # Added pady and adjusted columnspan
+
+
+
+
+preferences_frame.update_idletasks()
+canvas.config(scrollregion=canvas.bbox(tk.ALL))
 
 
 ######### 2. End Preferences         #########
@@ -1487,7 +1560,7 @@ customise_openers_button.grid(row=6, column=0)
 #########
 
 
-#app.geometry("800x600")
+app.geometry("800x720")
 app.resizable(True, True)
 
 # screen_width = app.winfo_screenwidth()
