@@ -90,8 +90,6 @@ def find_and_replace_questions(reply, day_of_week, english_question_list, spanis
         
         
         spanish_daily_question_list = [
-            "de donde eres originalmente?",
-            "pregunta del dia",
             "Cómo te trata el Lunes de Lujo?",
             "Cómo va tu Martes Maravilloso?",
             "Cómo te va en el Miércoles Melódico?",
@@ -103,8 +101,6 @@ def find_and_replace_questions(reply, day_of_week, english_question_list, spanis
         
         
         english_daily_question_list = [
-            "Where are you from originally?", 
-            "daily question",
             "How goes your funday sunday?",
             "How goes your taco tuesday?",
             "How's your Mocha Monday treating you?",
