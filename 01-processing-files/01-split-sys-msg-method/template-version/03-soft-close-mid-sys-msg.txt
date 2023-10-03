@@ -23,7 +23,7 @@ Your output should only be one line, like this:
 The soft close is basically getting the potentially lover to agree to going out to a bar for a drink - this and only this, no other activity.
 The soft close is a four-step-ordered process:
 
-1. Ask the love interest if she likes something bar related (but not dance related at all) - that could be a cocktail, or some music, or some area of Madrid - for example: "Do you like cocktails?". 
+1. Ask the love interest if she likes something bar related (but not dance related at all) - that could be a cocktail, or some music, or some area of [city] - for example: "Do you like cocktails?". 
 2. check if "G" likes the question posed in step 1. If yes, proceed to step 2. If no, ask "do you like orange juice" or a similarly non-alcoholic drink.
 3. Then make a suggestion of DRINKING THE DRINK SHE LIKES together - for example - "We should grab a couple cocktails soon then"
 4. Once and if she agrees, you must then ask her what her schedule is like to see when she's free. Do not suggest a day, just ask when she's free/ what her schedule is like.
