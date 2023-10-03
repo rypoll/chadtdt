@@ -131,3 +131,25 @@ def find_and_replace_questions(reply, day_of_week, english_question_list, spanis
         reply = replacement
     
     return reply
+
+def remove_question(text):
+    # Find the last question mark's index
+    last_question_mark_index = text.rfind('?')
+
+    # If no question mark is found, return the original text
+    if last_question_mark_index == -1:
+        return text
+
+    # Find the last sentence-ending punctuation (or beginning of string) before the last question mark
+    preceding_period_index = text.rfind('.', 0, last_question_mark_index)
+    preceding_exclamation_index = text.rfind('!', 0, last_question_mark_index)
+    
+    # Take the max index among the found indices to get the closest one to the question mark
+    last_sentence_ending_index = max(preceding_period_index, preceding_exclamation_index)
+
+    if last_sentence_ending_index == -1:
+        # If there's no sentence-ending punctuation, remove all text up to the question mark
+        return text[last_question_mark_index + 1:].strip()
+    else:
+        # Otherwise, remove the text from the last sentence-ending punctuation to the question mark
+        return text[:last_sentence_ending_index + 1] + text[last_question_mark_index + 1:].strip()

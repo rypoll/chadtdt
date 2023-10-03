@@ -12,7 +12,501 @@ from ttkthemes import ThemedTk
 
 
 
+def complex_method(formatted_text2, name, language):
+    # Get last line of the chat so we know what language we're speaking in 
+    # Split the text into lines
+    lines = formatted_text2.strip().split('\n')
 
+    # Take the last line
+    last_line = lines[-1]
+    if detect(last_line) != 'es':
+        language = "English"
+        print("English detected. Conv will be in English")
+    elif detect(last_line) == 'es':
+        language = "Spanish"
+        print("Spanish detected. Conv will be in Spanish")
+
+    if detect_phone_number(formatted_text2, name):
+        print("Exiting due to phone number.")
+        #exit() # this one works in a normal python script.
+        sys.exit(0)  # Use sys.exit() to terminate the entire script
+
+
+
+
+
+
+
+    # Define parameterized variables at the top for easy modification
+    if language != 'Spanish':
+        OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
+        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
+        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
+        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+    else:
+        OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
+        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
+        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
+        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Configure OpenAI API client
+    with open("00-credentials/00-openai-key.txt", "r") as f:
+        api_key = f.read().strip()
+
+    openai.api_key = api_key
+
+    # Determine which system message file to read based on conditions
+    num_A_lines = count_A_lines(formatted_text2)
+
+    day_of_week = datetime.now().strftime('%A')
+
+    english_question_list = [
+        "Where are you from originally?", 
+        "daily question"
+    ]
+
+    spanish_question_list = [
+        "de donde eres originalmente?",
+        "pregunta del dia"
+    ]
+
+    spanish_daily_question_list = [
+        "Cómo te trata el Lunes de Lujo?",
+        "Cómo va tu Martes Maravilloso?",
+        "Cómo te va en el Miércoles Melódico?",
+        "Cómo va tu Jueves Jugoso?",
+        "Cómo va tu Viernes de Vino?",
+        "Qué tal el Sábado de Sofá?",
+        "Cómo te trata el Domingo Dulce?"
+    ]
+
+
+    english_daily_question_list = [
+        "How goes your funday sunday?",
+        "How goes your taco tuesday?",
+        "How's your Mocha Monday treating you?",
+        "How's your wonderful wednesday?",
+        "How's your thirsty Thursday treating you?",
+        "How's your Fabulous Friday going?",
+        "How goes your soulful Saturday?",
+        "How's your sunday funday?"
+    ]
+
+
+    weekday_translation = {
+        "monday": "lunes",
+        "tuesday": "martes",
+        "wednesday": "miércoles",
+        "thursday": "jueves",
+        "friday": "viernes",
+        "saturday": "sábado",
+        "sunday": "domingo"
+    }
+
+
+    today = datetime.now().strftime('%A').lower()
+    if language == 'Spanish':
+        today = weekday_translation.get(today, today)
+
+    print("Number of A lines:", num_A_lines)
+    if num_A_lines <= 1:
+        system_message_file = OPENER_FILE
+
+    elif 2 <= num_A_lines <= 3:
+        system_message_file = GETTING_TO_KNOW_FILE
+        #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
+
+    else:
+        # Run a completion to determine "Yes" or "No"
+        with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
+            temp_system_message = f.read().strip()
+
+        content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
+        messages = [{"role": "user", "content": content}]
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+        assistant_reply = response['choices'][0]['message']['content']
+
+        if assistant_reply == "No":
+            system_message_file = SOFT_CLOSE_MID_FILE
+        else:
+            system_message_file = HARD_CLOSE_FILE
+
+    # Read the selected system message
+    with open(system_message_file, "r") as f:
+        system_message = f.read().strip()
+
+    # Define the messages list with the {text} field
+    content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
+    messages = [{"role": "user", "content": content}]
+
+    # Use openai.ChatCompletion.create() with the updated messages list
+    while True:
+        # Use openai.ChatCompletion.create() with the updated messages list
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+
+        assistant_reply = response['choices'][0]['message']['content']
+        print("Assistant reply RAW: ", assistant_reply)
+        # Break out of the loop if assistant_reply doesn't contain a question mark,
+        # or if we are not using the OPENER_FILE.
+        if "?" not in assistant_reply or system_message_file != OPENER_FILE:
+            print("Reply doesnt contain a question or we're not in the openng stage, so take reply")
+            break
+        print("You're in the openng stage and assistant has given a question. Roll again.")
+
+    assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
+    assistant_reply = assistant_reply.replace("!", "")
+    assistant_reply = assistant_reply.replace("¡", "")
+    assistant_reply = assistant_reply.replace("A:", "")
+    assistant_reply = assistant_reply.replace("¿", "")
+    assistant_reply = assistant_reply.replace("?", "")
+    #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
+    assistant_reply = assistant_reply.lower()
+    assistant_reply = assistant_reply.replace("\"", "")
+    assistant_reply = assistant_reply.split('\n')[0]
+
+    if system_message_file == OPENER_FILE:
+
+
+        # Randomly choose a question based on the language
+        question = random.choice(english_question_list if language == 'English' else spanish_question_list)
+
+        # If the question is a "daily question", then choose an appropriate daily question
+        if question == "daily question":
+            question = next((q for q in english_daily_question_list if today in q.lower()), "How's your day?")
+        elif question == "pregunta del dia":
+            question = next((q for q in spanish_daily_question_list if today in q.lower()), "Cómo te va el día?")
+
+        # Convert to lowercase and remove the '?'
+        question = question.lower().replace('?', '')
+
+        # Add the question to the assistant's reply
+        if not assistant_reply.endswith('.'):
+            assistant_reply += '.'
+
+        assistant_reply += " " + question
+
+
+
+
+    # Modify assistant reply based on conditions
+    # if system_message_file == GETTING_TO_KNOW_FILE:
+    #     if should_ask_question(formatted_text2):
+    #         print("Original ass reply; ", assistant_reply)
+    #         assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list, language)
+
+
+
+
+    # if system_message_file == GETTING_TO_KNOW_FILE:
+    #     print(assistant_reply)
+    #     assistant_reply = remove_question(assistant_reply)
+    #     print("Removed question")
+
+
+    # Call emoji_reducer function to modify assistant_reply
+
+    try:
+        assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
+    except (UnicodeDecodeError, UnicodeEncodeError) as e:
+        print("Error:", e)
+        print("Original text:", assistant_reply)
+
+
+    for text, emoji in emoji_mapping.items():
+        assistant_reply = assistant_reply.replace(text, emoji)
+
+    # Splitting the text into lines
+    lines = assistant_reply.split('\n')
+
+    # Taking the first line
+    assistant_reply2 = lines[0]
+
+    print("File used:", system_message_file)
+    print("Assistant reply:", assistant_reply2)
+    return assistant_reply2
+
+def simple_method(formatted_text2, name, language):
+
+    # Get last line of the chat so we know what language we're speaking in 
+    # Split the text into lines
+    lines = formatted_text2.strip().split('\n')
+
+    # Take the last line
+    last_line = lines[-1]
+    if detect(last_line) != 'es':
+        language = "English"
+        print("English detected. Conv will be in English")
+    elif detect(last_line) == 'es':
+        language = "Spanish"
+        print("Spanish detected. Conv will be in Spanish")
+
+    if detect_phone_number(formatted_text2, name):
+        print("Exiting due to phone number.")
+        #exit() # this one works in a normal python script.
+        sys.exit(0)  # Use sys.exit() to terminate the entire script
+
+
+
+
+
+
+
+
+    # Define parameterized variables at the top for easy modification
+    if language != 'Spanish':
+        OPENER_FILE = "01-processing-files/02-simple-method/01-opener-sys-msg.txt"
+        second_message = "01-processing-files/02-simple-method/02-que-haces-pa-divertirte-response-es.txt"
+        third_message = "01-processing-files/02-simple-method/03-de-donde-eres-es.txt"
+        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+    else:
+        OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
+        second_message = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
+        third_message = "01-processing-files/02-simple-method/03-de-donde-eres-es.txt"
+        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
+        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Configure OpenAI API client
+    with open("00-credentials/00-openai-key.txt", "r") as f:
+        api_key = f.read().strip()
+
+    openai.api_key = api_key
+
+    # Determine which system message file to read based on conditions
+    num_A_lines = count_A_lines(formatted_text2)
+
+    day_of_week = datetime.now().strftime('%A')
+
+    english_question_list = [
+        "What do you do for fun?" ]
+
+    spanish_question_list = [
+        "¿Qué haces para divertirte?"
+
+    ]
+
+    spanish_daily_question_list = [
+        "Cómo te trata el Lunes de Lujo?",
+        "Cómo va tu Martes Maravilloso?",
+        "Cómo te va en el Miércoles Melódico?",
+        "Cómo va tu Jueves Jugoso?",
+        "Cómo va tu Viernes de Vino?",
+        "Qué tal el Sábado de Sofá?",
+        "Cómo te trata el Domingo Dulce?"
+    ]
+
+
+    english_daily_question_list = [
+        "How goes your funday sunday?",
+        "How goes your taco tuesday?",
+        "How's your Mocha Monday treating you?",
+        "How's your wonderful wednesday?",
+        "How's your thirsty Thursday treating you?",
+        "How's your Fabulous Friday going?",
+        "How goes your soulful Saturday?",
+        "How's your sunday funday?"
+    ]
+
+
+    weekday_translation = {
+        "monday": "lunes",
+        "tuesday": "martes",
+        "wednesday": "miércoles",
+        "thursday": "jueves",
+        "friday": "viernes",
+        "saturday": "sábado",
+        "sunday": "domingo"
+    }
+
+
+    today = datetime.now().strftime('%A').lower()
+    if language == 'Spanish':
+        today = weekday_translation.get(today, today)
+
+    print("Number of A lines:", num_A_lines)
+    if num_A_lines <= 1:
+        system_message_file = OPENER_FILE
+
+    elif 2 <= num_A_lines <= 2:
+        system_message_file = second_message
+        #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
+
+
+    elif 3 <= num_A_lines <= 3:
+        system_message_file = third_message
+        #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
+
+
+    else:
+        # Run a completion to determine "Yes" or "No"
+        with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
+            temp_system_message = f.read().strip()
+
+        content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
+        messages = [{"role": "user", "content": content}]
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+        assistant_reply = response['choices'][0]['message']['content']
+
+        if assistant_reply == "No":
+            system_message_file = SOFT_CLOSE_MID_FILE
+        else:
+            system_message_file = HARD_CLOSE_FILE
+
+    # Read the selected system message
+    with open(system_message_file, "r") as f:
+        system_message = f.read().strip()
+
+    # Define the messages list with the {text} field
+    content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
+    messages = [{"role": "user", "content": content}]
+
+    # Use openai.ChatCompletion.create() with the updated messages list
+    while True:
+        # Use openai.ChatCompletion.create() with the updated messages list
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+
+        assistant_reply = response['choices'][0]['message']['content']
+        print("Assistant reply RAW: ", assistant_reply)
+        # Break out of the loop if assistant_reply doesn't contain a question mark,
+        # or if we are not using the OPENER_FILE.
+        if "?" not in assistant_reply:# or system_message != OPENER_FILE or system_message!=second_message or system_message!=third_message:
+            print("Reply doesnt contain a question or we're not in the opening stage, so take reply")
+            break
+        print("You're in the opening stage and assistant has given a question. Roll again.")
+
+    # Call emoji_reducer function to modify assistant_reply
+    assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
+    assistant_reply = assistant_reply.replace("!", "")
+    assistant_reply = assistant_reply.replace("¡", "")
+    assistant_reply = assistant_reply.replace("A:", "")
+    assistant_reply = assistant_reply.replace("¿", "")
+    assistant_reply = assistant_reply.replace("?", "")
+    #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
+    assistant_reply = assistant_reply.lower()
+    assistant_reply = assistant_reply.replace("\"", "")
+    assistant_reply = assistant_reply.split('\n')[0]
+        
+        
+
+    print("reply before doing full stop and addition:" ,assistant_reply)
+    if system_message_file == OPENER_FILE:
+
+
+        # Randomly choose a question based on the language
+        question = random.choice(english_question_list if language == 'English' else spanish_question_list)
+
+        # If the question is a "daily question", then choose an appropriate daily question
+        if question == "daily question":
+            question = next((q for q in english_daily_question_list if today in q.lower()), "How's your day?")
+        elif question == "pregunta del dia":
+            question = next((q for q in spanish_daily_question_list if today in q.lower()), "Cómo te va el día?")
+
+        # Convert to lowercase and remove the '?'
+        #question = question.lower().replace('?', '')
+
+        # Add the question to the assistant's reply
+        if not assistant_reply.endswith('.'):
+            assistant_reply += '.'
+
+        assistant_reply += " " + question
+
+    if system_message_file == second_message:
+        print("reply second msg" ,assistant_reply)
+        if not assistant_reply.endswith('.'):
+            assistant_reply += '.'
+
+        # Read the content from the file
+        with open('01-processing-files/02-simple-method/02a-question-tag-es.txt', 'r', encoding='utf-8') as file:
+            file_content = file.read()
+
+        # Append the content to assistant_reply
+        assistant_reply += " " + file_content    
+
+    if system_message_file == third_message:
+        print("reply third msg" ,assistant_reply)
+        if not assistant_reply.strip().endswith('.') and not assistant_reply.strip().endswith('?'):
+            assistant_reply = assistant_reply.strip() + '.'
+
+        # Read the content from the file
+        with open('01-processing-files/02-simple-method/03a-question-tag-es.txt', 'r', encoding='utf-8') as file:
+            file_content = file.read()
+
+        # Append the content to assistant_reply
+        assistant_reply += " " + file_content    
+
+
+    # Modify assistant reply based on conditions
+    # if system_message_file == GETTING_TO_KNOW_FILE:
+    #     if should_ask_question(formatted_text2):
+    #         print("Original ass reply; ", assistant_reply)
+    #         assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list, language)
+
+
+
+    # if system_message_file == GETTING_TO_KNOW_FILE:
+    #     print(assistant_reply)
+    #     assistant_reply = remove_question(assistant_reply)
+    #     print("Removed question")
+
+
+
+    try:
+        assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
+    except (UnicodeDecodeError, UnicodeEncodeError) as e:
+        print("Error:", e)
+        print("Original text:", assistant_reply)
+
+
+    for text, emoji in emoji_mapping.items():
+        assistant_reply = assistant_reply.replace(text, emoji)
+
+    # Splitting the text into lines
+    lines = assistant_reply.split('\n')
+
+    # Taking the first line
+    assistant_reply2 = lines[0]
+
+    print("File used:", system_message_file)
+    print("Assistant reply:", assistant_reply2)
+    return assistant_reply2
 
 # chromedriver_path = r'04-assets\\chromedriver.exe'
 # extension_path2 = r'04-assets\\uBlock-Origin.crx'
@@ -396,7 +890,7 @@ def execute_conversations():
     import re
     from webdriver_manager.chrome import ChromeDriverManager
     from selenium.common.exceptions import TimeoutException
-    from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines
+    from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_questions
     import random
     from selenium.webdriver.common.action_chains import ActionChains
     from selenium import webdriver
@@ -716,28 +1210,6 @@ def execute_conversations():
                             # Define name of the person talkign to here:
                             #name = "G"
                             #language = 'Spanish'
-
-
-
-
-
-
-
-
-
-
-                            # Define parameterized variables at the top for easy modification
-                            if language != 'Spanish':
-                                OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
-                                GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-                                SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
-                                HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
-                            else:
-                                OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
-                                GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
-                                SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
-                                HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
-
                             emoji_mapping = {
                                 "(wink emoji)": "😉",
                                 "(smile emoji)": "😄",
@@ -747,210 +1219,22 @@ def execute_conversations():
                                 "(smirk emoji)": "😏"  # Added smirk emoji
                                 # Add more as needed
                             }
-                            
-                            
-                            ####### Detect language , and that will dictate which files we used
+                                                        
+                            # Split the text into lines
                             lines = formatted_text2.strip().split('\n')
 
-                            # Take the last line
-                            last_line = lines[-1]
-                            if detect(last_line) != 'es':
-                                language = "English"
-                                print("English detected. Conv will be in English")
-                            elif detect(last_line) == 'es':
-                                language = "Spanish"
-                                print("Spanish detected. Conv will be in Spanish")
+                            # Take the first line
+                            first_line = lines[0]
 
-                            if detect_phone_number(formatted_text2, name):
-                                print("Exiting due to phone number.")
-                                #exit() # this one works in a normal python script.
-                                sys.exit(0)  # Use sys.exit() to terminate the entire script
-                                
-                                
-                            #### End Detect language
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            # Configure OpenAI API client
-                            with open("00-credentials/00-openai-key.txt", "r") as f:
-                                api_key = f.read().strip()
-
-                            openai.api_key = api_key
-
-                            # Determine which system message file to read based on conditions
-                            num_A_lines = count_A_lines(formatted_text2)
-
-                            day_of_week = datetime.now().strftime('%A')
-
-                            english_question_list = [
-                                "Where are you from originally?", 
-                                "daily question",
-                            ]
-
-                            spanish_question_list = [
-                                "de donde eres originalmente?",
-                                "pregunta del dia"
-                            ]
-                            
-                            spanish_daily_question_list = [
-                                "Cómo te trata el Lunes de Lujo?",
-                                "Cómo va tu Martes Maravilloso?",
-                                "Cómo te va en el Miércoles Melódico?",
-                                "Cómo va tu Jueves Jugoso?",
-                                "Cómo va tu Viernes de Vino?",
-                                "Qué tal el Sábado de Sofá?",
-                                "Cómo te trata el Domingo Dulce?"
-                            ]
-
-
-                            english_daily_question_list = [
-                                "How goes your funday sunday?",
-                                "How goes your taco tuesday?",
-                                "How's your Mocha Monday treating you?",
-                                "How's your wonderful wednesday?",
-                                "How's your thirsty Thursday treating you?",
-                                "How's your Fabulous Friday going?",
-                                "How goes your soulful Saturday?",
-                                "How's your sunday funday?"
-                            ]
-
-
-                            weekday_translation = {
-                                "monday": "lunes",
-                                "tuesday": "martes",
-                                "wednesday": "miércoles",
-                                "thursday": "jueves",
-                                "friday": "viernes",
-                                "saturday": "sábado",
-                                "sunday": "domingo"
-                            }
-
-
-                            today = datetime.now().strftime('%A').lower()
-                            if language == 'Spanish':
-                                today = weekday_translation.get(today, today)
-                            
-                            
-                            
-                                                        
-
-                            print("Number of A lines:", num_A_lines)
-                            if num_A_lines <= 1:
-                                system_message_file = OPENER_FILE
-
-                            elif 2 <= num_A_lines <= 3:
-                                system_message_file = GETTING_TO_KNOW_FILE
-                                #assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list)
-
+                            # Check if the first line contains either "Hola hermosa," or "Hello beautiful,"
+                            if "Hola hermosa," in first_line or "Hello beautiful," in first_line:
+                                # Run certain code
+                                assistant_reply = simple_method(formatted_text2, name, language)
                             else:
-                                # Run a completion to determine "Yes" or "No"
-                                with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
-                                    temp_system_message = f.read().strip()
+                                # Run other code
+                                assistant_reply = complex_method(formatted_text2, name, language)
+                            
 
-                                content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
-                                messages = [{"role": "user", "content": content}]
-                                response = openai.ChatCompletion.create(
-                                    model="gpt-3.5-turbo",
-                                    messages=messages
-                                )
-                                assistant_reply = response['choices'][0]['message']['content']
-
-                                if assistant_reply == "No":
-                                    system_message_file = SOFT_CLOSE_MID_FILE
-                                else:
-                                    system_message_file = HARD_CLOSE_FILE
-
-                            # Read the selected system message
-                            with open(system_message_file, "r") as f:
-                                system_message = f.read().strip()
-
-                            # Define the messages list with the {text} field
-                            content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
-                            messages = [{"role": "user", "content": content}]
-
-                            # Use openai.ChatCompletion.create() with the updated messages list
-                            while True:
-                                # Use openai.ChatCompletion.create() with the updated messages list
-                                response = openai.ChatCompletion.create(
-                                    model="gpt-3.5-turbo",
-                                    messages=messages
-                                )
-
-                                assistant_reply = response['choices'][0]['message']['content']
-                                print("Assistant reply RAW: ", assistant_reply)
-                                # Break out of the loop if assistant_reply doesn't contain a question mark,
-                                # or if we are not using the OPENER_FILE.
-                                if "?" not in assistant_reply or system_message_file != OPENER_FILE:
-                                    print("Reply doesnt contain a question or we're not in the openng stage, so take reply")
-                                    break
-                                print("You're in the openng stage and assistant has given a question. Roll again.")
-                                
-                                
-                                
-                            if system_message_file == OPENER_FILE:
-
-                                
-                                # Randomly choose a question based on the language
-                                question = random.choice(english_question_list if language == 'English' else spanish_question_list)
-                                
-                                # If the question is a "daily question", then choose an appropriate daily question
-                                if question == "daily question":
-                                    question = next((q for q in english_daily_question_list if today in q.lower()), "How's your day?")
-                                elif question == "pregunta del dia":
-                                    question = next((q for q in spanish_daily_question_list if today in q.lower()), "Cómo te va el día?")
-                                
-                                # Convert to lowercase and remove the '?'
-                                question = question.lower().replace('?', '')
-                                
-                                # Add the question to the assistant's reply
-                                if not assistant_reply.endswith('.'):
-                                    assistant_reply += '.'
-                                
-                                assistant_reply += " " + question
-
-
-
-                            # # Modify assistant reply based on conditions
-                            # if system_message_file == GETTING_TO_KNOW_FILE:
-                            #     if should_ask_question(formatted_text2):
-                            #         assistant_reply = find_and_replace_questions(assistant_reply, day_of_week, english_question_list, spanish_question_list, language)
-
-                            # Call emoji_reducer function to modify assistant_reply
-                            assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
-                            assistant_reply = assistant_reply.replace("!", "")
-                            assistant_reply = assistant_reply.replace("¡", "")
-                            assistant_reply = assistant_reply.replace("A:", "")
-                            assistant_reply = assistant_reply.replace("¿", "")
-                            assistant_reply = assistant_reply.replace("?", "")
-                            #assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
-                            assistant_reply = assistant_reply.lower()
-                            assistant_reply = assistant_reply.replace("\"", "")
-                            assistant_reply = assistant_reply.split('\n')[0]
-                            try:
-                                assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
-                            except (UnicodeDecodeError, UnicodeEncodeError) as e:
-                                print("Error:", e)
-                                print("Original text:", assistant_reply)
-
-
-                            for text, emoji in emoji_mapping.items():
-                                assistant_reply = assistant_reply.replace(text, emoji)
-
-
-
-
-                            print("File used:", system_message_file)
-                            print("Assistant reply:", assistant_reply)
 
 
 
@@ -1017,7 +1301,7 @@ def execute_simple_conversations():
     import re
     from webdriver_manager.chrome import ChromeDriverManager
     from selenium.common.exceptions import TimeoutException
-    from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines
+    from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_questions
     import random
     from selenium.webdriver.common.action_chains import ActionChains
     from selenium import webdriver
@@ -1347,7 +1631,6 @@ def execute_simple_conversations():
 
 
 
-                            # Define parameterized variables at the top for easy modification
 
                             # Define parameterized variables at the top for easy modification
                             if language != 'Spanish':
@@ -1845,10 +2128,26 @@ line_break1a.bind("<Configure>", whiteraw_line_tit)
 
 
 
+popup_window = None  # Global variable to keep track of the popup window
+
 def show_simple_mode_info():
-    info_window = tk.Toplevel()
-    info_window.title("Simple Mode Information")
-    tk.Label(info_window, text="Simple Mode does XYZ...").pack()
+    global popup_window
+    if popup_window is not None:
+        try:
+            popup_window.focus_set()  # Bring the existing window to the front
+        except tk.TclError:  # The window was closed
+            popup_window = None
+    if popup_window is None:
+        popup_window = tk.Toplevel()
+        popup_window.title("Simple Mode Info")
+        label = tk.Label(popup_window, text="Your information here.")
+        label.pack()
+        popup_window.protocol("WM_DELETE_WINDOW", on_closing_popup)
+
+def on_closing_popup():
+    global popup_window
+    popup_window.destroy()
+    popup_window = None
 
 
 
@@ -1948,9 +2247,19 @@ extra_info_label_conversations = tk.Label(preferences_frame,
                             foreground=light_grey)  # Text justification
 extra_info_label_conversations.grid(row=1, column=3, columnspan=2, sticky=tk.W + tk.N, padx=(20, 0), pady=(0, 10))  # Added pady and adjusted columnspan
 
-# Short Label for Simple Mode using tk.Label
-simple_mode_label = tk.Label(preferences_frame, text="Simple Mode: ", bg=bg_color, font=("Arial", 10), foreground=light_grey)
-simple_mode_label.grid(row=2, column=3, sticky=tk.W, padx=(20, 0), pady=(10, 0))  # Added pady and set row to 2, same as "Select Language"
+#style = ttk.Style()
+style.configure('Circular.TButton', width=10, relief='flat', borderwidth=0)
+style.map('Circular.TButton', background=[('', 'white')])  # You can set the background color here
+
+# Create a new frame to hold both the label and the canvas
+simple_mode_frame = tk.Frame(preferences_frame, bg=bg_color)
+simple_mode_frame.grid(row=2, column=3, sticky=tk.W, padx=(20, 0), pady=(10, 0))
+
+# Place the label inside the new frame
+simple_mode_label = tk.Label(simple_mode_frame, text="Simple Mode: ", bg=bg_color, font=("Arial", 10), foreground=light_grey)
+simple_mode_label.pack(side=tk.LEFT)
+
+
 
 # Checkbox for Simple Mode
 simple_mode_var = tk.IntVar()  # Variable to hold the checkbox state
@@ -1967,8 +2276,19 @@ extra_info_label_simple_mode = tk.Label(preferences_frame,
                             foreground=light_grey)  # Text justification
 extra_info_label_simple_mode.grid(row=3, column=3, columnspan=3, sticky=tk.W + tk.N, padx=(20, 0), pady=(0, 10))  # Added pady and adjusted columnspan
 
-info_button = ttk.Button(preferences_frame, text="?", command=show_simple_mode_info)
-info_button.grid(row=2, column=4, sticky=tk.W, pady=(10, 0))
+# Create a Canvas widget to act as your button and place it inside the new frame
+info_button_canvas = tk.Canvas(simple_mode_frame, width=20, height=20, bg=bg_color, highlightthickness=0)
+info_button_canvas.pack(side=tk.LEFT)
+
+# Draw a circle inside the canvas
+info_button_canvas.create_oval(2, 2, 18, 18, fill='green', outline=bg_color)
+
+# Add a text element inside the circle
+info_button_canvas.create_text(10, 10, text='?', fill='white')
+
+# Bind a click event to the canvas
+info_button_canvas.bind("<Button-1>", lambda event: show_simple_mode_info())
+
 
 
 preferences_frame.update_idletasks()
@@ -2137,6 +2457,72 @@ line_break3a.bind("<Configure>", line3a_draw)
 
 
 ###### 4. Customise Tab
+import re
+def extract_text_from_file(filepath, start_str, end_str):
+    with open(filepath, 'r') as f:
+        content = f.read()
+    pattern = re.escape(start_str) + r'(.*?)' + re.escape(end_str)
+    match = re.search(pattern, content)
+    if match:
+        try:
+            return match.group(1).strip().encode('latin1').decode('utf-8')
+        except:
+            return match.group(1).strip()
+    return ""
+
+
+
+def save_personal_details(name_entry, city_entry, area_entry, activity_entry, label_widget):
+    # 1. For the name entry
+    name = name_entry.get()
+    for filename in ["02-cold-opener-simple-method-es.txt", "02-cold-opener-simple-method.txt"]:
+        filepath = f"messages/template-version/{filename}"
+        with open(filepath, 'r') as f:
+            content = f.read()
+        content = content.replace("[Name]", name)
+        with open(f"messages/{filename}", 'w') as f:
+            f.write(content)
+
+    # 2. For the city entry
+    city = city_entry.get()
+    # for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt"]:
+    #     filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
+    #     with open(filepath, 'r') as f:
+    #         content = f.read()
+    #     print("city is: ", city)
+    #     print("content before")
+    #     print(content)
+    #     content = content.replace("[city]", city)
+    #     print("content after")
+    #     print(content)
+    #     with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
+    #         f.write(content)
+
+    # 3. For the area entry
+    area = area_entry.get()
+    # for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt"]:
+    #     filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
+    #     with open(filepath, 'r') as f:
+    #         content = f.read()
+    #     content = content.replace("[area]", area)
+    #     with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
+    #         f.write(content)
+
+    #4. For the activity entry (Note: activity_entry is not defined in your snippet)
+
+    activity = activity_entry.get()
+    for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt"]:
+        filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
+        with open(filepath, 'r') as f:
+            content = f.read()
+        content = content.replace("[activity]", activity)
+        content = content.replace("[area]", area)
+        content = content.replace("[city]", city)
+        with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
+            f.write(content)
+
+    # 5. Show "Saved!"
+    label_widget.config(text="Saved!")
 
 
 def get_text_between_tags(file_path, start_tag, end_tag=""):
@@ -2195,6 +2581,60 @@ def show_customisation_window():
     save_button2.grid(row=3, column=2)
     saved_label2 = tk.Label(new_window, text="", bg=bg_color)
     saved_label2.grid(row=4, column=2)
+    
+    
+    # Second vertical line to separate the third section
+    tk.Frame(new_window, width=1, bg="gray").grid(row=0, column=3, rowspan=7, sticky="ns")
+
+    # Title for Personal Details
+    title3 = tk.Label(new_window, text="3. Customize your personal details", font=("Arial", 12), anchor="w", bg=bg_color)
+    title3.grid(row=0, column=4, padx=10, pady=10, sticky="w")
+
+    # Elements for Personal Details
+    # Create a frame to hold the labels and entries
+    details_frame = tk.Frame(new_window, bg=bg_color)
+    details_frame.grid(row=2, column=4, sticky="w", padx=10)
+
+    # Text entry for Name
+    name_label = tk.Label(details_frame, text="Name:", bg=bg_color)
+    name_label.grid(row=0, column=0, sticky="w")
+    name_entry = tk.Entry(details_frame, font=("Arial", 10))
+    name_entry.grid(row=0, column=1, padx=10, pady=10, sticky="w")
+
+    # Text entry for City
+    city_label = tk.Label(details_frame, text="City:", bg=bg_color)
+    city_label.grid(row=1, column=0, sticky="w")
+    city_entry = tk.Entry(details_frame, font=("Arial", 10))
+    city_entry.grid(row=1, column=1, padx=10, pady=10, sticky="w")
+
+    # Text entry for Area within the city
+    area_label = tk.Label(details_frame, text="Area within the city:", bg=bg_color)
+    area_label.grid(row=2, column=0, sticky="w")
+    area_entry = tk.Entry(details_frame, font=("Arial", 10))
+    area_entry.grid(row=2, column=1, padx=10, pady=10, sticky="w")
+    
+    
+    # Text entry for Area within the city
+    activity_label = tk.Label(details_frame, text="An activity you do:", bg=bg_color)
+    activity_label.grid(row=3, column=0, sticky="w")
+    activity_entry = tk.Entry(details_frame, font=("Arial", 10))
+    activity_entry.grid(row=3, column=1, padx=10, pady=10, sticky="w")
+    
+    
+    name_entry.insert(0, extract_text_from_file("messages/02-cold-opener-simple-method-es.txt", "soy ", ","))
+    city_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "parte de ", " eres"))
+    area_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "Yo vivo en ", "."))
+    activity_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "gusta mucho", "."))
+
+    # Save button for Personal Details
+    save_button3 = ttk.Button(new_window, text="Save Personal Details", command=lambda: save_personal_details(name_entry, city_entry, area_entry, activity_entry,saved_label3))
+    save_button3.grid(row=3, column=4, pady=10)
+    saved_label3 = tk.Label(new_window, text="", bg=bg_color)
+    saved_label3.grid(row=4, column=4)
+
+    
+    
+    
 
 def show_cold_customisation__window():
     #bg_color = "#F0F0F0"
