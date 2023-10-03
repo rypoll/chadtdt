@@ -40,15 +40,26 @@ def complex_method(formatted_text2, name, language):
     # Split the text into lines
     lines = formatted_text2.strip().split('\n')
 
-    # Take the last line
-    last_line = lines[-1]
+    # Initialize an empty string to hold lines that start with "G:"
+    g_lines = ""
 
-    if detect(last_line) == 'es' or detect(last_line) == 'nl' :
-        print("detected lang is: ", detect(last_line))
+    # Iterate through each line
+    for line in lines:
+        if line.startswith("G:"):
+            # Remove the "G:" and append the line to g_lines
+            g_lines += line[2:].strip() + " "
+
+    # Remove the trailing space
+    g_lines = g_lines.rstrip()
+
+
+
+    if detect(g_lines) == 'es' or detect(g_lines) == 'nl' or detect(g_lines) == 'nl' or detect(g_lines) == 'ca' :
+        print("detected lang is: ", detect(g_lines))
         language = "Spanish"
         print("Spanish detected. Conv will be in Spanish")
     else:
-        print("detected lang is: ", detect(last_line))
+        print("detected lang is: ", detect(g_lines))
         language = "English"
         print("English detected. Conv will be in English")
 
@@ -286,15 +297,27 @@ def simple_method(formatted_text2, name, language):
     # Split the text into lines
     lines = formatted_text2.strip().split('\n')
 
-    # Take the last line
-    last_line = lines[-1]
 
-    if detect(last_line) == 'es' or detect(last_line) == 'nl' :
-        print("detected lang is: ", detect(last_line))
+    # Initialize an empty string to hold lines that start with "G:"
+    g_lines = ""
+
+    # Iterate through each line
+    for line in lines:
+        if line.startswith("G:"):
+            # Remove the "G:" and append the line to g_lines
+            g_lines += line[2:].strip() + " "
+
+    # Remove the trailing space
+    g_lines = g_lines.rstrip()
+
+
+
+    if detect(g_lines) == 'es' or detect(g_lines) == 'nl' or detect(g_lines) == 'nl' or detect(g_lines) == 'ca' :
+        print("detected lang is: ", detect(g_lines))
         language = "Spanish"
         print("Spanish detected. Conv will be in Spanish")
     else:
-        print("detected lang is: ", detect(last_line))
+        print("detected lang is: ", detect(g_lines))
         language = "English"
         print("English detected. Conv will be in English")
 
