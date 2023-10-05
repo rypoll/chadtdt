@@ -11,26 +11,43 @@ def count_A_lines(text):
 
 
 
+
+
+
 def detect_phone_number(conversation_text, name):
-    messages = [line.strip() for line in conversation_text.split('\n') if line.strip()] 
+    messages = [line.strip() for line in conversation_text.split('\n') if line.strip()]
     for msg in messages:
         found_number = re.findall(r'(\d{6,})', msg)
         if found_number:
             phone_number = found_number[0]
             print("Number acquired:", phone_number)
 
-            # Store to CSV
-            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            df = pd.DataFrame({'name': [name], 'number': [phone_number], 'date': [now], 'conversation': [conversation_text]})
-            print("Data to output: ", df)
-            
+            # Format the phone number (you can modify this part to suit your specific formatting needs)
+            formatted_phone_number = str(int(phone_number))  # Remove leading zeros, if any
+
             try:
                 df_existing = pd.read_csv('03-acquirements/00-acquirements.csv')
-                df = pd.concat([df_existing, df], ignore_index=True)
-            except FileNotFoundError:
-                pass
+                
+                # Format the 'number' column in the existing DataFrame
+                df_existing['number'] = df_existing['number'].apply(lambda x: str(int(x)))
 
+                # Check if the number already exists
+                if formatted_phone_number in df_existing['number'].values:
+                    print("Number already exists. Skipping.")
+                    continue
+
+            except FileNotFoundError:
+                df_existing = pd.DataFrame(columns=['name', 'number', 'date', 'conversation'])
+
+            # Store to DataFrame
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            df = pd.DataFrame({'name': [name], 'number': [formatted_phone_number], 'date': [now], 'conversation': [conversation_text]})
+            print("Data to output: ", df)
+
+            df = pd.concat([df_existing, df], ignore_index=True)
+            
             print("Data outputted")
+            df.drop_duplicates(subset=['name', 'number'], keep='first', inplace=True)
             df.to_csv('03-acquirements/00-acquirements.csv', index=False)
             return True
     return False

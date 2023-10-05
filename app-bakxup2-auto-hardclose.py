@@ -230,10 +230,10 @@ def complex_method(formatted_text2, name, language):
         print("Assistant reply RAW: ", assistant_reply)
         # Break out of the loop if assistant_reply doesn't contain a question mark,
         # or if we are not using the OPENER_FILE.
-        if "?" not in assistant_reply or system_message_file != OPENER_FILE:
+        if "?" not in assistant_reply or (system_message_file != OPENER_FILE and system_message_file != HARD_CLOSE_FILE):
             print("Reply doesnt contain a question or we're not in the opening stage, so take reply")
             break
-        print("You're in the openng stage and assistant has given a question. Roll again.")
+        print("You're in the opening stage and assistant has given a question. Roll again.")
 
     assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
     assistant_reply = assistant_reply.replace("!", "")
@@ -266,6 +266,17 @@ def complex_method(formatted_text2, name, language):
             assistant_reply += '.'
 
         assistant_reply += " " + question
+        
+    if system_message_file == HARD_CLOSE_FILE:
+        print("Hard closing: " ,assistant_reply)
+        if not assistant_reply.endswith('.'):
+            assistant_reply += '.'
+            
+        if language == "Spanish":
+            assistant_reply = assistant_reply + " Facilítame tu número para armar un plan romántico"
+        else:
+            assistant_reply = assistant_reply + "Shoot me your number for romantic arrangement purposes"
+    
 
 
 
@@ -666,7 +677,7 @@ def execute_first_messages():
 
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--window-size=1920x1080")
-        #chrome_options.add_argument("--start-minimized")
+        chrome_options.add_argument("--start-minimized")
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         chrome_options.add_argument("--disable-logging")
@@ -708,7 +719,7 @@ def execute_first_messages():
                     exit(1)
                     
         ######################### END 0. Define the driver       
-        driver.minimize_window()
+
         # service = webdriver.chrome.service.Service(executable_path=chromedriver_path)
         # service.start()
         # driver = webdriver.Chrome(options=chrome_options)
@@ -716,7 +727,6 @@ def execute_first_messages():
         # Open the website
         driver.get('https://www.tinder.com/')
         driver.execute_script('document.title = "AutoConvos"')
-        
 
         # If it's the first time or the directory was empty, ask the user to log in manually
             
@@ -1324,7 +1334,7 @@ def execute_conversations():
                             first_line = lines[0]
 
                             # Check if the first line contains either "Hola hermosa," or "Hello beautiful,"
-                            if "bella bombón" in first_line or "Hello beautiful," in first_line:
+                            if "Hola hermosa," in first_line or "Hello beautiful," in first_line:
                                 # Run certain code
                                 assistant_reply = simple_method(formatted_text2, name, language)
                             else:
@@ -1424,29 +1434,12 @@ should_run = {'first_messages': True, 'simple_conversations': True}
 class TextRedirector:
     def __init__(self, widget):
         self.widget = widget
-        self.line = ""
-        self.create_log_file()
 
-    def create_log_file(self):
-        now = datetime.now()
-        timestamp = now.strftime('%Y-%m-%d_%H-%M-%S')
-        self.log_filename = f'05-logs/log_{timestamp}.txt'
-        if not os.path.exists('05-logs'):
-            os.makedirs('05-logs')
-
-    def write(self, str_):
-        self.line += str_
-        if '\n' in self.line:
-            self.widget.config(state=tk.NORMAL)
-            self.widget.insert(tk.END, self.line)
-            self.widget.yview(tk.END)  # Scroll to the bottom
-            self.widget.config(state=tk.DISABLED)
-            with open(self.log_filename, 'a') as f:
-                f.write(self.line)
-            self.line = ""
-
-    def flush(self):
-        pass
+    def write(self, str):
+        self.widget.config(state=tk.NORMAL)
+        self.widget.insert(tk.END, str)
+        self.widget.yview(tk.END)  # Scroll to the bottom
+        self.widget.config(state=tk.DISABLED)
 
 
 log_area = None  # Declare a global variable to hold the log area
@@ -1461,7 +1454,6 @@ def show_log_window():
     log_area.config(state=tk.DISABLED)
 
     sys.stdout = TextRedirector(log_area)  # Redirect stdout to the Text widget
-
 
 
 

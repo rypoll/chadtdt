@@ -1,0 +1,41 @@
+what is should run True
+Starting first_messages...
+Driver path: C:\Users\T430\.wdm\drivers\chromedriver\win64\117.0.5938.149\chromedriver-win32/chromedriver.exe
+Driver path type: <class 'str'>
+Successfully initialized WebDriver
+Successfully initialized WebDriver on attempt 1
+Waiting for 'Matches' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Number of li elements with style='width: 33.33%;': 58
+Loop iteration 1
+Locating the third 'li' in the first 'ul'.
+Clicking the third 'li'.
+Third 'li' clicked.
+Line to send:  Hello beautiful, I'm Ryan, how's it going?
+Line to send after clear:  Hello beautiful, I'm Ryan, how's it going?
+Send message Hello beautiful, I'm Ryan, how's it going?
+Pressed Enter
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Loop iteration 2
+Locating the third 'li' in the first 'ul'.
+Clicking the third 'li'.
+Third 'li' clicked.
+Line to send:  Hello beautiful, I'm Ryan, how's it going?
+Line to send after clear:  Hello beautiful, I'm Ryan, how's it going?
+Send message Hello beautiful, I'm Ryan, how's it going?
+Pressed Enter
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Loop iteration 3
+Locating the third 'li' in the first 'ul'.
+Clicking the third 'li'.
+Third 'li' clicked.

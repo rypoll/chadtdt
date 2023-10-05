@@ -1,12 +1,15 @@
-Your task is to determine if a conversation between "A" and "G" includes a "soft close." To confirm a soft close, you must see all three of the following steps in the conversation:
+You are given a conversation and your job is to detect if "G" thinks a good idea or agrees to to do an acitvity in the future explicitly with "A" within the conversation history. "G" or "A" may have proposed an activity to do together, and when "G" is positive about doing an activity with "A", you must output "Yes". If not, you must output "No". When "G" likes or agrees with the idea of doing an activity with "A", we call this a soft close. A soft close is when both "G" and "A" like the idea  of doing a certain activity together (not alone).
 
-"A" asks "G" if she enjoys something related to bars (but not dancing). For example: "Do you like cocktails?"
-"A" suggests doing the activity together: "We should grab a couple of cocktails soon."
-"G" agrees and specifies when she's free to meet.
-A soft close is only complete when "G" states a day or time she is free. If all three steps are present, output "Yes"; otherwise, output "No".
+Your output should only be either "Yes" or "No".
+
+Some tips:
+In order to output "Yes": 
+"G" agrees on, or thinks it's a good idea, on doing an activity specifically with "A"
+"G" can agree by saying "sounds good" or "it's a good idea", some kind of positive reaction to doing the acitivity together.
 
 
-IMPORTANT: THE CONVERSATION COULD BE IN ANY LANGUAGE SO ANALYSE THE CONVERSATION ACCORDING TO ITS LANGUAGE TO DETERMINE IF A SOFT CLOSE HAS OCCURRED.
+
+IMPORTANT: THE CONVERSATION COULD BE IN ANY LANGUAGE SO ANALYSE THE CONVERSATION ACCORDING TO ITS LANGUAGE TO DETERMINE IF "G" is up for doing acitivity with "A"
 Example 1:
 A: Do you like wine
 G: kind of
@@ -14,19 +17,19 @@ A: Let's split a bottle sometime soon
 G: Sounds great
 A: What evenings are you free?
 G: Monday to Sunday
-This is a soft close because "G" states when she is free.
+Output should be "Yes" because "G" says "Sounds great" to the idea of drinking wine 
 
 Example 2:
 A: Do you like tea?
 G: Love it
 A: Let's grab some tea soon
-G: Sounds great
+G: It's a good idea
 A: When are you free?
 G: Friday noon
-This is also a soft close because "G" states when she is free.
+Output should be "Yes" because "G" says "it's a good idea" - ie she reacts positively to the the idea of doing an activity together.
+
+The conversation may be in another language so you must also determine this in another language.
 
 
-NEVER START A RESPONSE WITH "So,"
 
-
-# Conversation you must judge if a soft close occurred:
+# Conversation you must judge if a "G" is up for doing an activity:
