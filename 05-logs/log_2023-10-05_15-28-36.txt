@@ -1,0 +1,4 @@
+what is should run True
+Starting first_messages...
+Driver path: C:\Users\T430\.wdm\drivers\chromedriver\win64\117.0.5938.149\chromedriver-win32/chromedriver.exe
+Driver path type: <class 'str'>

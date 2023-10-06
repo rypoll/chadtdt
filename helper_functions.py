@@ -34,7 +34,8 @@ def detect_phone_number(conversation_text, name):
                 # Check if the number already exists
                 if formatted_phone_number in df_existing['number'].values:
                     print("Number already exists. Skipping.")
-                    continue
+                    return True
+                    #continue
 
             except FileNotFoundError:
                 df_existing = pd.DataFrame(columns=['name', 'number', 'date', 'conversation'])

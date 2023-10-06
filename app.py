@@ -23,25 +23,62 @@ import pandas as pd
 import openai
 import re
 from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_question
+import requests
+import json
+
+def fix_text(text):
+    replacements = {
+        'ã¡': 'á',
+        'ã©': 'é',
+        'ã­': 'í',
+        'ã³': 'ó',
+        'ãº': 'ú',
+        'ã±': 'ñ',
+        'ã¼': 'ü',
+        'ã€': 'à',
+        'ã¨': 'è',
+        'ã¬': 'ì',
+        'ã²': 'ò',
+        'ã¹': 'ù',
+        'ã¢': 'â',
+        'ãª': 'ê',
+        'ã®': 'î',
+        'ã´': 'ô',
+        'ã»': 'û',
+        'ã¤': 'ä',
+        'ã«': 'ë',
+        'ã¯': 'ï',
+        'ã¶': 'ö',
+        'ã¼': 'ü',
+        'ã¿': 'ÿ',
+        # Add more replacements here
+    }
+    for original, replacement in replacements.items():
+        text = text.replace(original, replacement)
+    return text
 
 
-def get_response(messages):
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages
-        )
-        return response
-    except Exception as e:
-        if "maximum context length" in str(e):
-            print("Token count exceeds the standard limit. Switching to gpt-3.5-turbo-16k.")
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo-16k",
-                messages=messages
-            )
-            return response
-        else:
-            raise e
+def get_response(messages, user_id, id_token):
+    url = "https://us-central1-autoflirt-401111.cloudfunctions.net/openai_proxy"
+    
+    headers = {
+        'Authorization': f'Bearer {id_token}'
+    }
+    
+    data = {
+        "messages": messages,  # Use the messages variable here
+        "user_id": user_id     # Include the user_id
+    }
+    
+    response = requests.post(url, json=data, headers=headers)
+    
+    if response.status_code == 200:
+        response_json = response.json()
+        return response_json
+    else:
+        return {"error": f"Received status code {response.status_code}"}
+
+
 
 emoji_mapping = {
     "(wink emoji)": "😉",
@@ -72,7 +109,7 @@ def complex_method(formatted_text2, name, language):
 
 
 
-    if detect(g_lines) == 'es' or detect(g_lines) == 'nl' or detect(g_lines) == 'nl' or detect(g_lines) == 'ca' :
+    if detect(g_lines) == 'es' or detect(g_lines) == 'nl' or detect(g_lines) == 'sl' or detect(g_lines) == 'ca' or detect(g_lines) == 'sl' :
         print("detected lang is: ", detect(g_lines))
         language = "Spanish"
         print("Spanish detected. Conv will be in Spanish")
@@ -192,11 +229,16 @@ def complex_method(formatted_text2, name, language):
 
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
         messages = [{"role": "user", "content": content}]
-        response = get_response(messages)
+        response = get_response(messages, "admin")
         assistant_reply = response['choices'][0]['message']['content']
 
         print("Soft close detector says: ", assistant_reply)
-        if assistant_reply == "No":
+        soft_close_reason = assistant_reply
+        match = re.search(r"Decision: (Yes|No)", assistant_reply)
+        if match:
+            decision = match.group(1)
+        print(decision)
+        if decision == "No":
             print("No soft close detected yet")
             system_message_file = SOFT_CLOSE_MID_FILE
         else:
@@ -213,6 +255,8 @@ def complex_method(formatted_text2, name, language):
     # Replace "[today]" with the current day in the system_message
     if "Today is [today]" in system_message:
         system_message = system_message.replace("[today]", current_day)
+    if "[gname]" in system_message:
+        system_message = system_message.replace("[gname]", name)
         
     
 
@@ -223,7 +267,7 @@ def complex_method(formatted_text2, name, language):
     # Use openai.ChatCompletion.create() with the updated messages list
     while True:
         # Use openai.ChatCompletion.create() with the updated messages list
-        response = get_response(messages)
+        response = get_response(messages, "admin")
         
 
         assistant_reply = response['choices'][0]['message']['content']
@@ -233,7 +277,7 @@ def complex_method(formatted_text2, name, language):
         if "?" not in assistant_reply or system_message_file != OPENER_FILE:
             print("Reply doesnt contain a question or we're not in the opening stage, so take reply")
             break
-        print("You're in the openng stage and assistant has given a question. Roll again.")
+        print("You're in the opening stage and assistant has given a question. Roll again.")
 
     assistant_reply = emoji_reducer(formatted_text2, assistant_reply)       
     assistant_reply = assistant_reply.replace("!", "")
@@ -286,7 +330,7 @@ def complex_method(formatted_text2, name, language):
 
 
     # Call emoji_reducer function to modify assistant_reply
-
+    assistant_reply = fix_text(assistant_reply)
     try:
         assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
     except (UnicodeDecodeError, UnicodeEncodeError) as e:
@@ -431,6 +475,7 @@ def simple_method(formatted_text2, name, language):
 
 
     today = datetime.now().strftime('%A').lower()
+    current_day = datetime.now().strftime('%A')
     if language == 'Spanish':
         today = weekday_translation.get(today, today)
 
@@ -453,22 +498,34 @@ def simple_method(formatted_text2, name, language):
         # Run a completion to determine "Yes" or "No"
         with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
             temp_system_message = f.read().strip()
-
+        if "Today is [today]" in system_message:
+            temp_system_message = temp_system_message.replace("[today]", current_day)
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
         messages = [{"role": "user", "content": content}]
-        response = get_response(messages)
+        response = get_response(messages, "admin")
 
         assistant_reply = response['choices'][0]['message']['content']
 
-        if assistant_reply == "No":
+        print("Soft close detector says: ", assistant_reply)
+        soft_close_reason = assistant_reply
+        match = re.search(r"Decision: (Yes|No)", assistant_reply)
+        if match:
+            decision = match.group(1)
+        print(decision)
+        if decision == "No":
+            print("No soft close detected yet")
             system_message_file = SOFT_CLOSE_MID_FILE
         else:
+            print("Soft close detected - now ask for number")
             system_message_file = HARD_CLOSE_FILE
 
     # Read the selected system message
     with open(system_message_file, "r") as f:
         system_message = f.read().strip()
-
+    if "Today is [today]" in system_message:
+        system_message = system_message.replace("[today]", current_day)
+    if "[gname]" in system_message:
+        system_message = system_message.replace("[gname]", name)
     # Define the messages list with the {text} field
     content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
     messages = [{"role": "user", "content": content}]
@@ -476,7 +533,7 @@ def simple_method(formatted_text2, name, language):
     # Use openai.ChatCompletion.create() with the updated messages list
     while True:
         # Use openai.ChatCompletion.create() with the updated messages list
-        response = get_response(messages)
+        response = get_response(messages, "admin")
 
 
         assistant_reply = response['choices'][0]['message']['content']
@@ -565,7 +622,7 @@ def simple_method(formatted_text2, name, language):
     #     print("Removed question")
 
 
-
+    assistant_reply = fix_text(assistant_reply)
     try:
         assistant_reply = assistant_reply.encode('latin1').decode('utf-8')
     except (UnicodeDecodeError, UnicodeEncodeError) as e:
@@ -1292,7 +1349,7 @@ def execute_conversations():
                         # Take the last two lines
                         last_two_lines = lines_dt[-2:]
                         
-                        if all(line.startswith("A:") for line in last_two_lines):
+                        if len(last_two_lines) == 2 and all(line.startswith("A:") for line in last_two_lines):
                             double_texted = True
                         else:
                             double_texted = False
@@ -1441,7 +1498,7 @@ class TextRedirector:
             self.widget.insert(tk.END, self.line)
             self.widget.yview(tk.END)  # Scroll to the bottom
             self.widget.config(state=tk.DISABLED)
-            with open(self.log_filename, 'a') as f:
+            with open(self.log_filename, 'a', encoding='utf-8') as f:  # Specify encoding here
                 f.write(self.line)
             self.line = ""
 
@@ -2020,7 +2077,7 @@ def extract_text_from_file(filepath, start_str, end_str):
 
 
 
-def save_personal_details(name_entry, city_entry, area_entry, activity_entry, label_widget):
+def save_personal_details(name_entry, city_entry, area_entry, activity_entry, phone_entry, label_widget):
     # 1. For the name entry
     name = name_entry.get()
     for filename in ["02-cold-opener-simple-method-es.txt", "02-cold-opener-simple-method.txt"]:
@@ -2033,6 +2090,7 @@ def save_personal_details(name_entry, city_entry, area_entry, activity_entry, la
 
     # 2. For the city entry
     city = city_entry.get()
+    pnumber = phone_entry.get()
     files_to_update = [
         "01-opener-sys-msg-es.txt",
         "01-opener-sys-msg.txt",
@@ -2053,6 +2111,7 @@ def save_personal_details(name_entry, city_entry, area_entry, activity_entry, la
         #print("content before")
         #print(content)
         content = content.replace("[city]", city)
+        content = content.replace("[pnumber]", pnumber)
         #print("content after")
         #print(content)
         with open(f"01-processing-files/01-split-sys-msg-method/{filename}", 'w') as f:
@@ -2071,13 +2130,18 @@ def save_personal_details(name_entry, city_entry, area_entry, activity_entry, la
     #4. For the activity entry (Note: activity_entry is not defined in your snippet)
 
     activity = activity_entry.get()
-    for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt"]:
+    for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt",
+                     "02-que-haces-pa-divertirte-response.txt",
+                     "02-que-haces-pa-divertirte-response-es.txt",
+                     "03-de-donde-eres-es.txt",
+                     "03-de-donde-eres.txt"]:
         filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
         with open(filepath, 'r') as f:
             content = f.read()
         content = content.replace("[activity]", activity)
         content = content.replace("[area]", area)
         content = content.replace("[city]", city)
+        content = content.replace("[pnumber]", pnumber)
         with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
             f.write(content)
 
@@ -2180,18 +2244,24 @@ def show_customisation_window():
     activity_entry = tk.Entry(details_frame, font=("Arial", 10))
     activity_entry.grid(row=3, column=1, padx=10, pady=10, sticky="w")
     
+    phone_label = tk.Label(details_frame, text="Your phone number:", bg=bg_color)
+    phone_label.grid(row=4, column=0, sticky="w")
+    phone_entry = tk.Entry(details_frame, font=("Arial", 10))
+    phone_entry.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+    
     
     name_entry.insert(0, extract_text_from_file("messages/02-cold-opener-simple-method-es.txt", "soy ", ","))
     city_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "parte de ", " eres"))
     area_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "Yo vivo en ", "."))
     activity_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "gusta mucho", "."))
+    phone_entry.insert(0, extract_text_from_file("01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt", "phone number is", "."))
 
     # Save button for Personal Details
     save_button3 = ttk.Button(
     new_window, 
     text="Save Personal Details (and All)", 
     command=lambda: (
-        save_personal_details(name_entry, city_entry, area_entry, activity_entry, saved_label3),
+        save_personal_details(name_entry, city_entry, area_entry, activity_entry, phone_entry, saved_label3),
         save_profile(text_entry2, saved_label2, "# \"A\"'s skills:"),
         save_profile(text_entry1, saved_label1, "# Profile of A:")
         )
@@ -2272,6 +2342,40 @@ def save_profile(text_entry, saved_label, marker_text):
         "03a-soft-close-detector-mid-sys-msg.txt",
         "04-hard-close-sys-msg-es.txt",
         "04-hard-close-sys-msg.txt"
+    ]
+    
+    new_text = text_entry.get("1.0", "end-1c")
+    
+    for file_name in files_to_update:
+        file_path = os.path.join(folder_path, file_name)
+        
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+        
+        start_line = None
+        end_line = None
+        for i, line in enumerate(lines):
+            if marker_text in line:
+                start_line = i + 1
+            elif line.strip() == "" and start_line is not None:
+                end_line = i
+                break
+        
+        if start_line is not None and end_line is not None:
+            del lines[start_line:end_line]
+            lines.insert(start_line, new_text + "\n")
+        
+        with open(file_path, 'w') as f:
+            f.writelines(lines)
+    
+    folder_path = "01-processing-files/02-simple-method"
+    files_to_update = [
+        "01-opener-sys-msg-es.txt",
+        "01-opener-sys-msg.txt",
+        "02-que-haces-pa-divertirte-response-es.txt",
+        "02-que-haces-pa-divertirte-response.txt",
+        "03-de-donde-eres-es.txt",
+        "03-de-donde-eres.txt"
     ]
     
     new_text = text_entry.get("1.0", "end-1c")

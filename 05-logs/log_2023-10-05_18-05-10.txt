@@ -1,0 +1,128 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Failed to click element 1: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style messageListItem--isNew" href="/app/messages/554e573e044ba94b524ce41157a55da05f66356a0ae4c78b">...</a> is not clickable at point (487, 295). Other element would receive the click: <div class="CenterAlign H(100%) Fxd(c)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x0066CFE3+45267]
+	(No symbol) [0x005F9741]
+	(No symbol) [0x004EBE1D]
+	(No symbol) [0x00523B81]
+	(No symbol) [0x0052267F]
+	(No symbol) [0x00520C6B]
+	(No symbol) [0x00520005]
+	(No symbol) [0x0051855A]
+	(No symbol) [0x0053B03C]
+	(No symbol) [0x00517F96]
+	(No symbol) [0x0053B2B4]
+	(No symbol) [0x0054DDDA]
+	(No symbol) [0x0053AE36]
+	(No symbol) [0x0051674E]
+	(No symbol) [0x005178ED]
+	GetHandleVerifier [0x00925659+2897737]
+	GetHandleVerifier [0x0096E78B+3197051]
+	GetHandleVerifier [0x00968571+3171937]
+	GetHandleVerifier [0x006F5E40+606000]
+	(No symbol) [0x0060338C]
+	(No symbol) [0x005FF508]
+	(No symbol) [0x005FF62F]
+	(No symbol) [0x005F1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 2 out of 20
+Failed to click element 2: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce411651b1d04fedc53010063c701">...</a> is not clickable at point (487, 397). Other element would receive the click: <div class="msg BreakWord D(ib) Ta(start) Us(t) Pos(r) Whs(pw) Va(m) Maw(100%) C($c-ds-text-chat-bubble-receive) msg--received Op(1) Trsp($opacity) Trsdu($fast) Trsde($normal) Px(12px) Py(10px)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x0066CFE3+45267]
+	(No symbol) [0x005F9741]
+	(No symbol) [0x004EBE1D]
+	(No symbol) [0x00523B81]
+	(No symbol) [0x0052267F]
+	(No symbol) [0x00520C6B]
+	(No symbol) [0x00520005]
+	(No symbol) [0x0051855A]
+	(No symbol) [0x0053B03C]
+	(No symbol) [0x00517F96]
+	(No symbol) [0x0053B2B4]
+	(No symbol) [0x0054DDDA]
+	(No symbol) [0x0053AE36]
+	(No symbol) [0x0051674E]
+	(No symbol) [0x005178ED]
+	GetHandleVerifier [0x00925659+2897737]
+	GetHandleVerifier [0x0096E78B+3197051]
+	GetHandleVerifier [0x00968571+3171937]
+	GetHandleVerifier [0x006F5E40+606000]
+	(No symbol) [0x0060338C]
+	(No symbol) [0x005FF508]
+	(No symbol) [0x005FF62F]
+	(No symbol) [0x005F1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 3 out of 20
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:23:00.030367
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 20
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...

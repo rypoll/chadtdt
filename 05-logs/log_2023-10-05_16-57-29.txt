@@ -1,0 +1,320 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Failed to click element 1: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style messageListItem--isNew" href="/app/messages/554e573e044ba94b524ce411636a9e242cc959010033db20">...</a> is not clickable at point (487, 295). Other element would receive the click: <div class="CenterAlign H(100%) Fxd(c)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 2 out of 20
+Failed to click element 2: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce411651b1d04fedc53010063c701">...</a> is not clickable at point (487, 397). Other element would receive the click: <div class="msg BreakWord D(ib) Ta(start) Us(t) Pos(r) Whs(pw) Va(m) Maw(100%) C($c-ds-text-chat-bubble-receive) msg--received Op(1) Trsp($opacity) Trsdu($fast) Trsde($normal) Px(12px) Py(10px)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 3 out of 20
+Failed to click element 3: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce4115f8fcd1bdefab501007960e9">...</a> is not clickable at point (487, 499). Other element would receive the click: <div class="Pos(r) Ta(start) Pend(90px) Pstart(42px)--s Pstart(62px) My(8px)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  3 clicked using JavaScript.
+what is should run True
+Processing element 4 out of 20
+Failed to click element 4: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce411651c76f12695730100feda1d">...</a> is not clickable at point (487, 570). Other element would receive the click: <div class="Cur(p) W(40px)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  4 clicked using JavaScript.
+what is should run True
+Processing element 5 out of 20
+Failed to click element 5: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce41157a55da05f66356a0ae4c78b">...</a> is not clickable at point (487, 539). Other element would receive the click: <div class="D(f) W(100%) BdT Bdtc($c-ds-divider-primary) Bgc($c-ds-background-primary) Pos(r) Bxsh($bxsh-4-way-spread)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  5 clicked using JavaScript.
+what is should run True
+Processing element 6 out of 20
+Failed to click element 6: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce411651dce396da71001008d7518">...</a> is not clickable at point (487, 539). Other element would receive the click: <div class="D(f) W(100%) BdT Bdtc($c-ds-divider-primary) Bgc($c-ds-background-primary) Pos(r) Bxsh($bxsh-4-way-spread)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  6 clicked using JavaScript.
+what is should run True
+Processing element 7 out of 20
+Failed to click element 7: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce41164de638d601f890100dada5c">...</a> is not clickable at point (487, 538). Other element would receive the click: <div class="D(f) W(100%) BdT Bdtc($c-ds-divider-primary) Bgc($c-ds-background-primary) Pos(r) Bxsh($bxsh-4-way-spread)">...</div>
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001B3B81]
+	(No symbol) [0x001B267F]
+	(No symbol) [0x001B0C6B]
+	(No symbol) [0x001B0005]
+	(No symbol) [0x001A855A]
+	(No symbol) [0x001CB03C]
+	(No symbol) [0x001A7F96]
+	(No symbol) [0x001CB2B4]
+	(No symbol) [0x001DDDDA]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Chat  7 clicked using JavaScript.
+what is should run True
+Processing element 8 out of 20
+Chat 8 clicked and being processed
+Name found: Laurita
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:54:09.809000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+Haven't responded in 5:04:30.417340
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 9 out of 20
+Chat 9 clicked and being processed
+Name found: Elena
+Failed to click element 9: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001634AE]
+	(No symbol) [0x001CEFDB]
+	(No symbol) [0x001DD913]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+An error occurred in finding the first chat: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x002FCFE3+45267]
+	(No symbol) [0x00289741]
+	(No symbol) [0x0017BE1D]
+	(No symbol) [0x001634AE]
+	(No symbol) [0x001CEFDB]
+	(No symbol) [0x001DD913]
+	(No symbol) [0x001CAE36]
+	(No symbol) [0x001A674E]
+	(No symbol) [0x001A78ED]
+	GetHandleVerifier [0x005B5659+2897737]
+	GetHandleVerifier [0x005FE78B+3197051]
+	GetHandleVerifier [0x005F8571+3171937]
+	GetHandleVerifier [0x00385E40+606000]
+	(No symbol) [0x0029338C]
+	(No symbol) [0x0028F508]
+	(No symbol) [0x0028F62F]
+	(No symbol) [0x00281D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+	(No symbol) [0x00000000]
+
+Conversations execution complete.

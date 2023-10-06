@@ -1,0 +1,322 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Chat 1 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 12:04:51.881000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 1
+Assistant reply RAW:  A: Eso se llama encanto irresistible ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+File used: 01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt
+Assistant reply:  eso se llama encanto irresistible ;). de donde eres originalmente
+Send message  eso se llama encanto irresistible ;). de donde eres originalmente
+Active Mode OFF - Message will not be sent
+Pressed Enter
+what is should run True
+Processing element 2 out of 20
+Chat 2 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 11:47:27.685000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  so
+English detected. Conv will be in English
+Language used is:  English
+Number of A lines: 1
+Assistant reply RAW:  A: Good, just enjoying the conversation with you, Maxims. ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+reply before doing full stop and addition:  good, just enjoying the conversation with you, maxims. ;)
+File used: 01-processing-files/02-simple-method/01-opener-sys-msg.txt
+Assistant reply:  good, just enjoying the conversation with you, maxims. ;). What do you do for fun?
+Send message  good, just enjoying the conversation with you, maxims. ;). What do you do for fun?
+Active Mode OFF - Message will not be sent
+Pressed Enter
+what is should run True
+Processing element 3 out of 20
+Chat 3 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 11:24:44.056000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  pt
+English detected. Conv will be in English
+Conv will be in:  English
+Number of A lines: 1
+Assistant reply RAW:  A: Solo puedo sentir tu aura traviesa ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+File used: 01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt
+Assistant reply:  solo puedo sentir tu aura traviesa ;). where are you from originally
+Send message  solo puedo sentir tu aura traviesa ;). where are you from originally
+Active Mode OFF - Message will not be sent
+Pressed Enter
+what is should run True
+Processing element 4 out of 20
+Chat 4 clicked and being processed
+Name found: Sofia
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 11:18:38.865000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+Haven't responded in 2:42:02.312386
+Already double texted, leave it now
+what is should run True
+Processing element 5 out of 20
+Chat 5 clicked and being processed
+Name found: Cristina
+
+Processing message div element 1/35...
+
+Processing message div element 2/35...
+
+Processing message div element 3/35...
+
+Processing message div element 4/35...
+
+Processing message div element 5/35...
+
+Processing message div element 6/35...
+
+Processing message div element 7/35...
+
+Processing message div element 8/35...
+
+Processing message div element 9/35...
+
+Processing message div element 10/35...
+
+Processing message div element 11/35...
+
+Processing message div element 12/35...
+
+Processing message div element 13/35...
+
+Processing message div element 14/35...
+
+Processing message div element 15/35...
+
+Processing message div element 16/35...
+
+Processing message div element 17/35...
+
+Processing message div element 18/35...
+
+Processing message div element 19/35...
+
+Processing message div element 20/35...
+
+Processing message div element 21/35...
+
+Processing message div element 22/35...
+
+Processing message div element 23/35...
+
+Processing message div element 24/35...
+
+Processing message div element 25/35...
+
+Processing message div element 26/35...
+
+Processing message div element 27/35...
+
+Processing message div element 28/35...
+
+Processing message div element 29/35...
+
+Processing message div element 30/35...
+
+Processing message div element 31/35...
+
+Processing message div element 32/35...
+
+Processing message div element 33/35...
+
+Processing message div element 34/35...
+
+Processing message div element 35/35...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 10:46:44.309000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Hola ryan
+G: Porque traviesa ?
+A: Siempre hay algo travieso 😉 qué tal el sábado de sofá
+G: Jajaja pues el sábado no ha tenido nada de sofá
+G: Fui a una actividad de juegos hínchables
+G: Luego al cumple de una amiga
+G: A tomar algo y pues a por unos tacos 🌮
+G: Y tú qué tal el finde ?
+A: Me encanta tu espíritu aventurero  Mi fin de semana fue bastante relajado, disfrutando de un buen libro y un poco de música. Alguna recomendación para tacos en Madrid?
+G: Me gusta hacer cosas en el tiempo libre cuando lo tengo y más en ocasiones especiales con mis amigas, pues unos muy buenos son:
+
+- Takos: es rico y calidad precio están bien 
+- Comete Mexico 
+- Gracias Padre (algo más costoso)
+G: Me gustan la comida mexicana y colombina
+G: Aparte de la mia Ecuatoriana
+G: A ti qué comida te gusta ?
+A:  me encanta probar diferentes tipos de comida, especialmente la pizza y la india. aunque debo admitir que tengo debilidad por los sabores latinos, como la comida colombiana y ecuatoriana. si alguna vez quieres explorar nuevos lugares, estoy listo para acompañarte. 
+G: Pues de la India no he probado mucho, aunque no soy fan del picante jajaja 
+Pues la comida griega es la que más me tiene intrigada y podríamos ir a algún lugar de comida Ecuatoriana
+A:  eres intrépida, me gusta. podríamos probar comida griega juntos.
+G: Es una buena idea, tienes en mente algún restaurante ?
+A:  por supuesto, conozco un lugar increíble para probar comida griega. estás lista para una aventura culinaria qué me dices
+G: Si capitán 🧑‍✈️!!! Jajaja 😜 dispuesta a l aventura culinaria
+A:  perfecto, entonces preparemos nuestras papilas gustativas para esta aventura.
+G: Preparándolas jejeje 😜
+A:  te gustan los cócteles
+G: Si me gustan sobre todo los mojitos
+G: Y las margaritas de sabores como maracuyá, fresa
+G: Y a ti ?
+A:  sonrío ante tu buen gusto en los cócteles. me encantan los mojitos y las margaritas también. definitivamente tenemos que explorar juntos los mejores lugares para disfrutar de estas delicias líquidas. en qué días sueles tener libres para organizarlo
+G: Este finde no puedo tengo una boda pero el domingo 15 tipo 8pm ?
+A:  me encanta esa idea. el domingo 15 a las 8 pm suena perfecto. puedes confirmar esa fecha
+G: Pues confirmada
+G: En donde nos encontramos
+A:  genial, mándame tu número para fines de arreglos románticos.
+G: Buenos días, mi whats es el 722809272
+G: Estamos en contacto
+G: ✌️
+Number acquired: 722809272
+Data to output:         name     number                 date                                       conversation
+0  Cristina  722809272  2023-10-05 16:00:51  A: hola traviesa ;)\nG: Hola ryan\nG: Porque t...
+Data outputted
+Failed to click element 35: [Errno 13] Permission denied: '03-acquirements/00-acquirements.csv'
+Chat  35 clicked using JavaScript.
+what is should run True
+Processing element 6 out of 20
+Chat 6 clicked and being processed
+Name found: Laurita
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:54:09.809000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+Haven't responded in 4:06:46.843547
+Already double texted, leave it now
+what is should run True
+Processing element 7 out of 20
+Chat 7 clicked and being processed
+Name found: Elena
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:53:36.561000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+Haven't responded in 4:07:27.606050
+Already double texted, leave it now
+what is should run True
+Processing element 8 out of 20
+Chat 8 clicked and being processed
+Name found: Reemy
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:52:59.571000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+Haven't responded in 4:08:09.419205
+Already double texted, leave it now
+what is should run True
+Processing element 9 out of 20
+Chat 9 clicked and being processed
+Name found: Eukene
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:52:27.062000+00:00
+This is current convo:  A: hola traviesa ;)
+Haven't responded in 4:08:48.650700
+Already double texted, leave it now
+what is should run True
+Processing element 10 out of 20
+Chat 10 clicked and being processed
+Name found: Laura
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:51:58.338000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+Haven't responded in 4:09:23.920186
+Already double texted, leave it now
+what is should run True
+Processing element 11 out of 20
+Chat 11 clicked and being processed
+Name found: Gis
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 09:51:26.179000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+Haven't responded in 4:10:03.294131
+Already double texted, leave it now
+what is should run True
+Processing element 12 out of 20
+Chat 12 clicked and being processed
+Failed to click element 12: 'NoneType' object has no attribute 'text'
+An error occurred in finding the first chat: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.132)
+Stacktrace:
+	GetHandleVerifier [0x00A3CFE3+45267]
+	(No symbol) [0x009C9741]
+	(No symbol) [0x008BBE1D]
+	(No symbol) [0x008A34AE]
+	(No symbol) [0x0090EFDB]
+	(No symbol) [0x0091D913]
+	(No symbol) [0x0090AE36]
+	(No symbol) [0x008E674E]
+	(No symbol) [0x008E78ED]
+	GetHandleVerifier [0x00CF5659+2897737]
+	GetHandleVerifier [0x00D3E78B+3197051]
+	GetHandleVerifier [0x00D38571+3171937]
+	GetHandleVerifier [0x00AC5E40+606000]
+	(No symbol) [0x009D338C]
+	(No symbol) [0x009CF508]
+	(No symbol) [0x009CF62F]
+	(No symbol) [0x009C1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+Conversations execution complete.

@@ -1,0 +1,28 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x0066CFE3+45267]
+	(No symbol) [0x005F9741]
+	(No symbol) [0x004EBE1D]
+	(No symbol) [0x004D34AE]
+	(No symbol) [0x0053EFDB]
+	(No symbol) [0x0054D913]
+	(No symbol) [0x0053AE36]
+	(No symbol) [0x0051674E]
+	(No symbol) [0x005178ED]
+	GetHandleVerifier [0x00925659+2897737]
+	GetHandleVerifier [0x0096E78B+3197051]
+	GetHandleVerifier [0x00968571+3171937]
+	GetHandleVerifier [0x006F5E40+606000]
+	(No symbol) [0x0060338C]
+	(No symbol) [0x005FF508]
+	(No symbol) [0x005FF62F]
+	(No symbol) [0x005F1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+

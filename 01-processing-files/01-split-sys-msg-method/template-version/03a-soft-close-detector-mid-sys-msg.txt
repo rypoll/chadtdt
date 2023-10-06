@@ -6,6 +6,7 @@ Some tips:
 In order to output "Yes": 
 "G" agrees on, or thinks it's a good idea, on doing an activity specifically with "A"
 "G" can agree by saying "sounds good" or "it's a good idea", some kind of positive reaction to doing the acitivity together.
+* "A"'s phone number is [pnumber]. If "G" asks for "A"'s phonenumber, or whatsapp, or instagram, you must give this number.
 
 
 

@@ -1,0 +1,2960 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/7...
+
+Processing message div element 2/7...
+
+Processing message div element 3/7...
+
+Processing message div element 4/7...
+
+Processing message div element 5/7...
+
+Processing message div element 6/7...
+
+Processing message div element 7/7...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:03:46.139000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  sl
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 2
+Assistant reply RAW:  A: Soy de Manchester, Reino Unido. La combinación perfecta ¿no crees? ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Error: 'utf-8' codec can't decode byte 0xf3 in position 45: invalid continuation byte
+Original text:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+File used: 01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt
+Assistant reply:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Send message  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Pressed Enter
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/13...
+
+Processing message div element 2/13...
+
+Processing message div element 3/13...
+
+Processing message div element 4/13...
+
+Processing message div element 5/13...
+
+Processing message div element 6/13...
+
+Processing message div element 7/13...
+
+Processing message div element 8/13...
+
+Processing message div element 9/13...
+
+Processing message div element 10/13...
+
+Processing message div element 11/13...
+
+Processing message div element 12/13...
+
+Processing message div element 13/13...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:36.622000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 4
+Soft close detector says:  Decision: No
+
+Reasons: "G" does not show any positive reaction or agreement to do an activity with "A".
+No
+No soft close detected yet
+Assistant reply RAW:  A: Tenemos que ir a un bar de tapas y probar comida peruana
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+File used: 01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt
+Assistant reply:  tenemos que ir a un bar de tapas y probar comida peruana
+Send message  tenemos que ir a un bar de tapas y probar comida peruana
+Pressed Enter
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:25:16.264021
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:28:23.751247
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 11:47:27.685000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  so
+English detected. Conv will be in English
+Language used is:  English
+Number of A lines: 1
+Assistant reply RAW:  A: Good, nice to meet you Maxims. ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+reply before doing full stop and addition:  good, nice to meet you maxims. ;)
+File used: 01-processing-files/02-simple-method/01-opener-sys-msg.txt
+Assistant reply:  good, nice to meet you maxims. ;). What do you do for fun?
+Send message  good, nice to meet you maxims. ;). What do you do for fun?
+Pressed Enter
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:00:44.630711
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:00:36.407366
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:25:56.564261
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:29:04.635253
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:00:31.510437
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:01:20.227128
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:01:16.748123
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:26:36.909040
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:29:46.292338
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:01:14.760330
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:02:04.150835
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:01:59.278093
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:27:17.896846
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:30:26.810571
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:01:53.534635
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:02:42.276051
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:02:34.505584
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:27:55.568132
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:31:04.287926
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:02:31.224378
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:03:18.066560
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:03:10.814209
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:28:30.677340
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:31:39.515002
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:03:07.470449
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:03:55.483877
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:03:46.878486
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:29:05.551881
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:32:15.431682
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:03:41.870323
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:04:28.778548
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:04:19.512978
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:29:39.954939
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:32:49.114921
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:04:17.387878
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:05:04.171823
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:04:57.487623
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:30:15.664138
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:33:23.902419
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:04:51.320754
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:05:39.783874
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:05:31.765252
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:30:49.952627
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:33:58.977385
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:05:27.896885
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:06:16.799666
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/15...
+
+Processing message div element 2/15...
+
+Processing message div element 3/15...
+
+Processing message div element 4/15...
+
+Processing message div element 5/15...
+
+Processing message div element 6/15...
+
+Processing message div element 7/15...
+
+Processing message div element 8/15...
+
+Processing message div element 9/15...
+
+Processing message div element 10/15...
+
+Processing message div element 11/15...
+
+Processing message div element 12/15...
+
+Processing message div element 13/15...
+
+Processing message div element 14/15...
+
+Processing message div element 15/15...
+An error occurred while extracting messages: Message: stale element reference: stale element not found
+  (Session info: chrome=117.0.5938.134)
+Stacktrace:
+	GetHandleVerifier [0x0066CFE3+45267]
+	(No symbol) [0x005F9741]
+	(No symbol) [0x004EBE1D]
+	(No symbol) [0x004EF9A7]
+	(No symbol) [0x004F0D6A]
+	(No symbol) [0x004F0E10]
+	(No symbol) [0x0051EE97]
+	(No symbol) [0x0051F1FB]
+	(No symbol) [0x00518041]
+	(No symbol) [0x0053B084]
+	(No symbol) [0x00517F96]
+	(No symbol) [0x0053B2B4]
+	(No symbol) [0x0054DDDA]
+	(No symbol) [0x0053AE36]
+	(No symbol) [0x0051674E]
+	(No symbol) [0x005178ED]
+	GetHandleVerifier [0x00925659+2897737]
+	GetHandleVerifier [0x0096E78B+3197051]
+	GetHandleVerifier [0x00968571+3171937]
+	GetHandleVerifier [0x006F5E40+606000]
+	(No symbol) [0x0060338C]
+	(No symbol) [0x005FF508]
+	(No symbol) [0x005FF62F]
+	(No symbol) [0x005F1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:19.821000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+Haven't responded in 0:06:12.533979
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:31:32.437570
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:34:42.544174
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:06:10.959042
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:07:00.454743
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/15...
+
+Processing message div element 2/15...
+
+Processing message div element 3/15...
+
+Processing message div element 4/15...
+
+Processing message div element 5/15...
+
+Processing message div element 6/15...
+
+Processing message div element 7/15...
+
+Processing message div element 8/15...
+
+Processing message div element 9/15...
+
+Processing message div element 10/15...
+
+Processing message div element 11/15...
+
+Processing message div element 12/15...
+
+Processing message div element 13/15...
+
+Processing message div element 14/15...
+
+Processing message div element 15/15...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:14:31.287000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+G: Un bar de taas que haga comida peruana?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 5
+Soft close detector says:  Decision: No
+
+Reasons: "G" does not express any positive reaction or agreement with the idea of going to a tapas bar to try Peruvian food.
+No
+No soft close detected yet
+Assistant reply RAW:  A: Sí, un bar de tapas que tenga platos peruanos. Sería genial.
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Error: 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte
+Original text:  sí, un bar de tapas que tenga platos peruanos. sería genial.
+File used: 01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt
+Assistant reply:  sí, un bar de tapas que tenga platos peruanos. sería genial.
+Send message  sí, un bar de tapas que tenga platos peruanos. sería genial.
+Pressed Enter
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:32:23.177408
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:35:33.241007
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:07:01.566662
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:07:49.860334
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/16...
+
+Processing message div element 2/16...
+
+Processing message div element 3/16...
+
+Processing message div element 4/16...
+
+Processing message div element 5/16...
+
+Processing message div element 6/16...
+
+Processing message div element 7/16...
+
+Processing message div element 8/16...
+
+Processing message div element 9/16...
+
+Processing message div element 10/16...
+
+Processing message div element 11/16...
+
+Processing message div element 12/16...
+
+Processing message div element 13/16...
+
+Processing message div element 14/16...
+
+Processing message div element 15/16...
+
+Processing message div element 16/16...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:15:25.405000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+G: Un bar de taas que haga comida peruana?
+A:  sí, un bar de tapas que tenga platos peruanos. sería genial.
+Haven't responded in 0:00:37.099200
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:33:02.067738
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:36:12.395382
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:07:40.821249
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:08:28.756960
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/16...
+
+Processing message div element 2/16...
+
+Processing message div element 3/16...
+
+Processing message div element 4/16...
+
+Processing message div element 5/16...
+
+Processing message div element 6/16...
+
+Processing message div element 7/16...
+
+Processing message div element 8/16...
+
+Processing message div element 9/16...
+
+Processing message div element 10/16...
+
+Processing message div element 11/16...
+
+Processing message div element 12/16...
+
+Processing message div element 13/16...
+
+Processing message div element 14/16...
+
+Processing message div element 15/16...
+
+Processing message div element 16/16...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:15:25.405000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+G: Un bar de taas que haga comida peruana?
+A:  sí, un bar de tapas que tenga platos peruanos. sería genial.
+Haven't responded in 0:01:16.411569
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:33:40.209778
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni
+
+Processing message div element 1/21...
+
+Processing message div element 2/21...
+
+Processing message div element 3/21...
+
+Processing message div element 4/21...
+
+Processing message div element 5/21...
+
+Processing message div element 6/21...
+
+Processing message div element 7/21...
+
+Processing message div element 8/21...
+
+Processing message div element 9/21...
+
+Processing message div element 10/21...
+
+Processing message div element 11/21...
+
+Processing message div element 12/21...
+
+Processing message div element 13/21...
+
+Processing message div element 14/21...
+
+Processing message div element 15/21...
+
+Processing message div element 16/21...
+
+Processing message div element 17/21...
+
+Processing message div element 18/21...
+
+Processing message div element 19/21...
+
+Processing message div element 20/21...
+
+Processing message div element 21/21...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:40:06.812000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola Ryan, Buenas noches!
+Qué  tal estás?
+A:  bien, listo para hablar contigo. ;). ¿Qué haces para divertirte?
+G: Hola buenos días!
+G: Para divertirte ir alas montañas,Montar en bici. Tomar Té. 
+Eso me gusta.
+G: Tú?
+A:  interesante. me gusta tu amor por la naturaleza. A mí me gusta mucho deporte. De qué parte de Madrid eres? Yo vivo en La Latina.
+G: Oh genial encantada!
+G: Por plaza de Castilla!
+G: Sii soy una persona que me encantan, la naturaleza, Las montañas, Ríos. Recorrer pueblecitos, Pero trabajando hay muy poco tiempo. 🙂
+A: qué suerte vivir cerca de la naturaleza. 😉. Me caes bien, deberíamos juntarnos a tomar algo y ver si nos gustamos. No estoy buscando nada super serio, pero si te apetece tomar algo, flirtear y ver que pasa, dame tu numero y te escribo.
+G: De donde eres?
+G: Si es muy agradable la naturaleza.
+A:  soy de manchester, reino unido. y tú, de dónde eres
+G: Oh genial.
+G: Buenas tardes
+G: Soy de Honduras, actualmente en Madrid
+A:  honduras, un lugar fascinante. me encanta conocer personas de diferentes culturas. me gustaría saber más sobre ti. cuéntame
+G: Buenas tardes!
+G: Si es muy bueno conocer nuevas culturas y tradiciones!
+A:  hola, buenos das hermosa. puedes darme tu nmero para arreglar una salida romntica
+Haven't responded in 0:36:49.704633
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 5
+Chat 5 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:45.397000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+A:  good, nice to meet you maxims. ;). What do you do for fun?
+Haven't responded in 0:08:17.618510
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Total number of elements/chats found: 5
+what is should run True
+Processing element 1 out of 5
+Chat 1 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:08:04.402000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+Haven't responded in 0:09:05.854401
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 5
+Chat 2 clicked and being processed
+Name found: Claudia
+
+Processing message div element 1/16...
+
+Processing message div element 2/16...
+
+Processing message div element 3/16...
+
+Processing message div element 4/16...
+
+Processing message div element 5/16...
+
+Processing message div element 6/16...
+
+Processing message div element 7/16...
+
+Processing message div element 8/16...
+
+Processing message div element 9/16...
+
+Processing message div element 10/16...
+
+Processing message div element 11/16...
+
+Processing message div element 12/16...
+
+Processing message div element 13/16...
+
+Processing message div element 14/16...
+
+Processing message div element 15/16...
+
+Processing message div element 16/16...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 16:15:25.405000+00:00
+This is current convo:  G: bueno tu mama te quiere igual q la mia a mi
+A:  demasiados problemas con nuestras madres 😉. cómo te va en el miércoles melódico
+G: Melodico? Yo diria miercoles con M de Mi cuerpo esta siendo Maltratado con un catarro
+G: Ahora ya puedo decir q soy de madrid
+A:  parece que necesitas un abrazo virtual para animarte. espero que te sientas mejor pronto . de donde eres originalmente
+G: Virtual no creo, pero se agradece el intento , necesito mantita cama y series chocolate caliente y sopa de abuela
+G: Disculpa por no contestar me he dormido
+G: Soy de Peru
+A:  no te preocupes, a veces el sueño nos vence. me encanta la comida peruana. cuál es tu plato favorito
+G: Ceviche de erizo
+G: El tuyo?
+A:  me gusta mucho el lomo saltado. es delicioso.
+G: Jajaja vaya eres super peruano
+A:  tenemos que ir a un bar de tapas y probar comida peruana
+G: Un bar de taas que haga comida peruana?
+A:  sí, un bar de tapas que tenga platos peruanos. sería genial.
+Haven't responded in 0:01:55.537861
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 5
+Chat 3 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 15:43:07.066000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+A:  pero esa mirada no me engaa ;). cmo va tu jueves jugoso
+A: engaña *
+Haven't responded in 0:34:21.730943
+Already double texted, leave it now
+what is should run True
+Processing element 4 out of 5
+Chat 4 clicked and being processed
+Name found: Amaya Beni

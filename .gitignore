@@ -8,3 +8,4 @@ dist.zip
 myenv/
 AutoFlirt.zip
 06-api-security/01-gcloud-function.txt
+06-api-security/.env.yaml

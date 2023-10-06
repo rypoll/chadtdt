@@ -1,0 +1,33 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Chat 1 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 12:04:51.881000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 1
+Assistant reply RAW:  A: La inocencia puede ser engañosa, ¿sabes? ;)
+You're in the openng stage and assistant has given a question. Roll again.

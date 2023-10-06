@@ -1,0 +1,110 @@
+what is should run True
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Chat 1 clicked and being processed
+Name found: Olga
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 12:04:51.881000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Carita de inocente eso tengo
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 1
+Failed to click element 2: name 'requests' is not defined
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 2 out of 20
+Chat 2 clicked and being processed
+Name found: Maxims
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-05 11:47:27.685000+00:00
+This is current convo:  A: Hello beautiful, I'm Ryan, how's it going?
+G: Good and you?
+G: I’m maxims
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  so
+English detected. Conv will be in English
+Language used is:  English
+Number of A lines: 1
+Failed to click element 3: name 'requests' is not defined
+Chat  3 clicked using JavaScript.
+what is should run True
+Processing element 3 out of 20
+Chat 3 clicked and being processed
+Name found: Fiorella
+Failed to click element 3: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.132)
+Stacktrace:
+	GetHandleVerifier [0x0061CFE3+45267]
+	(No symbol) [0x005A9741]
+	(No symbol) [0x0049BE1D]
+	(No symbol) [0x004834AE]
+	(No symbol) [0x004EEFDB]
+	(No symbol) [0x004FD913]
+	(No symbol) [0x004EAE36]
+	(No symbol) [0x004C674E]
+	(No symbol) [0x004C78ED]
+	GetHandleVerifier [0x008D5659+2897737]
+	GetHandleVerifier [0x0091E78B+3197051]
+	GetHandleVerifier [0x00918571+3171937]
+	GetHandleVerifier [0x006A5E40+606000]
+	(No symbol) [0x005B338C]
+	(No symbol) [0x005AF508]
+	(No symbol) [0x005AF62F]
+	(No symbol) [0x005A1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+An error occurred in finding the first chat: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=117.0.5938.132)
+Stacktrace:
+	GetHandleVerifier [0x0061CFE3+45267]
+	(No symbol) [0x005A9741]
+	(No symbol) [0x0049BE1D]
+	(No symbol) [0x004834AE]
+	(No symbol) [0x004EEFDB]
+	(No symbol) [0x004FD913]
+	(No symbol) [0x004EAE36]
+	(No symbol) [0x004C674E]
+	(No symbol) [0x004C78ED]
+	GetHandleVerifier [0x008D5659+2897737]
+	GetHandleVerifier [0x0091E78B+3197051]
+	GetHandleVerifier [0x00918571+3171937]
+	GetHandleVerifier [0x006A5E40+606000]
+	(No symbol) [0x005B338C]
+	(No symbol) [0x005AF508]
+	(No symbol) [0x005AF62F]
+	(No symbol) [0x005A1D27]
+	BaseThreadInitThunk [0x76946359+25]
+	RtlGetAppContainerNamedObjectPath [0x775D8944+228]
+	RtlGetAppContainerNamedObjectPath [0x775D8914+180]
+
+Conversations execution complete.
