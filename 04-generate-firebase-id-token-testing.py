@@ -17,5 +17,11 @@ response = requests.post(url, json=data)
 # Check the response
 if response.status_code == 200:
     print("Success:", json.dumps(response.json(), indent=4))
+elif response.status_code == 429:
+    print("Rate limit or API call limit reached.")
+elif response.status_code == 403:
+    print("User not authorized.")
+elif response.status_code == 500:
+    print("Internal Server Error.")
 else:
     print("Failed:", response.content)

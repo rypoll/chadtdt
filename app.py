@@ -25,6 +25,13 @@ import re
 from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_question
 import requests
 import json
+from tkinter import messagebox
+import firebase_admin
+from firebase_admin import auth
+import threading
+import time 
+from dotenv import load_dotenv
+load_dotenv()
 
 def fix_text(text):
     replacements = {
@@ -58,25 +65,35 @@ def fix_text(text):
     return text
 
 
-def get_response(messages, user_id, id_token):
+
+def get_response(messages):
     url = "https://us-central1-autoflirt-401111.cloudfunctions.net/openai_proxy"
     
+    # Read the token from the local file
+    try:
+        with open('token.json', 'r') as f:
+            data = json.load(f)
+            id_token = data['idToken']
+    except FileNotFoundError:
+        return {"error": "Token file not found"}
+    
     headers = {
-        'Authorization': f'Bearer {id_token}'
+        'Authorization': f'{id_token}'
     }
     
     data = {
-        "messages": messages,  # Use the messages variable here
-        "user_id": user_id     # Include the user_id
+        "messages": messages  # Use the messages variable here
     }
     
-    response = requests.post(url, json=data, headers=headers)
-    
-    if response.status_code == 200:
-        response_json = response.json()
-        return response_json
-    else:
-        return {"error": f"Received status code {response.status_code}"}
+    try:
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()  # Raise HTTPError for bad responses (4xx and 5xx)
+        
+        if response.status_code == 200:
+            response_json = response.json()
+            return response_json
+    except requests.RequestException as e:
+        return {"error": f"An error occurred: {str(e)}"}
 
 
 
@@ -1477,6 +1494,37 @@ def execute_conversations():
 should_run = {'first_messages': True, 'simple_conversations': True}
 
 
+######## 0 LOGIN SCREEN 
+# Simulate a function that checks login details (replace this with Firebase auth)
+def check_login(email, password):
+    # Here you would typically send these details to Firebase for verification
+    return email == "user" and password == "123"
+
+
+# Function to handle login
+def login():
+    email = email_entry.get()
+    password = password_entry.get()
+    
+    if check_login(email, password):
+        with open("login_details.json", "w") as f:
+            json.dump({"email": email, "password": password}, f)
+        
+        messagebox.showinfo("Success", "Successfully logged in!")
+        login_window.destroy()
+        app.deiconify()
+    else:
+        messagebox.showerror("Error", "Invalid login details")
+
+# Simulate a function that checks login details
+def check_login(email, password):
+    return email == "user" and password == "123"
+
+
+
+######## 0 END LOGIN SCREEN
+
+
 
 class TextRedirector:
     def __init__(self, widget):
@@ -2464,6 +2512,115 @@ customise_openers_button.grid(row=6, column=0)
 #########
 
 
+
+##### START LOG IN WINDOW ADDITIONS
+def exchange_custom_token_for_id_token(custom_token):
+    API_KEY = os.getenv("API_KEY") 
+    url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key={API_KEY}"
+    payload = json.dumps({
+        "token": custom_token,
+        "returnSecureToken": True
+    })
+    headers = {'Content-Type': 'application/json'}
+    response = requests.request("POST", url, headers=headers, data=payload)
+    id_token = response.json().get("idToken")
+    return id_token
+
+
+def authenticate(deiconify=True):
+    email = email_entry.get()
+    password = password_entry.get()
+    response = requests.post('https://autoflirt-401111.ue.r.appspot.com/login', json={"email": email, "password": password}, verify=False)
+    
+    if response.status_code == 200:
+        try:
+            custom_token = response.json()['token']
+            id_token = exchange_custom_token_for_id_token(custom_token)
+            
+            # Set the expiry time manually
+            expires_in = 3600  # Firebase tokens expire in 3600 seconds (1 hour)
+            expiry_time = time.time() + expires_in - 300  # Refresh 5 minutes before expiry
+            
+            with open('token.json', 'w') as f:
+                json.dump({"idToken": id_token, "expiryTime": expiry_time}, f)
+            
+            # Start the token refresher thread
+            threading.Thread(target=refresh_token, daemon=True).start()
+            
+            if deiconify:
+                app.after(0, app.deiconify)
+            
+            login_window.destroy()
+        except requests.RequestException as e:
+            print(f"Request failed: {e}")
+        except KeyError:
+            print("Token not found in response.")
+    else:
+        print("Authentication failed.")
+
+def refresh_token():
+    while True:
+        try:
+            with open('token.json', 'r') as f:
+                data = json.load(f)
+                expiry_time = data.get('expiryTime', 0)
+            
+            # If the token is about to expire
+            if time.time() >= expiry_time:
+                # Re-authenticate here to get a new token
+                authenticate(deiconify=False)  # This won't deiconify the main window
+            
+            # Wait for 5 minutes before checking again
+            time.sleep(5 * 60)
+        
+        except Exception as e:
+            print(f"An error occurred while refreshing the token: {e}")
+            time.sleep(5 * 60)  # Wait for 5 minutes before trying again
+
+
+
+
+
+
+
+
+
+# Create login window
+login_window = tk.Toplevel(app)
+login_window.title("Login")
+
+# Create email and password fields
+tk.Label(login_window, text="Email:").pack()
+email_entry = tk.Entry(login_window)
+email_entry.pack()
+
+tk.Label(login_window, text="Password:").pack()
+password_entry = tk.Entry(login_window, show="*")
+password_entry.pack()
+
+# Create login button
+tk.Button(login_window, text="Login", command=authenticate).pack()
+def skip_login():
+    login_window.destroy()
+    app.deiconify()
+
+skip_button = tk.Button(login_window, text="Skip Login", command=skip_login)
+skip_button.pack()
+
+
+# Try to load saved login details
+try:
+    with open("login_details.json", "r") as f:
+        details = json.load(f)
+        email_entry.insert(0, details["email"])
+        password_entry.insert(0, details["password"])
+except FileNotFoundError:
+    pass
+
+###### END LOGIN WINDOW ADDITIONS
+
+
+
 app.geometry("800x720")
 app.resizable(True, True)
 
@@ -2471,5 +2628,5 @@ app.resizable(True, True)
 # screen_height = app.winfo_screenheight()
 # app.geometry(f"{int(screen_width * 0.4)}x{int(screen_height * 0.4)}")
 
-
+app.withdraw()
 app.mainloop()

@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta, timezone
 import openai
 import os
 import json
@@ -5,32 +6,56 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import auth
 
-
 # Initialize Firestore
 firebase_admin.initialize_app()
 db = firestore.client()
 
-
 def openai_proxy(request):
-    # Commented out: Extract the token from the request headers
-    # token = request.headers.get('Authorization', '').split('Bearer ')[-1]
-    
-    user_id = 'admin'  # Hardcoded for testing
-    
-    # Commented out: Verify the token
-    # try:
-    #     decoded_token = auth.verify_id_token(token)
-    #     user_id = decoded_token['uid']
-    # except Exception as e:
-    #     return {"error": f"Invalid token or unauthorized: {str(e)}"}, 401
+    # Extract the token from the request header
+    token = request.headers.get('Authorization')
+    print("Received token:", token)  # Add this line
+    if not token:
+        return {"error": "Token is missing"}, 401
+
+    # Verify the token and get the user's UID
+    try:
+        decoded_token = auth.verify_id_token(token)
+        user_id = decoded_token['uid']
+        print("Decoded user ID:", user_id)
+    except Exception as e:
+        print("Token verification failed:", str(e))
+        return {"error": "Invalid token"}, 401
 
     # Check Firestore for user_id
     user_ref = db.collection('users').document(user_id)
     user_doc = user_ref.get()
-    print("User Doc:", user_doc.to_dict())  # Debugging line
 
     if not user_doc.exists:
         return {"error": "User not authorized"}, 403
+
+    # Extract existing user data or initialize with default values
+    user_data = user_doc.to_dict() if user_doc.exists else {}
+    api_calls = user_data.get('api_calls', 0)
+    last_reset = user_data.get('last_reset', datetime.now(timezone.utc))  # Make timezone-aware
+    last_request_time = user_data.get('last_request_time', datetime.now(timezone.utc))  # Make timezone-aware
+    requests_in_last_minute = user_data.get('requests_in_last_minute', 0)
+
+    # Check if a month has passed since the last reset
+    if datetime.now(timezone.utc) >= last_reset + timedelta(days=30):  # Make timezone-aware
+        api_calls = 0  # Reset the API call count
+        last_reset = datetime.now(timezone.utc)  # Make timezone-aware
+
+    # Check if a minute has passed since the last request
+    if datetime.now(timezone.utc) >= last_request_time + timedelta(minutes=1):  # Make timezone-aware
+        requests_in_last_minute = 0  # Reset the request count for the last minute
+
+    # Check if user has exceeded API call limit
+    if api_calls >= 300:
+        return {"error": "API call limit reached"}, 429
+
+    # Check if user has exceeded rate limit of 10 requests per minute
+    if requests_in_last_minute >= 20:
+        return {"error": "Rate limit exceeded"}, 429
 
     # Get OpenAI API key from environment variables
     api_key = os.environ.get('OPENAI_API_KEY')
@@ -39,29 +64,24 @@ def openai_proxy(request):
     openai.api_key = api_key
 
     # Extract messages from request
-    request_json = request.get_json()
-    messages = request_json['messages']
-
-    # Check Firestore for user's API call count
-    if user_doc.exists:
-        api_calls = user_doc.to_dict().get('api_calls', 0)
-    else:
-        api_calls = 0
-        user_ref.set({'api_calls': api_calls})
-
-    # Check if user has exceeded API call limit
-    if api_calls >= 300:
-        return {"error": "API call limit reached"}, 429
-
     try:
+        request_json = request.get_json()
+        messages = request_json['messages']
         response = get_response(messages)
 
-        # Increment API call count in Firestore
-        user_ref.update({'api_calls': firestore.Increment(1)})
+        # Increment API call count in Firestore, update last reset time, and rate limit info
+        user_ref.set({
+                'api_calls': firestore.Increment(1),
+                'last_reset': last_reset,
+                'last_request_time': datetime.now(timezone.utc),  # Make timezone-aware
+                'requests_in_last_minute': firestore.Increment(1)
+            }, merge=True)
 
         return response
     except Exception as e:
+        print("Exception:", str(e))  # Add this line
         return {"error": str(e)}, 500
+
 
 
 def get_response(messages):

@@ -1,0 +1,32 @@
+This is for authentifcation of users using firebase and the firestore. 
+
+Steps:
+Step 1: Set Up a Server for Authentication
+Create a server-side script (e.g., using Flask) that will handle authentication.
+Initialize Firebase Admin SDK on this server.
+Create an endpoint that takes an email and password, uses the Firebase Admin SDK to authenticate, and returns a token.
+Step 2: Modify Your Tkinter App
+Remove the Pyrebase initialization from your Tkinter app.
+When the user tries to log in, send a request to your server with the email and password.
+Receive the token from the server and store it locally (e.g., in a file).
+Step 3: Use the Token for Further Operations
+Whenever you need to perform an operation that requires authentication (e.g., fetching user data from Firestore), send the stored token along with your request to your server.
+On the server, use the token to authenticate the request and perform the operation.
+
+
+
+
+# Url
+
+https://autoflirt-401111.ue.r.appspot.com
+
+
+
+# to deploy
+gcloud app deploy
+
+# Test the flask app created
+
+curl -X POST -H "Content-Type: application/json" -d '{"email": "rypoll@gmail.com", "password": "tester"}' https://autoflirt-401111.ue.r.appspot.com/login
+
+
