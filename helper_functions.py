@@ -2,6 +2,7 @@ import pandas as pd
 import random
 import re
 from datetime import datetime
+import os
 
 
 
@@ -171,3 +172,257 @@ def remove_question(text):
     else:
         # Otherwise, remove the text from the last sentence-ending punctuation to the question mark
         return text[:last_sentence_ending_index + 1] + text[last_question_mark_index + 1:].strip()
+    
+    
+def get_text_between_tags(file_path, start_tag, end_tag=""):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    in_section = False
+    section_text = ""
+    for line in lines:
+        line = line.strip()
+        if line == start_tag:
+            in_section = True
+        elif in_section and (line == end_tag or line == ""):
+            in_section = False
+        elif in_section:
+            section_text += line + '\n'
+    return section_text.strip()
+
+def extract_text_from_file(filepath, start_str, end_str):
+    with open(filepath, 'r') as f:
+        content = f.read()
+    pattern = re.escape(start_str) + r'(.*?)' + re.escape(end_str)
+    match = re.search(pattern, content)
+    if match:
+        try:
+            return match.group(1).strip().encode('latin1').decode('utf-8')
+        except:
+            return match.group(1).strip()
+    return ""
+
+
+
+def save_personal_details(name_entry, city_entry, area_entry, activity_entry, phone_entry, label_widget):
+    # 1. For the name entry
+    name = name_entry.get()
+    for filename in ["02-cold-opener-simple-method-es.txt", "02-cold-opener-simple-method.txt"]:
+        filepath = f"messages/template-version/{filename}"
+        with open(filepath, 'r') as f:
+            content = f.read()
+        content = content.replace("[Name]", name)
+        with open(f"messages/{filename}", 'w') as f:
+            f.write(content)
+
+    # 2. For the city entry
+    city = city_entry.get()
+    pnumber = phone_entry.get()
+    files_to_update = [
+        "01-opener-sys-msg-es.txt",
+        "01-opener-sys-msg.txt",
+        "02-getting2know-sys-msg-es.txt",
+        "02-getting2know-sys-msg.txt",
+        "03-soft-close-mid-sys-msg-es.txt",
+        "03-soft-close-mid-sys-msg.txt",
+        "03a-soft-close-detector-mid-sys-msg-es.txt",
+        "03a-soft-close-detector-mid-sys-msg.txt",
+        "04-hard-close-sys-msg-es.txt",
+        "04-hard-close-sys-msg.txt"
+    ]
+    for filename in files_to_update:
+        filepath = f"01-processing-files/01-split-sys-msg-method/template-version/{filename}"
+        with open(filepath, 'r') as f:
+            content = f.read()
+        #print("city is: ", city)
+        #print("content before")
+        #print(content)
+        content = content.replace("[city]", city)
+        content = content.replace("[pnumber]", pnumber)
+        #print("content after")
+        #print(content)
+        with open(f"01-processing-files/01-split-sys-msg-method/{filename}", 'w') as f:
+            f.write(content)
+
+    # 3. For the area entry
+    area = area_entry.get()
+    # for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt"]:
+    #     filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
+    #     with open(filepath, 'r') as f:
+    #         content = f.read()
+    #     content = content.replace("[area]", area)
+    #     with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
+    #         f.write(content)
+
+    #4. For the activity entry (Note: activity_entry is not defined in your snippet)
+
+    activity = activity_entry.get()
+    for filename in ["02a-question-tag-es.txt", "02a-question-tag.txt",
+                     "02-que-haces-pa-divertirte-response.txt",
+                     "02-que-haces-pa-divertirte-response-es.txt",
+                     "03-de-donde-eres-es.txt",
+                     "03-de-donde-eres.txt"]:
+        filepath = f"01-processing-files/02-simple-method/template-version/{filename}"
+        with open(filepath, 'r') as f:
+            content = f.read()
+        content = content.replace("[activity]", activity)
+        content = content.replace("[area]", area)
+        content = content.replace("[city]", city)
+        content = content.replace("[pnumber]", pnumber)
+        with open(f"01-processing-files/02-simple-method/{filename}", 'w') as f:
+            f.write(content)
+
+    # 5. Show "Saved!"
+    label_widget.config(text="Saved!")
+    
+    
+
+def fix_text(text):
+    replacements = {
+        'ã¡': 'á',
+        'ã©': 'é',
+        'ã­': 'í',
+        'ã³': 'ó',
+        'ãº': 'ú',
+        'ã±': 'ñ',
+        'ã¼': 'ü',
+        'ã€': 'à',
+        'ã¨': 'è',
+        'ã¬': 'ì',
+        'ã²': 'ò',
+        'ã¹': 'ù',
+        'ã¢': 'â',
+        'ãª': 'ê',
+        'ã®': 'î',
+        'ã´': 'ô',
+        'ã»': 'û',
+        'ã¤': 'ä',
+        'ã«': 'ë',
+        'ã¯': 'ï',
+        'ã¶': 'ö',
+        'ã¼': 'ü',
+        'ã¿': 'ÿ',
+        # Add more replacements here
+    }
+    for original, replacement in replacements.items():
+        text = text.replace(original, replacement)
+    return text
+
+
+
+def get_response(messages):
+    url = "https://us-central1-autoflirt-401111.cloudfunctions.net/openai_proxy"
+    
+    # Read the token from the local file
+    try:
+        with open('token.json', 'r') as f:
+            data = json.load(f)
+            id_token = data['idToken']
+    except FileNotFoundError:
+        return {"error": "Token file not found"}
+    
+    headers = {
+        'Authorization': f'{id_token}'
+    }
+    
+    data = {
+        "messages": messages  # Use the messages variable here
+    }
+    
+    try:
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()  # Raise HTTPError for bad responses (4xx and 5xx)
+        
+        if response.status_code == 200:
+            response_json = response.json()
+            return response_json
+    except requests.RequestException as e:
+        return {"error": f"An error occurred: {str(e)}"}
+
+def update_status_label(frame, label, text):
+    label.config(text=text)
+    label.pack(side=tk.TOP, pady=5)
+    frame.update()
+
+
+def save_cold_opener(text_widget, label_widget, language):
+    file_name = 'messages/01-cold-openers.txt' if language == 'English' else 'messages/01-cold-openers-es.txt'
+    content = text_widget.get("1.0", tk.END)
+    with open(file_name, 'w') as f:
+        f.write(content)
+    label_widget.config(text="Saved!")
+
+
+def save_profile(text_entry, saved_label, marker_text):
+    folder_path = "01-processing-files/01-split-sys-msg-method"
+    files_to_update = [
+        "01-opener-sys-msg-es.txt",
+        "01-opener-sys-msg.txt",
+        "02-getting2know-sys-msg-es.txt",
+        "02-getting2know-sys-msg.txt",
+        "03-soft-close-mid-sys-msg-es.txt",
+        "03-soft-close-mid-sys-msg.txt",
+        "03a-soft-close-detector-mid-sys-msg-es.txt",
+        "03a-soft-close-detector-mid-sys-msg.txt",
+        "04-hard-close-sys-msg-es.txt",
+        "04-hard-close-sys-msg.txt"
+    ]
+    
+    new_text = text_entry.get("1.0", "end-1c")
+    
+    for file_name in files_to_update:
+        file_path = os.path.join(folder_path, file_name)
+        
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+        
+        start_line = None
+        end_line = None
+        for i, line in enumerate(lines):
+            if marker_text in line:
+                start_line = i + 1
+            elif line.strip() == "" and start_line is not None:
+                end_line = i
+                break
+        
+        if start_line is not None and end_line is not None:
+            del lines[start_line:end_line]
+            lines.insert(start_line, new_text + "\n")
+        
+        with open(file_path, 'w') as f:
+            f.writelines(lines)
+    
+    folder_path = "01-processing-files/02-simple-method"
+    files_to_update = [
+        "01-opener-sys-msg-es.txt",
+        "01-opener-sys-msg.txt",
+        "02-que-haces-pa-divertirte-response-es.txt",
+        "02-que-haces-pa-divertirte-response.txt",
+        "03-de-donde-eres-es.txt",
+        "03-de-donde-eres.txt"
+    ]
+    
+    new_text = text_entry.get("1.0", "end-1c")
+    
+    for file_name in files_to_update:
+        file_path = os.path.join(folder_path, file_name)
+        
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+        
+        start_line = None
+        end_line = None
+        for i, line in enumerate(lines):
+            if marker_text in line:
+                start_line = i + 1
+            elif line.strip() == "" and start_line is not None:
+                end_line = i
+                break
+        
+        if start_line is not None and end_line is not None:
+            del lines[start_line:end_line]
+            lines.insert(start_line, new_text + "\n")
+        
+        with open(file_path, 'w') as f:
+            f.writelines(lines)
+    
+    saved_label.config(text="Saved!")
