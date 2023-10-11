@@ -1621,16 +1621,19 @@ def create_tooltip(widget, text):
     widget.bind("<Leave>", on_leave)
 
 # Initialize Tkinter App with ThemedTk
-app = ThemedTk(theme="arc")  # Replace tk.Tk() with ThemedTk and specify the theme
+app = tk.Tk()
 app.title("AutoFlirt")
+app.tk.call("source", "azure.tcl")
+app.tk.call("set_theme", "dark")  # or "dark" for dark theme
 
-app.set_theme_advanced(
-    theme_name='arc',  # Base theme
-    hue=0.15,  # Change this value to shift the hue towards red
-    brightness=1.0,  # Keep it at default
-    saturation=1.0,  # Keep it at default
-    preserve_transparency=True  # Preserves transparency
-)
+
+# app.set_theme_advanced(
+#     theme_name='arc',  # Base theme
+#     hue=0.15,  # Change this value to shift the hue towards red
+#     brightness=1.0,  # Keep it at default
+#     saturation=1.0,  # Keep it at default
+#     preserve_transparency=True  # Preserves transparency
+# )
 
 
 # Get the background color of the app
@@ -1678,8 +1681,8 @@ title_frame = tk.Frame(home_tab, bg=bg_color)
 title_frame.pack(fill="x", padx=20, pady=10)
 
 # Title
-title_label = tk.Label(title_frame, text="AutoFlirt", font=("Arial", 14), background=bg_color, anchor="w", justify="left", foreground=dark_grey)
-title_label.pack(side=tk.LEFT, fill="x")
+# title_label = tk.Label(title_frame, text="AutoFlirt", font=("Arial", 14), background=bg_color, anchor="w", justify="left", foreground=dark_grey)
+# title_label.pack(side=tk.LEFT, fill="x")
 
 # Toggle button
 toggle_frame = tk.Frame(title_frame, bg=bg_color)
@@ -1689,8 +1692,8 @@ toggle_var = tk.IntVar(value=0)
 style = ttk.Style()
 style.configure('TCheckbutton', background=bg_color)
 
-toggle_button = ttk.Checkbutton(toggle_frame, text="Active Mode", variable=toggle_var, style='TCheckbutton')
-toggle_button.pack(side=tk.TOP)
+# toggle_button = ttk.Checkbutton(toggle_frame, text="Active Mode", variable=toggle_var, style='TCheckbutton')
+# toggle_button.pack(side=tk.TOP)
 
 # Toggle description
 toggle_description = tk.Label(toggle_frame, text="Unchecked: Test mode - to ensure it's working\nChecked: Sends messages", wraplength=150, font=("Arial", 7), background=bg_color, anchor="e", justify="left", foreground=light_grey)
