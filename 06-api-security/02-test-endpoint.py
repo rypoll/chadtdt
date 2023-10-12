@@ -28,12 +28,16 @@ response_json = response.json()
 
 if response.status_code == 200:
     print("Success:", json.dumps(response.json(), indent=4))
-    try:
-        print(response_json['choices'][0]['message']['content'])
-    except KeyError:
-        print("Expected field not found in response.")
+    if 'choices' in response_json:
+        try:
+            print(response_json['choices'][0]['message']['content'])
+        except KeyError:
+            print("Expected field not found in response.")
+    else:
+        print("Choices key not found in response.")
 else:
     print("Failed:", response.content)
+
 
 print("Raw Response:", response.content)
 print(response_json['choices'][0]['message']['content'])
