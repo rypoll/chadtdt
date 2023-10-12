@@ -1,0 +1,284 @@
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Failed to click element 1: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce4116504a583e4f0ce0100a9d744">...</a> is not clickable at point (487, 295). Other element would receive the click: <div class="CenterAlign H(100%) Fxd(c)">...</div>
+  (Session info: chrome=117.0.5938.152)
+Stacktrace:
+	GetHandleVerifier [0x00BCCFE3+45267]
+	(No symbol) [0x00B59741]
+	(No symbol) [0x00A4BE1D]
+	(No symbol) [0x00A83B81]
+	(No symbol) [0x00A8267F]
+	(No symbol) [0x00A80C6B]
+	(No symbol) [0x00A80005]
+	(No symbol) [0x00A7855A]
+	(No symbol) [0x00A9B03C]
+	(No symbol) [0x00A77F96]
+	(No symbol) [0x00A9B2B4]
+	(No symbol) [0x00AADDDA]
+	(No symbol) [0x00A9AE36]
+	(No symbol) [0x00A7674E]
+	(No symbol) [0x00A778ED]
+	GetHandleVerifier [0x00E85659+2897737]
+	GetHandleVerifier [0x00ECE78B+3197051]
+	GetHandleVerifier [0x00EC8571+3171937]
+	GetHandleVerifier [0x00C55E40+606000]
+	(No symbol) [0x00B6338C]
+	(No symbol) [0x00B5F508]
+	(No symbol) [0x00B5F62F]
+	(No symbol) [0x00B51D27]
+	BaseThreadInitThunk [0x75B36359+25]
+	RtlGetAppContainerNamedObjectPath [0x77238944+228]
+	RtlGetAppContainerNamedObjectPath [0x77238914+180]
+
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 2 out of 20
+Failed to click element 2: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce41163cd622394ddfb01003fc7c3">...</a> is not clickable at point (487, 397). Other element would receive the click: <div id="SC.chat_554e573e044ba94b524ce4116504a583e4f0ce0100a9d744" class="Fx($flx2) Pos(r) Ovy(s) W(100%) Ovx(h) Ovsb(n) Ovs(touch) Iso(i) Py(10px) Px(8px) Px(16px)--m Px(20px)--l" aria-label="Conversation history" aria-live="polite" role="log">...</div>
+  (Session info: chrome=117.0.5938.152)
+Stacktrace:
+	GetHandleVerifier [0x00BCCFE3+45267]
+	(No symbol) [0x00B59741]
+	(No symbol) [0x00A4BE1D]
+	(No symbol) [0x00A83B81]
+	(No symbol) [0x00A8267F]
+	(No symbol) [0x00A80C6B]
+	(No symbol) [0x00A80005]
+	(No symbol) [0x00A7855A]
+	(No symbol) [0x00A9B03C]
+	(No symbol) [0x00A77F96]
+	(No symbol) [0x00A9B2B4]
+	(No symbol) [0x00AADDDA]
+	(No symbol) [0x00A9AE36]
+	(No symbol) [0x00A7674E]
+	(No symbol) [0x00A778ED]
+	GetHandleVerifier [0x00E85659+2897737]
+	GetHandleVerifier [0x00ECE78B+3197051]
+	GetHandleVerifier [0x00EC8571+3171937]
+	GetHandleVerifier [0x00C55E40+606000]
+	(No symbol) [0x00B6338C]
+	(No symbol) [0x00B5F508]
+	(No symbol) [0x00B5F62F]
+	(No symbol) [0x00B51D27]
+	BaseThreadInitThunk [0x75B36359+25]
+	RtlGetAppContainerNamedObjectPath [0x77238944+228]
+	RtlGetAppContainerNamedObjectPath [0x77238914+180]
+
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 3 out of 20
+Failed to click element 3: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce41164fcf08cf24a8d01009fce6d">...</a> is not clickable at point (487, 499). Other element would receive the click: <div id="SC.chat_554e573e044ba94b524ce41163cd622394ddfb01003fc7c3" class="Fx($flx2) Pos(r) Ovy(s) W(100%) Ovx(h) Ovsb(n) Ovs(touch) Iso(i) Py(10px) Px(8px) Px(16px)--m Px(20px)--l" aria-label="Conversation history" aria-live="polite" role="log">...</div>
+  (Session info: chrome=117.0.5938.152)
+Stacktrace:
+	GetHandleVerifier [0x00BCCFE3+45267]
+	(No symbol) [0x00B59741]
+	(No symbol) [0x00A4BE1D]
+	(No symbol) [0x00A83B81]
+	(No symbol) [0x00A8267F]
+	(No symbol) [0x00A80C6B]
+	(No symbol) [0x00A80005]
+	(No symbol) [0x00A7855A]
+	(No symbol) [0x00A9B03C]
+	(No symbol) [0x00A77F96]
+	(No symbol) [0x00A9B2B4]
+	(No symbol) [0x00AADDDA]
+	(No symbol) [0x00A9AE36]
+	(No symbol) [0x00A7674E]
+	(No symbol) [0x00A778ED]
+	GetHandleVerifier [0x00E85659+2897737]
+	GetHandleVerifier [0x00ECE78B+3197051]
+	GetHandleVerifier [0x00EC8571+3171937]
+	GetHandleVerifier [0x00C55E40+606000]
+	(No symbol) [0x00B6338C]
+	(No symbol) [0x00B5F508]
+	(No symbol) [0x00B5F62F]
+	(No symbol) [0x00B51D27]
+	BaseThreadInitThunk [0x75B36359+25]
+	RtlGetAppContainerNamedObjectPath [0x77238944+228]
+	RtlGetAppContainerNamedObjectPath [0x77238914+180]
+
+Chat  3 clicked using JavaScript.
+what is should run True
+Processing element 4 out of 20
+Failed to click element 4: Message: element click intercepted: Element <a draggable="false" class="messageListItem D(f) Ai(c) Pos(r) BdB--s Bdbc($c-ds-divider-primary) Bdends(s) Bdendw(5px) Bdendc(t) Bdendc($c-ds-border-brand):h Bxsh($bxsh-4-way-spread):h--ml Trsdu($fast) focus-background-style" href="/app/messages/554e573e044ba94b524ce41161fd9297eddc5701002890dd">...</a> is not clickable at point (487, 578). Other element would receive the click: <div class="Cur(p) W(40px)">...</div>
+  (Session info: chrome=117.0.5938.152)
+Stacktrace:
+	GetHandleVerifier [0x00BCCFE3+45267]
+	(No symbol) [0x00B59741]
+	(No symbol) [0x00A4BE1D]
+	(No symbol) [0x00A83B81]
+	(No symbol) [0x00A8267F]
+	(No symbol) [0x00A80C6B]
+	(No symbol) [0x00A80005]
+	(No symbol) [0x00A7855A]
+	(No symbol) [0x00A9B03C]
+	(No symbol) [0x00A77F96]
+	(No symbol) [0x00A9B2B4]
+	(No symbol) [0x00AADDDA]
+	(No symbol) [0x00A9AE36]
+	(No symbol) [0x00A7674E]
+	(No symbol) [0x00A778ED]
+	GetHandleVerifier [0x00E85659+2897737]
+	GetHandleVerifier [0x00ECE78B+3197051]
+	GetHandleVerifier [0x00EC8571+3171937]
+	GetHandleVerifier [0x00C55E40+606000]
+	(No symbol) [0x00B6338C]
+	(No symbol) [0x00B5F508]
+	(No symbol) [0x00B5F62F]
+	(No symbol) [0x00B51D27]
+	BaseThreadInitThunk [0x75B36359+25]
+	RtlGetAppContainerNamedObjectPath [0x77238944+228]
+	RtlGetAppContainerNamedObjectPath [0x77238914+180]
+
+Stopping conversations...
+Chat  4 clicked using JavaScript.
+what is should run False
+Stopping Conversations execution...
+Conversations execution complete.
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 20
+Chat 1 clicked and being processed
+Name found: Twaps
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 15:14:30.520000+00:00
+This is current convo:  A: hola traviesa ;)
+Haven't responded in 2:53:19.773727
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 20
+Chat 2 clicked and being processed
+Name found: Liah
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 15:13:59.335000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o si eres una traviesa, y me duele el cerebro ;)
+Haven't responded in 2:53:55.552414
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 20
+Chat 3 clicked and being processed
+Name found: Bianca
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 15:13:22.722000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+Haven't responded in 2:54:36.788388
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 4 out of 20
+Chat 4 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 15:12:49.821000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+Haven't responded in 2:55:16.805599
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 5 out of 20
+Chat 5 clicked and being processed
+Name found: Rizos
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-09 22:47:29.710000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Buenas buenas 😄
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 1
+Failed to click element 2: 'choices'
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 6 out of 20
+Chat 6 clicked and being processed
+Name found: Nicol
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-07 09:06:23.786000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+G: Jajajajja
+G: Que chistoso
+G: Puedo robar un poco más!!!🙈
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 1
+Failed to click element 4: 'choices'
+Chat  4 clicked using JavaScript.
+what is should run True
+Processing element 7 out of 20
+Chat 7 clicked and being processed
+Name found: Daniela
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-07 07:56:02.533000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Muy biennn
+A:  perfecto, porque nadie patea traseros en chistes como yo. 😉
+G: Siiii, que bueno
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  fr
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 2
+Failed to click element 4: 'choices'
+Chat  4 clicked using JavaScript.
+what is should run True
+Processing element 8 out of 20
+Chat 8 clicked and being processed
+Name found: Paula
+Stopping conversations...
+Stopping Conversations execution...
+-------END EXTRACTING CONVO --------
+Stopping Conversations execution...
+Conversations execution complete.

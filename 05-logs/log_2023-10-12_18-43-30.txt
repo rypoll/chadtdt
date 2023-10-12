@@ -1,0 +1,22 @@
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Twaps
+Stopping conversations...
+Stopping Conversations execution...
+-------END EXTRACTING CONVO --------
+Stopping Conversations execution...
+Conversations execution complete.
