@@ -1,0 +1,47 @@
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 18:16:20.516000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+G: Hahahahaha yo soy ☺️
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  so
+English detected. Conv will be in English
+Conv will be in:  English
+Number of A lines: 1
+Failed to click element 2: 'choices'
+Chat  2 clicked using JavaScript.
+what is should run True
+Processing element 2 out of 10
+Chat 2 clicked and being processed
+Name found: Twaps
+
+Processing message div element 1/1...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-12 15:14:30.520000+00:00
+This is current convo:  A: hola traviesa ;)
+Haven't responded in 14:27:48.855341
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+Stopping conversations...
+what is should run False
+Stopping Conversations execution...
+Conversations execution complete.

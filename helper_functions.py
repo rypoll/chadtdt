@@ -500,22 +500,39 @@ def complex_method(formatted_text2, name, language):
     #     sys.exit(0)  # Use sys.exit() to terminate the entire script
 
 
-
+    # Check if the application is packaged
+    if getattr(sys, 'frozen', False):
+        application_path = sys._MEIPASS
+    else:
+        application_path = os.path.dirname(os.path.abspath(__file__))
 
 
     print("Conv will be in: ", language)
 
     # Define parameterized variables at the top for easy modification
     if language != 'Spanish':
-        OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
-        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
-        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+        #OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg.txt')
+        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt')
+        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg.txt')
+        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
     else:
-        OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
-        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
-        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
-        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+        # OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
+        # GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
+        # SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
+        # HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+        #OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg-es.txt')
+        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt')
+        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg-es.txt')
+        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
+ 
 
 
 
@@ -532,7 +549,9 @@ def complex_method(formatted_text2, name, language):
 
 
     # Configure OpenAI API client
-    with open("00-credentials/00-openai-key.txt", "r") as f:
+    openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
+    #openai_api_key = "00-credentials/00-openai-key.txt"
+    with open(openai_api_key, "r") as f:
         api_key = f.read().strip()
 
     openai.api_key = api_key
@@ -600,7 +619,9 @@ def complex_method(formatted_text2, name, language):
 
     else:
         # Run a completion to determine "Yes" or "No"
-        with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
+        soft_close_detector = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03a-soft-close-detector-mid-sys-msg.txt')
+        #soft_close_detector = "01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt"
+        with open(soft_close_detector, "r") as f:
             temp_system_message = f.read().strip()
 
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
@@ -779,20 +800,39 @@ def simple_method(formatted_text2, name, language):
 
 
     # Define parameterized variables at the top for easy modification
-    if language != 'Spanish':
-        OPENER_FILE = "01-processing-files/02-simple-method/01-opener-sys-msg.txt"
-        second_message = "01-processing-files/02-simple-method/02-que-haces-pa-divertirte-response.txt"
-        third_message = "01-processing-files/02-simple-method/03-de-donde-eres.txt"
-        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
-        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+    # if language != 'Spanish':
+    #     OPENER_FILE = "01-processing-files/02-simple-method/01-opener-sys-msg.txt"
+    #     second_message = "01-processing-files/02-simple-method/02-que-haces-pa-divertirte-response.txt"
+    #     third_message = "01-processing-files/02-simple-method/03-de-donde-eres.txt"
+    #     GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
+    #     SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+    #     HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
+    # else:
+    #     OPENER_FILE = "01-processing-files/02-simple-method/01-opener-sys-msg-es.txt"
+    #     second_message = "01-processing-files/02-simple-method/02-que-haces-pa-divertirte-response-es.txt"
+    #     third_message = "01-processing-files/02-simple-method/03-de-donde-eres-es.txt"
+    #     GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
+    #     SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+    #     HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+    if getattr(sys, 'frozen', False):
+        application_path = sys._MEIPASS
     else:
-        OPENER_FILE = "01-processing-files/02-simple-method/01-opener-sys-msg-es.txt"
-        second_message = "01-processing-files/02-simple-method/02-que-haces-pa-divertirte-response-es.txt"
-        third_message = "01-processing-files/02-simple-method/03-de-donde-eres-es.txt"
-        GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
-        SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
-        HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
+        application_path = os.path.dirname(os.path.abspath(__file__))
+        
+    if language != 'Spanish':
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg.txt')
+        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response.txt')
+        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres.txt')
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt')
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
+    else:
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg-es.txt')
+        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response-es.txt')
+        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres-es.txt')
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt')
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
 
 
 
@@ -807,7 +847,9 @@ def simple_method(formatted_text2, name, language):
 
 
     # Configure OpenAI API client
-    with open("00-credentials/00-openai-key.txt", "r") as f:
+    #openai_api_key = "00-credentials/00-openai-key.txt"
+    openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
+    with open(openai_api_key, "r") as f:
         api_key = f.read().strip()
 
     openai.api_key = api_key
@@ -974,7 +1016,9 @@ def simple_method(formatted_text2, name, language):
             assistant_reply += '.'
 
         # Read the content from the file
-        with open('01-processing-files/02-simple-method/02a-question-tag-es.txt', 'r', encoding='utf-8') as file:
+        #question_tag = '01-processing-files/02-simple-method/02a-question-tag-es.txt'
+        question_tag_2a = os.path.join(application_path, '01-processing-files', '02-simple-method', '02a-question-tag-es.txt')
+        with open(question_tag_2a, 'r', encoding='utf-8') as file:
             file_content = file.read()
 
         # Append the content to assistant_reply
@@ -986,7 +1030,9 @@ def simple_method(formatted_text2, name, language):
             assistant_reply = assistant_reply.strip() + '.'
 
         # Read the content from the file
-        with open('01-processing-files/02-simple-method/03a-question-tag-es.txt', 'r', encoding='utf-8') as file:
+        #question_tag = '01-processing-files/02-simple-method/03a-question-tag-es.txt'
+        question_tag = os.path.join(application_path, '01-processing-files', '02-simple-method', '03a-question-tag-es.txt')
+        with open(question_tag, 'r', encoding='utf-8') as file:
             file_content = file.read()
 
         # Append the content to assistant_reply

@@ -1,0 +1,1583 @@
+Starting first_messages...
+Language is: Spanish
+Driver path: C:\Users\T430\.wdm\drivers\chromedriver\win64\118.0.5993.70\chromedriver-win32/chromedriver.exe
+Driver path type: <class 'str'>
+Successfully initialized WebDriver
+Successfully initialized WebDriver on attempt 1
+Waiting for 'Matches' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Clicking the 'Matches' button.
+'Matches' button clicked.
+Number of li elements with style='width: 33.33%;': 58
+Loop iteration 1
+Locating the third 'li' in the first 'ul'.
+Clicking the third 'li'.
+Third 'li' clicked.
+Line to send:  Hola hermosa, soy Ryan, quÃ© haces?
+Line to send after clear:  Hola hermosa, soy Ryan, qué haces?
+Send message Hola hermosa, soy Ryan, qué haces?
+An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x0075A9F2]
+	(No symbol) [0x007C68CB]
+	(No symbol) [0x007D5103]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+Starting conversations...
+Successfully initialized WebDriver on attempt 1
+Successfully navigated to Tinder.com on attempt 1
+Waiting for 'Messages' button to appear.
+Maybe later button not found. Continuing...
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+Clicking the 'Messages' button.
+'Messages' button clicked.
+No thanks button not found. Continuing...
+Total number of elements/chats found: 60
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Daniela
+
+Processing message div element 1/6...
+
+Processing message div element 2/6...
+
+Processing message div element 3/6...
+
+Processing message div element 4/6...
+
+Processing message div element 5/6...
+
+Processing message div element 6/6...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 00:26:57.958000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Muy biennn
+A:  perfecto, porque nadie patea traseros en chistes como yo. 😉
+G: Siiii, que bueno
+A:  me encanta que compartamos el mismo sentido del humor. 
+G: Si eso me encanta
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 3
+Assistant reply RAW:  A: Me hace sonreír verte reír. 😊
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Emoji removed from assistant's reply because more than 25% of 'A:' messages contained emojis.
+Error: 'utf-8' codec can't decode byte 0xed in position 14: invalid continuation byte
+Original text:  me hace sonreír verte reír. 
+File used: 01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt
+Assistant reply:  me hace sonreír verte reír. 
+Send message  me hace sonreír verte reír. 
+Pressed Enter
+what is should run True
+Processing element 2 out of 10
+Chat 2 clicked and being processed
+Name found: Jennifer
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-15 10:31:51.232000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  tr
+English detected. Conv will be in English
+Conv will be in:  English
+Number of A lines: 1
+Assistant reply RAW:  A: ¿Puedo ser tu Romeo, Jennifer? ;)
+You're in the opening stage and assistant has given a question. Roll again.
+Assistant reply RAW:  A: Pensando en ti, como siempre ;)
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+File used: 01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt
+Assistant reply:  pensando en ti, como siempre ;). where are you from originally
+Send message  pensando en ti, como siempre ;). where are you from originally
+Pressed Enter
+what is should run True
+Processing element 3 out of 10
+Chat 3 clicked and being processed
+Name found: Rizos
+
+Processing message div element 1/7...
+
+Processing message div element 2/7...
+
+Processing message div element 3/7...
+
+Processing message div element 4/7...
+
+Processing message div element 5/7...
+
+Processing message div element 6/7...
+
+Processing message div element 7/7...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-14 11:55:13.221000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Buenas buenas 😄
+A:  me alegra verte sonreír, rizos 😉. de donde eres originalmente
+G: Gracias 😊
+G: Soy peruana
+G: Tú eres español???
+G: O estadounidense???
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 2
+Assistant reply RAW:  A: Pareces una diosa andina, Rizos 😏. Soy de Manchester, Reino Unido. ¿Puedes bailar salsa?
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Emoji removed from assistant's reply because more than 25% of 'A:' messages contained emojis.
+File used: 01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt
+Assistant reply:  pareces una diosa andina, rizos . soy de manchester, reino unido. puedes bailar salsa
+Send message  pareces una diosa andina, rizos . soy de manchester, reino unido. puedes bailar salsa
+Pressed Enter
+what is should run True
+Processing element 4 out of 10
+Chat 4 clicked and being processed
+Name found: Samantha
+
+Processing message div element 1/1...
+An error occurred while extracting messages: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//span[contains(@class, 'text')]"}
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x007A6760]
+	(No symbol) [0x007A6C2B]
+	(No symbol) [0x0079FA81]
+	(No symbol) [0x007C2BA4]
+	(No symbol) [0x0079F9D6]
+	(No symbol) [0x007C2DD4]
+	(No symbol) [0x007D55CA]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+-------END EXTRACTING CONVO --------
+Failed to click element 1: single positional indexer is out-of-bounds
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 5 out of 10
+Chat 5 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/12...
+
+Processing message div element 2/12...
+
+Processing message div element 3/12...
+
+Processing message div element 4/12...
+
+Processing message div element 5/12...
+
+Processing message div element 6/12...
+
+Processing message div element 7/12...
+
+Processing message div element 8/12...
+
+Processing message div element 9/12...
+
+Processing message div element 10/12...
+
+Processing message div element 11/12...
+
+Processing message div element 12/12...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 10:59:59.063000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+G: Combinación perfecta tú y yo?
+A:  claro que sí, somos una combinación perfecta. dos culturas diferentes pero con una conexión única. 😏
+G: Hajajjajaja pues podría ser, si
+G: Que tal hoy?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 4
+Soft close detector says:  Decision: Yes
+
+Reasons: "G" responds positively by saying "pues podría ser, si" to the idea of them being a perfect combination.
+Yes
+Soft close detected - now ask for number
+Assistant reply RAW:  A: Genial. ¿Me pasas tu número para fines de arreglos románticos? 😉
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Error: 'latin-1' codec can't encode character '\U0001f609' in position 62: ordinal not in range(256)
+Original text:  genial. me pasas tu número para fines de arreglos románticos 😉
+File used: 01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt
+Assistant reply:  genial. me pasas tu número para fines de arreglos románticos 😉
+Send message  genial. me pasas tu número para fines de arreglos románticos 😉
+Pressed Enter
+what is should run True
+Processing element 6 out of 10
+Chat 6 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/5...
+
+Processing message div element 2/5...
+
+Processing message div element 3/5...
+
+Processing message div element 4/5...
+
+Processing message div element 5/5...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 09:04:33.673000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+G: Hahahahaha yo soy ☺️
+A:  pero no te creo del todo 😉. how's your fabulous friday going
+G: Haahahah bueno
+G: Good and your?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  so
+English detected. Conv will be in English
+Conv will be in:  English
+Number of A lines: 2
+Assistant reply RAW:  A: Always fabulous, of course 😉 Just finished a Muay Thai session. Ready for some weekend adventures?
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Emoji removed from assistant's reply because more than 25% of 'A:' messages contained emojis.
+File used: 01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt
+Assistant reply:  always fabulous, of course  just finished a muay thai session. ready for some weekend adventures
+Send message  always fabulous, of course  just finished a muay thai session. ready for some weekend adventures
+Pressed Enter
+what is should run True
+Processing element 7 out of 10
+Chat 7 clicked and being processed
+Name found: Nicol
+
+Processing message div element 1/11...
+
+Processing message div element 2/11...
+
+Processing message div element 3/11...
+
+Processing message div element 4/11...
+
+Processing message div element 5/11...
+
+Processing message div element 6/11...
+
+Processing message div element 7/11...
+
+Processing message div element 8/11...
+
+Processing message div element 9/11...
+
+Processing message div element 10/11...
+
+Processing message div element 11/11...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 08:17:43.965000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+G: Jajajajja
+G: Que chistoso
+G: Puedo robar un poco más!!!🙈
+A:  ojalá robe tu corazón también 😉. cómo va tu viernes de vino
+G: Hola
+G: Trabajando
+G: Esperando que sea mañana
+G: 🙉
+G: Eres de Madrid?
+G: Vives en Madrid?
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  es
+Spanish detected. Conv will be in Spanish
+Conv will be in:  Spanish
+Number of A lines: 2
+Assistant reply RAW:  A: Sí, soy de Manchester pero vivo en Madrid. ¿Y tú?
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Error: 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte
+Original text:  sí, soy de manchester pero vivo en madrid. y tú
+File used: 01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt
+Assistant reply:  sí, soy de manchester pero vivo en madrid. y tú
+Send message  sí, soy de manchester pero vivo en madrid. y tú
+Pressed Enter
+what is should run True
+Processing element 8 out of 10
+Chat 8 clicked and being processed
+Name found: Liah
+
+Processing message div element 1/2...
+
+Processing message div element 2/2...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 07:38:54.797000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o si eres una traviesa, y me duele el cerebro ;)
+G: I can't decide if you're innocent or if you're naughty, and my brain hurts ;)
+The last message was by the lover so we send to OPENAI to get the next best response
+detected lang is:  en
+English detected. Conv will be in English
+Conv will be in:  English
+Number of A lines: 1
+Assistant reply RAW:  A: No soy inocente, Liah. Soy travieso. 😉
+Reply doesnt contain a question or we're not in the opening stage, so take reply
+Error: 'latin-1' codec can't encode character '\U0001f609' in position 38: ordinal not in range(256)
+Original text:  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+File used: 01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt
+Assistant reply:  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+Send message  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+Pressed Enter
+what is should run True
+Processing element 9 out of 10
+Chat 9 clicked and being processed
+Name found: Mar
+
+Processing message div element 1/24...
+
+Processing message div element 2/24...
+
+Processing message div element 3/24...
+
+Processing message div element 4/24...
+
+Processing message div element 5/24...
+
+Processing message div element 6/24...
+
+Processing message div element 7/24...
+
+Processing message div element 8/24...
+
+Processing message div element 9/24...
+
+Processing message div element 10/24...
+
+Processing message div element 11/24...
+
+Processing message div element 12/24...
+
+Processing message div element 13/24...
+
+Processing message div element 14/24...
+
+Processing message div element 15/24...
+
+Processing message div element 16/24...
+
+Processing message div element 17/24...
+
+Processing message div element 18/24...
+
+Processing message div element 19/24...
+
+Processing message div element 20/24...
+
+Processing message div element 21/24...
+
+Processing message div element 22/24...
+
+Processing message div element 23/24...
+
+Processing message div element 24/24...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 06:16:37.160000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Holi que tal
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+G: Como estas
+A:  de donde eres originalmente?
+G: Bolivia y tú?
+G: Y hola que tal
+A:  eres de bolivia qué interesante me encantaría aprender más sobre tu cultura en nuestra cita en el bar.
+G: Y tus donde eres ?
+A:  soy de manchester, reino unido. me encanta explorar diferentes culturas.
+G: Anda que bueno Ryan
+G: Es bueno saberlo
+G: Cada país tiene su cultura propia y es si lindo saberlo
+A:  sería genial conversar sobre nuestras culturas en un bar algún día. qué dices
+G: M parece muy bien
+G: No es mala idea
+G: Hablemos X WhatsApp oh Insta si t parece
+G: Pasa que no entro mucho X aquí
+A:  me encantaría seguir la conversación contigo por whatsapp. pásame tu número y continuamos allí nuestro romance cultural 
+G: Jajajaja
+G: Pasame el tuyo y t agregó
+G: 🙃🙃🙃
+A:   perfecto, mándame tu número para actividades románticas culturales 😉
+Haven't responded in 4 days, 6:38:08.416963
+She hasn't responded in more than 4 days, so do a takeaway comment
+Send message Siempre eres tan habladora 😉?
+what is should run True
+Processing element 10 out of 10
+Chat 10 clicked and being processed
+Name found: Nataly
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-13 06:16:16.068000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Hola!
+G: Tú qué opinas ?
+A:  mmm, eso es un secreto para descubrir 😉. cómo va tu viernes de vino
+Haven't responded in 4 days, 6:38:35.121101
+She hasn't responded in more than 4 days, so do a takeaway comment
+Send message Siempre eres tan habladora 😉?
+Total number of elements/chats found: 10
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Daniela
+
+Processing message div element 1/7...
+
+Processing message div element 2/7...
+
+Processing message div element 3/7...
+
+Processing message div element 4/7...
+
+Processing message div element 5/7...
+
+Processing message div element 6/7...
+
+Processing message div element 7/7...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:11.636000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Muy biennn
+A:  perfecto, porque nadie patea traseros en chistes como yo. 😉
+G: Siiii, que bueno
+A:  me encanta que compartamos el mismo sentido del humor. 
+G: Si eso me encanta
+A:  me hace sonreír verte reír. 
+Haven't responded in 0:01:47.270001
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 10
+Chat 2 clicked and being processed
+Name found: Jennifer
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:25.002000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola
+A:  pensando en ti, como siempre ;). where are you from originally
+Haven't responded in 0:01:38.806721
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 10
+Chat 3 clicked and being processed
+Name found: Rizos
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:38.862000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Buenas buenas 😄
+A:  me alegra verte sonreír, rizos 😉. de donde eres originalmente
+G: Gracias 😊
+G: Soy peruana
+G: Tú eres español???
+G: O estadounidense???
+A:  pareces una diosa andina, rizos . soy de manchester, reino unido. puedes bailar salsa
+Haven't responded in 0:01:31.448069
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 4 out of 10
+Chat 4 clicked and being processed
+Name found: Samantha
+
+Processing message div element 1/1...
+An error occurred while extracting messages: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//span[contains(@class, 'text')]"}
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x007A6760]
+	(No symbol) [0x007A6C2B]
+	(No symbol) [0x0079FA81]
+	(No symbol) [0x007C2BA4]
+	(No symbol) [0x0079F9D6]
+	(No symbol) [0x007C2DD4]
+	(No symbol) [0x007D55CA]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+-------END EXTRACTING CONVO --------
+Failed to click element 1: single positional indexer is out-of-bounds
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 5 out of 10
+Chat 5 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/13...
+
+Processing message div element 2/13...
+
+Processing message div element 3/13...
+
+Processing message div element 4/13...
+
+Processing message div element 5/13...
+
+Processing message div element 6/13...
+
+Processing message div element 7/13...
+
+Processing message div element 8/13...
+
+Processing message div element 9/13...
+
+Processing message div element 10/13...
+
+Processing message div element 11/13...
+
+Processing message div element 12/13...
+
+Processing message div element 13/13...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:02.198000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+G: Combinación perfecta tú y yo?
+A:  claro que sí, somos una combinación perfecta. dos culturas diferentes pero con una conexión única. 😏
+G: Hajajjajaja pues podría ser, si
+G: Que tal hoy?
+A:  genial. me pasas tu número para fines de arreglos románticos 😉
+Haven't responded in 0:01:18.716893
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 6 out of 10
+Chat 6 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/6...
+
+Processing message div element 2/6...
+
+Processing message div element 3/6...
+
+Processing message div element 4/6...
+
+Processing message div element 5/6...
+
+Processing message div element 6/6...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:15.496000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+G: Hahahahaha yo soy ☺️
+A:  pero no te creo del todo 😉. how's your fabulous friday going
+G: Haahahah bueno
+G: Good and your?
+A:  always fabulous, of course  just finished a muay thai session. ready for some weekend adventures
+Haven't responded in 0:01:10.813285
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 7 out of 10
+Chat 7 clicked and being processed
+Name found: Nicol
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:55:03.055000+00:00
+Other person's response was less than 30 seconds ago. Skip for now and respond later.
+what is should run True
+Processing element 8 out of 10
+Chat 8 clicked and being processed
+Name found: Liah
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:38.647000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o si eres una traviesa, y me duele el cerebro ;)
+G: I can't decide if you're innocent or if you're naughty, and my brain hurts ;)
+A:  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+Haven't responded in 0:00:58.085006
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 9 out of 10
+Chat 9 clicked and being processed
+Name found: Mar
+
+Processing message div element 1/25...
+
+Processing message div element 2/25...
+
+Processing message div element 3/25...
+
+Processing message div element 4/25...
+
+Processing message div element 5/25...
+
+Processing message div element 6/25...
+
+Processing message div element 7/25...
+
+Processing message div element 8/25...
+
+Processing message div element 9/25...
+
+Processing message div element 10/25...
+
+Processing message div element 11/25...
+
+Processing message div element 12/25...
+
+Processing message div element 13/25...
+
+Processing message div element 14/25...
+
+Processing message div element 15/25...
+
+Processing message div element 16/25...
+
+Processing message div element 17/25...
+
+Processing message div element 18/25...
+
+Processing message div element 19/25...
+
+Processing message div element 20/25...
+
+Processing message div element 21/25...
+
+Processing message div element 22/25...
+
+Processing message div element 23/25...
+
+Processing message div element 24/25...
+
+Processing message div element 25/25...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:47.578000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Holi que tal
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+G: Como estas
+A:  de donde eres originalmente?
+G: Bolivia y tú?
+G: Y hola que tal
+A:  eres de bolivia qué interesante me encantaría aprender más sobre tu cultura en nuestra cita en el bar.
+G: Y tus donde eres ?
+A:  soy de manchester, reino unido. me encanta explorar diferentes culturas.
+G: Anda que bueno Ryan
+G: Es bueno saberlo
+G: Cada país tiene su cultura propia y es si lindo saberlo
+A:  sería genial conversar sobre nuestras culturas en un bar algún día. qué dices
+G: M parece muy bien
+G: No es mala idea
+G: Hablemos X WhatsApp oh Insta si t parece
+G: Pasa que no entro mucho X aquí
+A:  me encantaría seguir la conversación contigo por whatsapp. pásame tu número y continuamos allí nuestro romance cultural 
+G: Jajajaja
+G: Pasame el tuyo y t agregó
+G: 🙃🙃🙃
+A:   perfecto, mándame tu número para actividades románticas culturales 😉
+A: Siempre eres tan habladora 😉?
+Haven't responded in 0:00:56.206166
+Already double texted, leave it now
+what is should run True
+Processing element 10 out of 10
+Chat 10 clicked and being processed
+Name found: Nataly
+
+Processing message div element 1/5...
+
+Processing message div element 2/5...
+
+Processing message div element 3/5...
+
+Processing message div element 4/5...
+
+Processing message div element 5/5...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:53.307000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Hola!
+G: Tú qué opinas ?
+A:  mmm, eso es un secreto para descubrir 😉. cómo va tu viernes de vino
+A: Siempre eres tan habladora 😉?
+Haven't responded in 0:00:57.438017
+Already double texted, leave it now
+Total number of elements/chats found: 10
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Daniela
+
+Processing message div element 1/7...
+
+Processing message div element 2/7...
+
+Processing message div element 3/7...
+
+Processing message div element 4/7...
+
+Processing message div element 5/7...
+
+Processing message div element 6/7...
+
+Processing message div element 7/7...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:11.636000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Muy biennn
+A:  perfecto, porque nadie patea traseros en chistes como yo. 😉
+G: Siiii, que bueno
+A:  me encanta que compartamos el mismo sentido del humor. 
+G: Si eso me encanta
+A:  me hace sonreír verte reír. 
+Haven't responded in 0:02:43.541839
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 10
+Chat 2 clicked and being processed
+Name found: Jennifer
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:25.002000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola
+A:  pensando en ti, como siempre ;). where are you from originally
+Haven't responded in 0:02:34.923266
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 10
+Chat 3 clicked and being processed
+Name found: Rizos
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:38.862000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Buenas buenas 😄
+A:  me alegra verte sonreír, rizos 😉. de donde eres originalmente
+G: Gracias 😊
+G: Soy peruana
+G: Tú eres español???
+G: O estadounidense???
+A:  pareces una diosa andina, rizos . soy de manchester, reino unido. puedes bailar salsa
+Haven't responded in 0:02:27.294801
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 4 out of 10
+Chat 4 clicked and being processed
+Name found: Samantha
+
+Processing message div element 1/1...
+An error occurred while extracting messages: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//span[contains(@class, 'text')]"}
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x007A6760]
+	(No symbol) [0x007A6C2B]
+	(No symbol) [0x0079FA81]
+	(No symbol) [0x007C2BA4]
+	(No symbol) [0x0079F9D6]
+	(No symbol) [0x007C2DD4]
+	(No symbol) [0x007D55CA]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+-------END EXTRACTING CONVO --------
+Failed to click element 1: single positional indexer is out-of-bounds
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 5 out of 10
+Chat 5 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/13...
+
+Processing message div element 2/13...
+
+Processing message div element 3/13...
+
+Processing message div element 4/13...
+
+Processing message div element 5/13...
+
+Processing message div element 6/13...
+
+Processing message div element 7/13...
+
+Processing message div element 8/13...
+
+Processing message div element 9/13...
+
+Processing message div element 10/13...
+
+Processing message div element 11/13...
+
+Processing message div element 12/13...
+
+Processing message div element 13/13...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:02.198000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+G: Combinación perfecta tú y yo?
+A:  claro que sí, somos una combinación perfecta. dos culturas diferentes pero con una conexión única. 😏
+G: Hajajjajaja pues podría ser, si
+G: Que tal hoy?
+A:  genial. me pasas tu número para fines de arreglos románticos 😉
+Haven't responded in 0:02:17.987160
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 6 out of 10
+Chat 6 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/6...
+
+Processing message div element 2/6...
+
+Processing message div element 3/6...
+
+Processing message div element 4/6...
+
+Processing message div element 5/6...
+
+Processing message div element 6/6...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:15.496000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+G: Hahahahaha yo soy ☺️
+A:  pero no te creo del todo 😉. how's your fabulous friday going
+G: Haahahah bueno
+G: Good and your?
+A:  always fabulous, of course  just finished a muay thai session. ready for some weekend adventures
+Haven't responded in 0:02:11.425217
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 7 out of 10
+Chat 7 clicked and being processed
+Name found: Nicol
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:55:03.055000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+G: Jajajajja
+G: Que chistoso
+G: Puedo robar un poco más!!!🙈
+A:  ojalá robe tu corazón también 😉. cómo va tu viernes de vino
+G: Hola
+G: Trabajando
+G: Esperando que sea mañana
+G: 🙉
+G: Eres de Madrid?
+G: Vives en Madrid?
+A:  sí, soy de manchester pero vivo en madrid. y tú
+G: Mejor hablamos por wsp
+G: 658759060
+Number acquired: 658759060
+Data to output:      name     number                 date                                       conversation
+0  Nicol  658759060  2023-10-17 13:56:32  A: tienes algo que me hace pensar que vas a ro...
+Data outputted
+Passing due to phone number given.
+what is should run True
+Processing element 8 out of 10
+Chat 8 clicked and being processed
+Name found: Liah
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:38.647000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o si eres una traviesa, y me duele el cerebro ;)
+G: I can't decide if you're innocent or if you're naughty, and my brain hurts ;)
+A:  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+Haven't responded in 0:01:59.213635
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 9 out of 10
+Chat 9 clicked and being processed
+Name found: Mar
+
+Processing message div element 1/25...
+
+Processing message div element 2/25...
+
+Processing message div element 3/25...
+
+Processing message div element 4/25...
+
+Processing message div element 5/25...
+
+Processing message div element 6/25...
+
+Processing message div element 7/25...
+
+Processing message div element 8/25...
+
+Processing message div element 9/25...
+
+Processing message div element 10/25...
+
+Processing message div element 11/25...
+
+Processing message div element 12/25...
+
+Processing message div element 13/25...
+
+Processing message div element 14/25...
+
+Processing message div element 15/25...
+
+Processing message div element 16/25...
+
+Processing message div element 17/25...
+
+Processing message div element 18/25...
+
+Processing message div element 19/25...
+
+Processing message div element 20/25...
+
+Processing message div element 21/25...
+
+Processing message div element 22/25...
+
+Processing message div element 23/25...
+
+Processing message div element 24/25...
+
+Processing message div element 25/25...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:47.578000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Holi que tal
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+G: Como estas
+A:  de donde eres originalmente?
+G: Bolivia y tú?
+G: Y hola que tal
+A:  eres de bolivia qué interesante me encantaría aprender más sobre tu cultura en nuestra cita en el bar.
+G: Y tus donde eres ?
+A:  soy de manchester, reino unido. me encanta explorar diferentes culturas.
+G: Anda que bueno Ryan
+G: Es bueno saberlo
+G: Cada país tiene su cultura propia y es si lindo saberlo
+A:  sería genial conversar sobre nuestras culturas en un bar algún día. qué dices
+G: M parece muy bien
+G: No es mala idea
+G: Hablemos X WhatsApp oh Insta si t parece
+G: Pasa que no entro mucho X aquí
+A:  me encantaría seguir la conversación contigo por whatsapp. pásame tu número y continuamos allí nuestro romance cultural 
+G: Jajajaja
+G: Pasame el tuyo y t agregó
+G: 🙃🙃🙃
+A:   perfecto, mándame tu número para actividades románticas culturales 😉
+A: Siempre eres tan habladora 😉?
+Haven't responded in 0:01:59.298537
+Already double texted, leave it now
+what is should run True
+Processing element 10 out of 10
+Chat 10 clicked and being processed
+Name found: Nataly
+
+Processing message div element 1/5...
+
+Processing message div element 2/5...
+
+Processing message div element 3/5...
+
+Processing message div element 4/5...
+
+Processing message div element 5/5...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:53.307000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: Hola!
+G: Tú qué opinas ?
+A:  mmm, eso es un secreto para descubrir 😉. cómo va tu viernes de vino
+A: Siempre eres tan habladora 😉?
+Haven't responded in 0:01:59.644322
+Already double texted, leave it now
+Total number of elements/chats found: 10
+what is should run True
+Processing element 1 out of 10
+Chat 1 clicked and being processed
+Name found: Daniela
+
+Processing message div element 1/7...
+
+Processing message div element 2/7...
+
+Processing message div element 3/7...
+
+Processing message div element 4/7...
+
+Processing message div element 5/7...
+
+Processing message div element 6/7...
+
+Processing message div element 7/7...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:11.636000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Muy biennn
+A:  perfecto, porque nadie patea traseros en chistes como yo. 😉
+G: Siiii, que bueno
+A:  me encanta que compartamos el mismo sentido del humor. 
+G: Si eso me encanta
+A:  me hace sonreír verte reír. 
+Haven't responded in 0:03:46.656652
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 2 out of 10
+Chat 2 clicked and being processed
+Name found: Jennifer
+
+Processing message div element 1/4...
+
+Processing message div element 2/4...
+
+Processing message div element 3/4...
+
+Processing message div element 4/4...
+An error occurred while extracting messages: Message: no such element: Unable to locate element: {"method":"tag name","selector":"time"}
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x007A6760]
+	(No symbol) [0x007A6C2B]
+	(No symbol) [0x0079FA81]
+	(No symbol) [0x007C2BA4]
+	(No symbol) [0x0079F9D6]
+	(No symbol) [0x007C2DD4]
+	(No symbol) [0x007D55CA]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:25.002000+00:00
+This is current convo:  A: Hola hermosa, soy Ryan, qué haces?
+G: Hola
+A:  pensando en ti, como siempre ;). where are you from originally
+Haven't responded in 0:03:39.730282
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 3 out of 10
+Chat 3 clicked and being processed
+Name found: Rizos
+
+Processing message div element 1/8...
+
+Processing message div element 2/8...
+
+Processing message div element 3/8...
+
+Processing message div element 4/8...
+
+Processing message div element 5/8...
+
+Processing message div element 6/8...
+
+Processing message div element 7/8...
+
+Processing message div element 8/8...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:53:38.862000+00:00
+This is current convo:  A: hola traviesa ;)
+G: Buenas buenas 😄
+A:  me alegra verte sonreír, rizos 😉. de donde eres originalmente
+G: Gracias 😊
+G: Soy peruana
+G: Tú eres español???
+G: O estadounidense???
+A:  pareces una diosa andina, rizos . soy de manchester, reino unido. puedes bailar salsa
+Haven't responded in 0:03:30.730051
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 4 out of 10
+Chat 4 clicked and being processed
+Name found: Samantha
+
+Processing message div element 1/1...
+An error occurred while extracting messages: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//span[contains(@class, 'text')]"}
+  (Session info: chrome=118.0.5993.71)
+Stacktrace:
+	GetHandleVerifier [0x008F4DE3+43907]
+	(No symbol) [0x00880741]
+	(No symbol) [0x007733ED]
+	(No symbol) [0x007A6760]
+	(No symbol) [0x007A6C2B]
+	(No symbol) [0x0079FA81]
+	(No symbol) [0x007C2BA4]
+	(No symbol) [0x0079F9D6]
+	(No symbol) [0x007C2DD4]
+	(No symbol) [0x007D55CA]
+	(No symbol) [0x007C2956]
+	(No symbol) [0x0079E17E]
+	(No symbol) [0x0079F32D]
+	GetHandleVerifier [0x00BA5AF9+2865305]
+	GetHandleVerifier [0x00BEE78B+3163435]
+	GetHandleVerifier [0x00BE8441+3138017]
+	GetHandleVerifier [0x0097E0F0+605840]
+	(No symbol) [0x0088A64C]
+	(No symbol) [0x00886638]
+	(No symbol) [0x0088675F]
+	(No symbol) [0x00878DB7]
+	BaseThreadInitThunk [0x74F16359+25]
+	RtlGetAppContainerNamedObjectPath [0x76F58944+228]
+	RtlGetAppContainerNamedObjectPath [0x76F58914+180]
+
+-------END EXTRACTING CONVO --------
+Failed to click element 1: single positional indexer is out-of-bounds
+Chat  1 clicked using JavaScript.
+what is should run True
+Processing element 5 out of 10
+Chat 5 clicked and being processed
+Name found: Fiorella
+
+Processing message div element 1/13...
+
+Processing message div element 2/13...
+
+Processing message div element 3/13...
+
+Processing message div element 4/13...
+
+Processing message div element 5/13...
+
+Processing message div element 6/13...
+
+Processing message div element 7/13...
+
+Processing message div element 8/13...
+
+Processing message div element 9/13...
+
+Processing message div element 10/13...
+
+Processing message div element 11/13...
+
+Processing message div element 12/13...
+
+Processing message div element 13/13...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:02.198000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o una traviesa ;)
+G: JAJAJA
+G: Por?
+A:  tu sonrisa es demasiado sospechosa. ;). where are you from originally
+G: Jajajaja mi sonrisa?
+G: Soy de Perú
+G: Y tú?
+A:  soy de manchester, reino unido. la combinación perfecta no crees ;)
+G: Combinación perfecta tú y yo?
+A:  claro que sí, somos una combinación perfecta. dos culturas diferentes pero con una conexión única. 😏
+G: Hajajjajaja pues podría ser, si
+G: Que tal hoy?
+A:  genial. me pasas tu número para fines de arreglos románticos 😉
+Haven't responded in 0:03:18.832010
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 6 out of 10
+Chat 6 clicked and being processed
+Name found: Débora
+
+Processing message div element 1/6...
+
+Processing message div element 2/6...
+
+Processing message div element 3/6...
+
+Processing message div element 4/6...
+
+Processing message div element 5/6...
+
+Processing message div element 6/6...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:15.496000+00:00
+This is current convo:  A: pareces sospechosamente inocente
+G: Hahahahaha yo soy ☺️
+A:  pero no te creo del todo 😉. how's your fabulous friday going
+G: Haahahah bueno
+G: Good and your?
+A:  always fabulous, of course  just finished a muay thai session. ready for some weekend adventures
+Haven't responded in 0:03:11.338997
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 7 out of 10
+Chat 7 clicked and being processed
+Name found: Nicol
+
+Processing message div element 1/14...
+
+Processing message div element 2/14...
+
+Processing message div element 3/14...
+
+Processing message div element 4/14...
+
+Processing message div element 5/14...
+
+Processing message div element 6/14...
+
+Processing message div element 7/14...
+
+Processing message div element 8/14...
+
+Processing message div element 9/14...
+
+Processing message div element 10/14...
+
+Processing message div element 11/14...
+
+Processing message div element 12/14...
+
+Processing message div element 13/14...
+
+Processing message div element 14/14...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:55:03.055000+00:00
+This is current convo:  A: tienes algo que me hace pensar que vas a robar mi sudadera mas comoda.
+G: Jajajajja
+G: Que chistoso
+G: Puedo robar un poco más!!!🙈
+A:  ojalá robe tu corazón también 😉. cómo va tu viernes de vino
+G: Hola
+G: Trabajando
+G: Esperando que sea mañana
+G: 🙉
+G: Eres de Madrid?
+G: Vives en Madrid?
+A:  sí, soy de manchester pero vivo en madrid. y tú
+G: Mejor hablamos por wsp
+G: 658759060
+Number acquired: 658759060
+Number already exists. Skipping.
+Passing due to phone number given.
+what is should run True
+Processing element 8 out of 10
+Chat 8 clicked and being processed
+Name found: Liah
+
+Processing message div element 1/3...
+
+Processing message div element 2/3...
+
+Processing message div element 3/3...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:38.647000+00:00
+This is current convo:  A: no puedo decidir si eres inocente o si eres una traviesa, y me duele el cerebro ;)
+G: I can't decide if you're innocent or if you're naughty, and my brain hurts ;)
+A:  no soy inocente, liah. soy travieso. 😉. how goes your taco tuesday
+Haven't responded in 0:03:01.583623
+They haven't responded yet within 4 days. Leave it more time. If 4 days passes we do a takeaway comment.
+what is should run True
+Processing element 9 out of 10
+Chat 9 clicked and being processed
+Name found: Mar
+
+Processing message div element 1/25...
+
+Processing message div element 2/25...
+
+Processing message div element 3/25...
+
+Processing message div element 4/25...
+
+Processing message div element 5/25...
+
+Processing message div element 6/25...
+
+Processing message div element 7/25...
+
+Processing message div element 8/25...
+
+Processing message div element 9/25...
+
+Processing message div element 10/25...
+
+Processing message div element 11/25...
+
+Processing message div element 12/25...
+
+Processing message div element 13/25...
+
+Processing message div element 14/25...
+
+Processing message div element 15/25...
+
+Processing message div element 16/25...
+
+Processing message div element 17/25...
+
+Processing message div element 18/25...
+
+Processing message div element 19/25...
+
+Processing message div element 20/25...
+
+Processing message div element 21/25...
+
+Processing message div element 22/25...
+
+Processing message div element 23/25...
+
+Processing message div element 24/25...
+
+Processing message div element 25/25...
+-------END EXTRACTING CONVO --------
+Last message was on 2023-10-17 12:54:47.578000+00:00
+This is current convo:  A: sere tu novio con una condicion... tienes que prometer traer tu sentido del humor a nuestras citas
+G: Holi que tal
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+A: A: Hola hola Estoy listo para cumplir esa condición 😉
+G: Como estas
+A:  de donde eres originalmente?
+G: Bolivia y tú?
+G: Y hola que tal
+A:  eres de bolivia qué interesante me encantaría aprender más sobre tu cultura en nuestra cita en el bar.
+G: Y tus donde eres ?
+A:  soy de manchester, reino unido. me encanta explorar diferentes culturas.
+G: Anda que bueno Ryan
+G: Es bueno saberlo
+G: Cada país tiene su cultura propia y es si lindo saberlo
+A:  sería genial conversar sobre nuestras culturas en un bar algún día. qué dices
+G: M parece muy bien
+G: No es mala idea
+G: Hablemos X WhatsApp oh Insta si t parece
+G: Pasa que no entro mucho X aquí
+A:  me encantaría seguir la conversación contigo por whatsapp. pásame tu número y continuamos allí nuestro romance cultural 
+G: Jajajaja
+G: Pasame el tuyo y t agregó
+G: 🙃🙃🙃
+A:   perfecto, mándame tu número para actividades románticas culturales 😉
+A: Siempre eres tan habladora 😉?
+Haven't responded in 0:03:01.482595
+Already double texted, leave it now
+what is should run True
+Processing element 10 out of 10
+Chat 10 clicked and being processed
+Name found: Nataly
+Stopping conversations...
+Stopping Conversations execution...
+-------END EXTRACTING CONVO --------
+Stopping Conversations execution...
+Conversations execution complete.
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"
+An error occurred while refreshing the token: invalid command name ".!toplevel.!entry"

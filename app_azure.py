@@ -17,6 +17,11 @@ import requests
 import json
 import threading
 import time
+from dotenv import load_dotenv
+from cryptography.fernet import Fernet
+from cryptography.fernet import InvalidToken
+
+load_dotenv()
 
 class TextRedirector:
     def __init__(self, widget):
@@ -99,16 +104,29 @@ class App(ttk.Frame):
     
         
     def exchange_custom_token_for_id_token(self, custom_token):
-        API_KEY = os.getenv("API_KEY") 
+        API_KEY = os.getenv("API_KEY")
+        print("API Key:", os.getenv("API_KEY")) 
         url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key={API_KEY}"
         payload = json.dumps({
             "token": custom_token,
             "returnSecureToken": True
         })
         headers = {'Content-Type': 'application/json'}
+        
+        # Make the API request
         response = requests.request("POST", url, headers=headers, data=payload)
+        
+        # Debug line to print the full API response
+        print("API Response:", response.json())
+        
+        # Extract the idToken from the response
         id_token = response.json().get("idToken")
+        
+        # Debug line to print the returned ID Token
+        print("Returned ID Token:", id_token)
+        
         return id_token
+
 
     def authenticate(self, deiconify=True):
         email = self.email_entry.get()
@@ -130,21 +148,45 @@ class App(ttk.Frame):
                 # Start the token refresher thread
                 threading.Thread(target=self.refresh_token, daemon=True).start()
                 
+                # Save login details if "Remember Me" is checked
+                if self.remember_var.get() == 1:
+                    key, encrypted_email = self.encrypt_data(email)
+                    _, encrypted_password = self.encrypt_data(password, key)  # Use the same key
+                    with open("login_details.json", "w") as f:
+                        json.dump({
+                            "email": encrypted_email.decode(),
+                            "password": encrypted_password.decode(),
+                            "key": key.decode()
+                        }, f)
+                self.login_window.destroy()
+                
                 if deiconify:
                     self.master.deiconify()  # Show the main window
                 
-                # Save login details if "Remember Me" is checked
-                if self.remember_var.get() == 1:
-                    with open("login_details.json", "w") as f:
-                        json.dump({"email": email, "password": password}, f)
-                
-                self.login_window.destroy()
             except requests.RequestException as e:
                 self.error_label.config(text=f"Request failed: {e}")
             except KeyError:
                 self.error_label.config(text="Token not found in response.")
         else:
             self.error_label.config(text="Authentication failed.")
+
+    def load_saved_details(self):
+        try:
+            with open("login_details.json", "r") as f:
+                details = json.load(f)
+                key = details["key"].encode()
+                decrypted_email = self.decrypt_data(key, details["email"].encode())
+                decrypted_password = self.decrypt_data(key, details["password"].encode())
+                self.email_entry.insert(0, decrypted_email)
+                self.password_entry.insert(0, decrypted_password)
+                self.remember_var.set(1)
+        except FileNotFoundError:
+            pass
+        except InvalidToken:
+            print("Invalid token, could not decrypt data.")
+            # Handle the error as you see fit, e.g., clear the saved details file
+            # or alert the user that their saved login details are corrupt.
+
 
 
     def refresh_token(self):
@@ -165,63 +207,90 @@ class App(ttk.Frame):
             except Exception as e:
                 print(f"An error occurred while refreshing the token: {e}")
                 time.sleep(5 * 60)  # Wait for 5 minutes before trying again
-                    
+
+    def encrypt_data(self, data, key=None):
+        key = key or Fernet.generate_key()  # Use the provided key or generate a new one
+        cipher_suite = Fernet(key)
+        encrypted_data = cipher_suite.encrypt(data.encode())
+        return key, encrypted_data
+
+
+    def decrypt_data(self, key, encrypted_data):
+        try:
+            cipher_suite = Fernet(key)
+            decrypted_data = cipher_suite.decrypt(encrypted_data).decode()
+            return decrypted_data
+        except InvalidToken:
+            print("Invalid token, could not decrypt data.")
+            raise
+       
+
     def init_login_window(self):
         self.login_window = tk.Toplevel(self.master)
         self.login_window.title("Login")
 
+        # Configure rows and columns for responsiveness
+        for index in range(9):  # Adjust the range based on the number of rows you have
+            self.login_window.grid_rowconfigure(index=index, weight=1)
+        for index in range(3):  # Now we have 3 columns
+            self.login_window.grid_columnconfigure(index=index, weight=1)
+
         # Add a title label
-        tk.Label(self.login_window, text="AutoFlirt", font=("Arial", 24)).pack(pady=10)
+        tk.Label(self.login_window, text="AutoFlirt", font=("Arial", 24)).grid(row=0, column=1, pady=10, sticky='nsew')
 
         # Email Entry
-        tk.Label(self.login_window, text="Email:").pack()
-        self.email_entry = ttk.Entry(self.login_window)  # Changed to ttk.Entry
-        self.email_entry.pack(pady=5)
+        tk.Label(self.login_window, text="Email:").grid(row=1, column=0, pady=5, padx=20, sticky='nsew')
+        self.email_entry = ttk.Entry(self.login_window, justify='center')
+        self.email_entry.grid(row=1, column=1, pady=5, sticky='nsew')
 
         # Password Entry
-        tk.Label(self.login_window, text="Password:").pack()
-        self.password_entry = ttk.Entry(self.login_window, show="*")  # Changed to ttk.Entry
-        self.password_entry.pack(pady=5)
+        tk.Label(self.login_window, text="Password:").grid(row=2, column=0, pady=5, padx=20, sticky='nsew')
+        self.password_entry = ttk.Entry(self.login_window, show="*", justify='center')
+        self.password_entry.grid(row=2, column=1, pady=5, sticky='nsew')
 
         # Remember Me Checkbox
         self.remember_var = tk.IntVar()
         self.check_1 = ttk.Checkbutton(self.login_window, text="Remember Me", variable=self.remember_var)
-        self.check_1.pack(pady=5)
+        self.check_1.grid(row=3, column=1, pady=10, sticky='nsew')
 
         # Login Button
-        login_button = ttk.Button(self.login_window, text="Login", style="Accent.TButton", command=self.authenticate)
-        login_button.pack(pady=5)
+        login_button = ttk.Button(self.login_window, text="Login", command=self.authenticate)
+        login_button.grid(row=4, column=1, pady=10, sticky='nsew')
 
-        # Forgot Password Button
-        forgot_button = ttk.Button(self.login_window, text="Forgot Password", style="Accent.TButton")
-        forgot_button.pack(pady=5)
-
-        # Register New User Button
-        register_button = ttk.Button(self.login_window, text="Register New User", style="Accent.TButton")
-        register_button.pack(pady=5)
+        # Forgot Password and Register New User as text links
+        tk.Label(self.login_window, text="Forgot Password", fg="grey", cursor="hand2", relief=tk.FLAT).grid(row=5, column=1, sticky='nsew')
+        tk.Label(self.login_window, text="Register New User", fg="grey", cursor="hand2", relief=tk.FLAT).grid(row=6, column=1, pady=5, sticky='nsew')
 
         # Error Message Label (Initially empty)
         self.error_label = tk.Label(self.login_window, text="", fg="red")
-        self.error_label.pack(pady=5)
+        self.error_label.grid(row=7, column=1, pady=5, sticky='nsew')
 
         # Skip Login Button
-        skip_button = ttk.Button(self.login_window, text="Skip Login", style="Accent.TButton", command=self.skip_login)
-        skip_button.pack(pady=5)
+        skip_button = ttk.Button(self.login_window, text="Skip Login", command=self.skip_login)
+        skip_button.grid(row=8, column=1, pady=5, sticky='nsew')
 
-        # Load saved login details
+        # Add an empty label in the third column to ensure it takes up space
+        tk.Label(self.login_window, text="").grid(row=0, column=2, sticky='nsew')
+
+
+        bg_color = self.master.cget("background")
+        tk.Label(self.login_window, text="\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0", fg=bg_color).grid(row=2, column=2, pady=5, padx=20, sticky='nsew')
+
+
+        # Add Sizegrip
+        sizegrip = ttk.Sizegrip(self.login_window)
+        sizegrip.grid(row=100, column=100, padx=(0, 5), pady=(0, 5))
         self.load_saved_details()
+        # Automatically authenticate if email and password are filled
+        if self.email_entry.get() and self.password_entry.get():
+            self.authenticate(deiconify=True)
+
+
+                          
     def skip_login(self):
         self.login_window.destroy()
         self.deiconify()
-    def load_saved_details(self):
-        try:
-            with open("login_details.json", "r") as f:
-                details = json.load(f)
-                self.email_entry.insert(0, details["email"])
-                self.password_entry.insert(0, details["password"])
-                self.remember_var.set(details.get("remember", 0))
-        except FileNotFoundError:
-            pass
+
 
     def show_tooltip(self, event, text):
         x = event.widget.winfo_rootx() + 25
@@ -276,7 +345,7 @@ class App(ttk.Frame):
         skills_text = get_text_between_tags(file_path, "# \"A\"'s skills:")
         new_window = tk.Toplevel()
         new_window.title("Customise Profile")
-        bg_color = self.master.cget("background")
+        
         new_window.configure(bg=bg_color)
         
         # Vertical line to separate the two sections
@@ -461,12 +530,12 @@ class App(ttk.Frame):
 
                     # Tooltip texts
             tooltip_texts = [
-                "Tooltip for Active Mode",
-                "Tooltip for First time use",
-                "Tooltip for Simple Mode",
-                "Tooltip for Select Opener Language",
-                "Tooltip for Msg matched within n days",
-                "Tooltip for Msg first n conv"
+                "When enabled, automatically sends messages to matches using a trained LLM.\n When off, performs all actions except sending messages—ideal for testing.",
+                "When enabled, allows for time for the user to log-in to Tinder.\n When off, the assumption that you've logged in before to Tinder and log-in should be automatic.",
+                "When enabled, simple model aims to obtain the phone number in 4 messages and relies on a script and also a trained LLM. \n When disabled, it's less dependent on a script the and more dependent the trained LLM--allowing for more unique conversations.",
+                "Choose the language you want to have the conversations in.",
+                "Only message matches matched within n days of today.\n For example, choosing 10 will only message matches matched 10 or less days ago. \nThis is good if you don't want to bother with old matches.",
+                "Only message the first n matches. \nFor example, choosing 5 will message only the 5 most recent conversations you're having."
             ]
 
             # Checkbuttons and Labels

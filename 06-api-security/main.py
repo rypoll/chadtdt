@@ -50,11 +50,11 @@ def openai_proxy(request):
         requests_in_last_minute = 0  # Reset the request count for the last minute
 
     # Check if user has exceeded API call limit
-    if api_calls >= 300:
+    if api_calls >= 900:
         return {"error": "API call limit reached"}, 429
 
     # Check if user has exceeded rate limit of 10 requests per minute
-    if requests_in_last_minute >= 20:
+    if requests_in_last_minute >= 60:
         return {"error": "Rate limit exceeded"}, 429
 
     # Get OpenAI API key from environment variables
@@ -69,13 +69,16 @@ def openai_proxy(request):
         messages = request_json['messages']
         response = get_response(messages)
 
-        # Increment API call count in Firestore, update last reset time, and rate limit info
+        print(f"Requests in last minute before increment: {requests_in_last_minute}")
+
+        # After incrementing requests_in_last_minute
         user_ref.set({
                 'api_calls': firestore.Increment(1),
                 'last_reset': last_reset,
                 'last_request_time': datetime.now(timezone.utc),  # Make timezone-aware
                 'requests_in_last_minute': firestore.Increment(1)
             }, merge=True)
+        print(f"Requests in last minute after increment: {requests_in_last_minute + 1}")
 
         return response
     except Exception as e:
