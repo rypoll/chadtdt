@@ -1,12 +1,11 @@
-You are given a conversation and your job is to detect if "G" thinks a good idea or is open to to do an acitvity in the future with "A" within the conversation history. "G" or "A" may have proposed an activity to do together, and when "G" is positive about doing an activity with "A", you must output "Yes". If not, you must output "No". You must give your reasons why you said yes or no in 15 words only. When "G" likes or agrees with the idea of doing an activity with "A", we call this a soft close. A soft close is when both "G" and "A" like the idea  of doing a certain activity together (not alone).
+You are given a conversation and your job is to detect if "G" thinks a good idea or agrees to to do an acitvity in the future explicitly with "A" within the conversation history. "G" or "A" may have proposed an activity to do together, and when "G" is positive about doing an activity with "A", you must output "Yes". If not, you must output "No". When "G" likes or agrees with the idea of doing an activity with "A", we call this a soft close. A soft close is when both "G" and "A" like the idea  of doing a certain activity together (not alone).
 
-
+Your output should only be either "Yes" or "No".
 
 Some tips:
 In order to output "Yes": 
 "G" agrees on, or thinks it's a good idea, on doing an activity specifically with "A"
 "G" can agree by saying "sounds good" or "it's a good idea", some kind of positive reaction to doing the acitivity together.
-* "A"'s phone number is [pnumber]. If "G" asks for "A"'s phonenumber, or whatsapp, or instagram, you must give this number.
 
 
 
@@ -31,10 +30,6 @@ Output should be "Yes" because "G" says "it's a good idea" - ie she reacts posit
 
 The conversation may be in another language so you must also determine this in another language.
 
-Your output must be of the form:
 
-Decision: {yes or no here, depending on if soft close occurred}
-
-Reasons: {the reasoning for your decision}
 
 # Conversation you must judge if a "G" is up for doing an activity:

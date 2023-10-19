@@ -9,7 +9,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from tkinter import Tk, ttk, Canvas, Toplevel, Label, Frame
-from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_question, save_profile, save_cold_opener, update_status_label, get_response, fix_text, save_personal_details, extract_text_from_file, get_text_between_tags, execute_first_messages, execute_conversations
+from helper_functions import detect_phone_number, contains_emoji, emoji_reducer, should_ask_question, find_and_replace_questions, count_A_lines, remove_question, save_profile, save_cold_opener, update_status_label, get_response, fix_text, save_personal_details, extract_text_from_file, get_text_between_tags, execute_first_messages, execute_conversations, save_all_details, replace_tags
 from threading import Thread
 from datetime import datetime
 import sys
@@ -20,6 +20,14 @@ import time
 from dotenv import load_dotenv
 from cryptography.fernet import Fernet
 from cryptography.fernet import InvalidToken
+
+
+
+# From helper_function
+
+
+
+
 
 load_dotenv()
 
@@ -340,9 +348,10 @@ class App(ttk.Frame):
 
 
     def show_customisation_window(self):
-        file_path = '01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt'
-        profile_text = get_text_between_tags(file_path, "# Profile of A:")
-        skills_text = get_text_between_tags(file_path, "# \"A\"'s skills:")
+        bg_color = self.master.cget("background")
+        file_path = 'personal_details.txt'
+        profile_text = get_text_between_tags(file_path, "Profile:", "---")
+        skills_text = get_text_between_tags(file_path, "Skills:", "---")
         new_window = tk.Toplevel()
         new_window.title("Customise Profile")
         
@@ -368,8 +377,8 @@ class App(ttk.Frame):
         
         text_entry1.grid(row=2, column=0, padx=10, pady=10)
         text_entry1.insert(tk.END, profile_text)
-        save_button1 = ttk.Button(new_window, text="Save Profile", command=lambda: save_profile(text_entry1, saved_label1, "# Profile of A:"))
-        save_button1.grid(row=3, column=0)
+        # save_button1 = ttk.Button(new_window, text="Save Profile", command=lambda: save_profile(text_entry1, saved_label1, "# Profile of A:"))
+        # save_button1.grid(row=3, column=0)
         saved_label1 = tk.Label(new_window, text="", bg=bg_color)
         saved_label1.grid(row=4, column=0)
         
@@ -388,8 +397,8 @@ class App(ttk.Frame):
                       highlightthickness=2)  # Border thickness
         text_entry2.grid(row=2, column=2, padx=10, pady=10)
         text_entry2.insert(tk.END, skills_text)
-        save_button2 = ttk.Button(new_window, text="Save Skills", command=lambda: save_profile(text_entry2, saved_label2, "# \"A\"'s skills:"))
-        save_button2.grid(row=3, column=2)
+        # save_button2 = ttk.Button(new_window, text="Save Skills", command=lambda: save_profile(text_entry2, saved_label2, "# \"A\"'s skills:"))
+        # save_button2.grid(row=3, column=2)
         saved_label2 = tk.Label(new_window, text="", bg=bg_color)
         saved_label2.grid(row=4, column=2)
         
@@ -437,22 +446,21 @@ class App(ttk.Frame):
         phone_entry.grid(row=4, column=1, padx=10, pady=10, sticky="w")
         
         
-        name_entry.insert(0, extract_text_from_file("messages/02-cold-opener-simple-method-es.txt", "soy ", ","))
-        city_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "parte de ", " eres"))
-        area_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "Yo vivo en ", "."))
-        activity_entry.insert(0, extract_text_from_file("01-processing-files/02-simple-method/02a-question-tag-es.txt", "gusta mucho", "."))
-        phone_entry.insert(0, extract_text_from_file("01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt", "phone number is", "."))
+        name_entry.insert(0, get_text_between_tags("personal_details.txt", "Name:", "---"))
+        city_entry.insert(0, get_text_between_tags("personal_details.txt", "City:", "---"))
+        area_entry.insert(0, get_text_between_tags("personal_details.txt", "Area within the city you live:", "---"))
+        activity_entry.insert(0, get_text_between_tags("personal_details.txt", "An activity you do:", "---"))
+        phone_entry.insert(0, get_text_between_tags("personal_details.txt", "Your phone number:", "---"))
 
         # Save button for Personal Details
         save_button3 = ttk.Button(
-        new_window, 
-        text="Save Personal Details (and All)", 
-        command=lambda: (
-            save_personal_details(name_entry, city_entry, area_entry, activity_entry, phone_entry, saved_label3),
-            save_profile(text_entry2, saved_label2, "# \"A\"'s skills:"),
-            save_profile(text_entry1, saved_label1, "# Profile of A:")
+            new_window, 
+            text="Save", 
+            command=lambda: save_all_details(
+                name_entry, city_entry, area_entry, activity_entry, phone_entry, text_entry1, text_entry2, saved_label3
             )
         )
+
 
         save_button3.grid(row=3, column=4, pady=10)
         saved_label3 = tk.Label(new_window, text="", bg=bg_color)

@@ -30,6 +30,13 @@ from firebase_admin import auth
 import threading
 import time 
 from dotenv import load_dotenv
+from cryptography.fernet import Fernet 
+
+# Get key for decryption
+# First do this with key on file - then later make it so you get it from the api end point. 
+with open("key.key", "rb") as key_file:
+    key = key_file.read()
+cipher_suite = Fernet(key)
 
 
 
@@ -94,7 +101,7 @@ def emoji_reducer(conversation_text, assistant_reply):
     messages_with_emojis = sum(1 for msg in a_messages if contains_emoji(msg))
     
     proportion_with_emojis = messages_with_emojis / total_messages if total_messages > 0 else 0
-
+    print("Proportion of messages with emojis: ", proportion_with_emojis)
     # If proportion is greater than 0.25 and assistant_reply contains an emoji, remove it
     if proportion_with_emojis > 0.25 and contains_emoji(assistant_reply):
         print("Emoji removed from assistant's reply because more than 25% of 'A:' messages contained emojis.")
@@ -112,6 +119,9 @@ def should_ask_question(conversation_text):
         if '?' in message:
             return False  # Do not ask a question if one of the last 3 messages from A contains a question mark
     return True  # Ask a question otherwise
+
+
+
 
 
 
@@ -202,7 +212,7 @@ def remove_question(text):
         return text[:last_sentence_ending_index + 1] + text[last_question_mark_index + 1:].strip()
     
     
-def get_text_between_tags(file_path, start_tag, end_tag=""):
+def get_text_between_tags(file_path, start_tag, end_tag="---"):
     with open(file_path, 'r') as f:
         lines = f.readlines()
     in_section = False
@@ -454,8 +464,49 @@ def save_profile(text_entry, saved_label, marker_text):
             f.writelines(lines)
     
     saved_label.config(text="Saved!")
+ 
     
-    
+def save_all_details(name_entry, city_entry, area_entry, activity_entry, phone_entry, text_entry1, text_entry2, saved_label3):
+    # Fetch the values from the entry boxes and text fields
+    name = name_entry.get()
+    city = city_entry.get()
+    area = area_entry.get()
+    activity = activity_entry.get()
+    phone = phone_entry.get()
+    profile_text = text_entry1.get("1.0", tk.END).strip()  # From line 1 to end
+    skills_text = text_entry2.get("1.0", tk.END).strip()  # From line 1 to end
+
+    # Prepare the text to be written to the file
+    text_to_save = f"""Profile:
+{profile_text}
+---
+Skills:
+{skills_text}
+---
+Name:
+{name}
+---
+City:
+{city}
+---
+Area within the city you live:
+{area}
+---
+An activity you do:
+{activity}
+---
+Your phone number:
+{phone}
+"""
+
+    # Write to file
+    with open('personal_details.txt', 'w') as file:
+        file.write(text_to_save)
+
+    # Update the label to show that the information was saved
+    saved_label3.config(text="Saved!")
+
+
     
 def complex_method(formatted_text2, name, language):
     emoji_mapping = {
@@ -467,6 +518,7 @@ def complex_method(formatted_text2, name, language):
     "(smirk emoji)": "😏"  # Added smirk emoji
     # Add more as needed
     }
+    print("This is the formatted_text2:", formatted_text2)
     # Get last line of the chat so we know what language we're speaking in 
     # Split the text into lines
     lines = formatted_text2.strip().split('\n')
@@ -485,14 +537,23 @@ def complex_method(formatted_text2, name, language):
 
 
 
-    if detect(g_lines) == 'es' or detect(g_lines) == 'nl' or detect(g_lines) == 'sl' or detect(g_lines) == 'ca' or detect(g_lines) == 'sl' :
-        print("detected lang is: ", detect(g_lines))
-        language = "Spanish"
-        print("Spanish detected. Conv will be in Spanish")
-    else:
-        print("detected lang is: ", detect(g_lines))
-        language = "English"
-        print("English detected. Conv will be in English")
+    try:
+        # Try to detect the language
+        detected_lang = detect(g_lines)
+        print("Detected lang is:", detected_lang)
+        
+        if detected_lang in ['es', 'nl', 'sl', 'ca']:
+            language = "Spanish"
+            print("Spanish detected. Conv will be in Spanish")
+        else:
+            language = "English"
+            print("English detected. Conv will be in English")
+            
+    except Exception as e:
+        # If an error occurs in detection, print the error and continue
+        print(f"An error occurred: {e}")
+        print("Continuing without changing the language.")
+
 
     # if detect_phone_number(formatted_text2, name):
     #     print("Exiting due to phone number.")
@@ -512,26 +573,26 @@ def complex_method(formatted_text2, name, language):
     # Define parameterized variables at the top for easy modification
     if language != 'Spanish':
         #OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
-        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg.txt')
-        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt')
-        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
-        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg.txt')
-        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
-        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg.txt.enc')
+        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.enc"
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt.enc')
+        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.enc"
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg.txt.enc')
+        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.enc"
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt.enc')
     else:
-        # OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.txt"
-        # GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.txt"
-        # SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.txt"
-        # HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.txt"
-        #OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.txt"
-        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg-es.txt')
-        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.txt"
-        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt')
-        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.txt"
-        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg-es.txt')
-        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.txt"
-        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
+        # OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg-es.enc"
+        # GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg-es.enc"
+        # SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg-es.enc"
+        # HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg-es.enc"
+        #OPENER_FILE = "01-processing-files/01-split-sys-msg-method/01-opener-sys-msg.enc"
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '01-opener-sys-msg-es.txt.enc')
+        #GETTING_TO_KNOW_FILE = "01-processing-files/01-split-sys-msg-method/02-getting2know-sys-msg.enc"
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt.enc')
+        #SOFT_CLOSE_MID_FILE = "01-processing-files/01-split-sys-msg-method/03-soft-close-mid-sys-msg.enc"
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03-soft-close-mid-sys-msg-es.txt.enc')
+        #HARD_CLOSE_FILE = "01-processing-files/01-split-sys-msg-method/04-hard-close-sys-msg.enc"
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt.enc')
  
 
 
@@ -549,14 +610,15 @@ def complex_method(formatted_text2, name, language):
 
 
     # Configure OpenAI API client
-    openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
-    #openai_api_key = "00-credentials/00-openai-key.txt"
-    with open(openai_api_key, "r") as f:
-        api_key = f.read().strip()
+    # openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
+    # #openai_api_key = "00-credentials/00-openai-key.txt"
+    # with open(openai_api_key, "r") as f:
+    #     api_key = f.read().strip()
 
-    openai.api_key = api_key
+    #openai.api_key = api_key
 
     # Determine which system message file to read based on conditions
+    
     num_A_lines = count_A_lines(formatted_text2)
 
     day_of_week = datetime.now().strftime('%A')
@@ -619,11 +681,15 @@ def complex_method(formatted_text2, name, language):
 
     else:
         # Run a completion to determine "Yes" or "No"
-        soft_close_detector = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03a-soft-close-detector-mid-sys-msg.txt')
+        soft_close_detector = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '03a-soft-close-detector-mid-sys-msg.txt.enc')
         #soft_close_detector = "01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt"
-        with open(soft_close_detector, "r") as f:
-            temp_system_message = f.read().strip()
+        with open(soft_close_detector, "rb") as f:  # Note the "rb" for reading in binary mode
+            encrypted_data = f.read()
+            decrypted_data = cipher_suite.decrypt(encrypted_data)
+            temp_system_message = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
 
+            
+        temp_system_message = replace_tags(temp_system_message)
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
         messages = [{"role": "user", "content": content}]
         response = get_response(messages)
@@ -643,8 +709,15 @@ def complex_method(formatted_text2, name, language):
             system_message_file = HARD_CLOSE_FILE
 
     # Read the selected system message
-    with open(system_message_file, "r") as f:
-        system_message = f.read().strip()
+    print("We're at just before the file is decrypted")
+    with open(system_message_file, "rb") as f:  # Note the "rb" for reading in binary mode
+        encrypted_data = f.read()
+        decrypted_data = cipher_suite.decrypt(encrypted_data)
+        system_message = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
+        print("System message decryted successfully.")
+    
+    
+
         
     # Get the current day
     current_day = datetime.now().strftime('%A')  # This will give you the day like 'Monday', 'Tuesday', etc.
@@ -658,6 +731,8 @@ def complex_method(formatted_text2, name, language):
     
 
     # Define the messages list with the {text} field
+    system_message = replace_tags(system_message)
+    print("This is the system message: ", system_message)
     content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
     messages = [{"role": "user", "content": content}]
 
@@ -820,19 +895,19 @@ def simple_method(formatted_text2, name, language):
         application_path = os.path.dirname(os.path.abspath(__file__))
         
     if language != 'Spanish':
-        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg.txt')
-        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response.txt')
-        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres.txt')
-        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt')
-        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
-        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt')
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg.txt.enc')
+        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response.txt.enc')
+        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres.txt.enc')
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg.txt.enc')
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt.enc')
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg.txt.enc')
     else:
-        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg-es.txt')
-        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response-es.txt')
-        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres-es.txt')
-        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt')
-        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
-        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt')
+        OPENER_FILE = os.path.join(application_path, '01-processing-files', '02-simple-method', '01-opener-sys-msg-es.txt.enc')
+        second_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '02-que-haces-pa-divertirte-response-es.txt.enc')
+        third_message = os.path.join(application_path, '01-processing-files', '02-simple-method', '03-de-donde-eres-es.txt.enc')
+        GETTING_TO_KNOW_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '02-getting2know-sys-msg-es.txt.enc')
+        SOFT_CLOSE_MID_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt.enc')
+        HARD_CLOSE_FILE = os.path.join(application_path, '01-processing-files', '01-split-sys-msg-method', '04-hard-close-sys-msg-es.txt.enc')
 
 
 
@@ -847,12 +922,12 @@ def simple_method(formatted_text2, name, language):
 
 
     # Configure OpenAI API client
-    #openai_api_key = "00-credentials/00-openai-key.txt"
-    openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
-    with open(openai_api_key, "r") as f:
-        api_key = f.read().strip()
+    # #openai_api_key = "00-credentials/00-openai-key.txt"
+    # openai_api_key = os.path.join(application_path, '00-credentials', '00-openai-key.txt')
+    # with open(openai_api_key, "r") as f:
+    #     api_key = f.read().strip()
 
-    openai.api_key = api_key
+    #openai.api_key = api_key
 
     # Determine which system message file to read based on conditions
     num_A_lines = count_A_lines(formatted_text2)
@@ -923,10 +998,15 @@ def simple_method(formatted_text2, name, language):
 
     else:
         # Run a completion to determine "Yes" or "No"
-        with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt", "r") as f:
-            temp_system_message = f.read().strip()
+
+        with open("01-processing-files/01-split-sys-msg-method/03a-soft-close-detector-mid-sys-msg.txt.enc", "rb") as f:  # Note the "rb" for reading in binary mode
+            encrypted_data = f.read()
+            decrypted_data = cipher_suite.decrypt(encrypted_data)
+            temp_system_message = decrypted_data.d
+            
         if "Today is [today]" in system_message:
             temp_system_message = temp_system_message.replace("[today]", current_day)
+        temp_system_message = replace_tags(temp_system_message)
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
         messages = [{"role": "user", "content": content}]
         response = get_response(messages)
@@ -947,13 +1027,18 @@ def simple_method(formatted_text2, name, language):
             system_message_file = HARD_CLOSE_FILE
 
     # Read the selected system message
-    with open(system_message_file, "r") as f:
-        system_message = f.read().strip()
+
+    with open(system_message_file, "rb") as f:  # Note the "rb" for reading in binary mode
+        encrypted_data = f.read()
+        decrypted_data = cipher_suite.decrypt(encrypted_data)
+        system_message_file = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
+
     if "Today is [today]" in system_message:
         system_message = system_message.replace("[today]", current_day)
     if "[gname]" in system_message:
         system_message = system_message.replace("[gname]", name)
     # Define the messages list with the {text} field
+    system_message = replace_tags(system_message)
     content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
     messages = [{"role": "user", "content": content}]
 
@@ -1017,9 +1102,14 @@ def simple_method(formatted_text2, name, language):
 
         # Read the content from the file
         #question_tag = '01-processing-files/02-simple-method/02a-question-tag-es.txt'
-        question_tag_2a = os.path.join(application_path, '01-processing-files', '02-simple-method', '02a-question-tag-es.txt')
-        with open(question_tag_2a, 'r', encoding='utf-8') as file:
-            file_content = file.read()
+        question_tag_2a = os.path.join(application_path, '01-processing-files', '02-simple-method', '02a-question-tag-es.txt.enc')
+        # with open(question_tag_2a, 'r', encoding='utf-8') as file:
+        #     file_content = file.read()
+        with open(question_tag_2a, "rb") as f:  # Note the "rb" for reading in binary mode
+            encrypted_data = f.read()
+            decrypted_data = cipher_suite.decrypt(encrypted_data)
+            file_content = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
+
 
         # Append the content to assistant_reply
         assistant_reply += " " + file_content    
@@ -1031,9 +1121,15 @@ def simple_method(formatted_text2, name, language):
 
         # Read the content from the file
         #question_tag = '01-processing-files/02-simple-method/03a-question-tag-es.txt'
-        question_tag = os.path.join(application_path, '01-processing-files', '02-simple-method', '03a-question-tag-es.txt')
-        with open(question_tag, 'r', encoding='utf-8') as file:
-            file_content = file.read()
+        question_tag = os.path.join(application_path, '01-processing-files', '02-simple-method', '03a-question-tag-es.txt.enc')
+        # with open(question_tag, 'r', encoding='utf-8') as file:
+        #     file_content = file.read()
+        with open(question_tag, "rb") as f:  # Note the "rb" for reading in binary mode
+            encrypted_data = f.read()
+            decrypted_data = cipher_suite.decrypt(encrypted_data)
+            file_content = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
+
+
 
         # Append the content to assistant_reply
         assistant_reply += " " + file_content    
@@ -1414,12 +1510,13 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
                     lines = [line for line in lines if line.strip()]
                 
                 
-
+            
             # Remove any leading/trailing whitespace from each line
             lines = [line.strip() for line in lines]
 
             # Randomly pick a line from the list
             random_line = random.choice(lines)
+            random_line = replace_tags(random_line)
             print("Line to send: ", random_line)
             try:
                 random_line = random_line.encode('latin1').decode('utf-8')
@@ -1892,9 +1989,11 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
                             # Check if the first line contains either "Hola hermosa," or "Hello beautiful,"
                             if "bella bombón" in first_line or "Hello beautiful," in first_line:
                                 # Run certain code
+                                print("Simple method used")
                                 assistant_reply = simple_method(formatted_text2, name, language)
                             else:
                                 # Run other code
+                                print("Complex method used")
                                 assistant_reply = complex_method(formatted_text2, name, language)
                             
 
@@ -1918,7 +2017,7 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
                                 except:
                                     pass
                                 break  # This will exit the loop and stop the execution# messages 
-                        
+                            assistant_reply = replace_tags(assistant_reply)
                             actions = ActionChains(driver)
                             actions.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
                             actions.send_keys(assistant_reply).perform()
@@ -1989,3 +2088,35 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
         print(f"An error occurred: {e}")
     time.sleep(1)
         
+def replace_tags(system_message):
+    # Step 1: Read the file
+    with open('personal_details.txt', 'r') as f:
+        file_content = f.read()
+
+    # Step 2: Split content by '---'
+    sections = file_content.strip().split('---')
+
+    # Step 3: Create a dictionary to store the text under each heading
+    details_dict = {}
+    for section in sections:
+        lines = section.strip().split('\n')
+        key = lines[0].strip().lower().replace(":", "")  # Remove the colon and convert to lower case
+        value = "\n".join(lines[1:]).strip()  # The rest of the lines form the value
+        details_dict[key] = value
+
+    # Step 4: Replace the tags in the system_message
+    tags_to_replace = {
+        '[profile]': details_dict.get('profile', 'Error: Profile not found'),
+        '[skills]': details_dict.get('skills', 'Error: Skills not found'),
+        '[city]': details_dict.get('city', 'Error: City not found'),
+        '[area]': details_dict.get('area within the city you live', 'Error: Area not found'),
+        '[activity]': details_dict.get('an activity you do', 'Error: Activity not found'),
+        '[pnumber]': details_dict.get('your phone number', 'Error: Phone number not found'),
+        '[Name]': details_dict.get('name', 'Error: Phone number not found')
+    }
+
+    for tag, replacement in tags_to_replace.items():
+        system_message = system_message.replace(tag, replacement)
+
+    return system_message
+

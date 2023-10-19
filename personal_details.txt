@@ -1,0 +1,22 @@
+Profile:
+* Max
+* The boy
+---
+Skills:
+* Travels
+* Sings
+---
+Name:
+Max
+---
+City:
+Madrid
+---
+Area within the city you live:
+Plaza
+---
+An activity you do:
+Run
+---
+Your phone number:
+999

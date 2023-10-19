@@ -1,0 +1,30 @@
+1. option 1:
+pyinstaller --onefile --add-data "01-processing-files/01-split-sys-msg-method/*.txt;01-processing-files/01-split-sys-msg-method" your_script.py
+2. option2:
+
+Step 0 - Activate Python Environment
+-------------------------------------
+.\myenv\Scripts\Activate
+
+
+run all in command prompt, make sure run as admin 
+step 1. 
+run with debug to see if there's any issues 
+----------------------------------------------
+> pyinstaller --debug all -y --onefile  app_azure.py > build_output_debug.txt 2>&1
+> pyinstaller --debug all  --onefile  app_azure.py > build_output_debug.txt 2>&1
+> pyinstaller --name azure --onefile  app_azure.py > build_output_debug.txt 2>&1
+
+
+final one
+----------
+debug is set within the spec file.
+> pyinstaller app_azure.spec > build_output_debug.txt 2>&1 
+
+
+# Go into the .spec file if you want to turn debug off
+
+
+run the .exe with this method to get the potential issues
+-----------------------------------------
+app_azure.exe > output.txt 2>&1
