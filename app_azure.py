@@ -538,12 +538,12 @@ class App(ttk.Frame):
 
                     # Tooltip texts
             tooltip_texts = [
-                "When enabled, automatically sends messages to matches using a trained LLM.\n When off, performs all actions except sending messages—ideal for testing.",
-                "When enabled, allows for time for the user to log-in to Tinder.\n When off, the assumption that you've logged in before to Tinder and log-in should be automatic.",
-                "When enabled, simple model aims to obtain the phone number in 4 messages and relies on a script and also a trained LLM. \n When disabled, it's less dependent on a script the and more dependent the trained LLM--allowing for more unique conversations.",
+                "When enabled, automatically sends messages to matches using a trained LLM.\nWhen off, performs all actions except sending messages—ideal for testing.",
+                "When enabled, allows for time for the user to log-in to Tinder.\nWhen off, the assumption that you've logged in before to Tinder and log-in should be automatic.",
+                "When enabled, simple model aims to obtain the phone number in 4 messages and relies on a script and also a trained LLM.\nWhen disabled, it's less dependent on a script the and more dependent the trained LLM--allowing for more unique conversations.",
                 "Choose the language you want to have the conversations in.",
-                "Only message matches matched within n days of today.\n For example, choosing 10 will only message matches matched 10 or less days ago. \nThis is good if you don't want to bother with old matches.",
-                "Only message the first n matches. \nFor example, choosing 5 will message only the 5 most recent conversations you're having."
+                "Only message matches matched within n days of today.\nFor example, choosing 10 will only message matches matched 10 or less days ago.\nThis is good if you don't want to bother with old matches.",
+                "Only message the first n matches.\nFor example, choosing 5 will message only the 5 most recent conversations you're having."
             ]
 
             # Checkbuttons and Labels
@@ -952,7 +952,7 @@ class App(ttk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.title("Azure")
+    root.title("AutoFlirt")
 
     # Simply set the theme
     root.tk.call("source", "azure.tcl")

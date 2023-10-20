@@ -19,7 +19,7 @@ run with debug to see if there's any issues
 final one
 ----------
 debug is set within the spec file.
-> pyinstaller app_azure.spec > build_output_debug.txt 2>&1 
+> pyinstaller --name AutoFlirt app_azure.spec > build_output_debug.txt 2>&1 
 
 
 # Go into the .spec file if you want to turn debug off

@@ -39,15 +39,18 @@ def openai_proxy(request):
     last_reset = user_data.get('last_reset', datetime.now(timezone.utc))  # Make timezone-aware
     last_request_time = user_data.get('last_request_time', datetime.now(timezone.utc))  # Make timezone-aware
     requests_in_last_minute = user_data.get('requests_in_last_minute', 0)
-
+    reset_minute = False
+    reset_month = False
     # Check if a month has passed since the last reset
     if datetime.now(timezone.utc) >= last_reset + timedelta(days=30):  # Make timezone-aware
         api_calls = 0  # Reset the API call count
         last_reset = datetime.now(timezone.utc)  # Make timezone-aware
+        reset_month = True  # Set the flag to True
 
     # Check if a minute has passed since the last request
     if datetime.now(timezone.utc) >= last_request_time + timedelta(minutes=1):  # Make timezone-aware
         requests_in_last_minute = 0  # Reset the request count for the last minute
+        reset_minute = True  # Set the flag to True
 
     # Check if user has exceeded API call limit
     if api_calls >= 900:
@@ -73,10 +76,10 @@ def openai_proxy(request):
 
         # After incrementing requests_in_last_minute
         user_ref.set({
-                'api_calls': firestore.Increment(1),
+                'api_calls': 0 if reset_month else firestore.Increment(1),
                 'last_reset': last_reset,
                 'last_request_time': datetime.now(timezone.utc),  # Make timezone-aware
-                'requests_in_last_minute': firestore.Increment(1)
+                'requests_in_last_minute': 0 if reset_minute else firestore.Increment(1)
             }, merge=True)
         print(f"Requests in last minute after increment: {requests_in_last_minute + 1}")
 

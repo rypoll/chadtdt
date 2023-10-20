@@ -11,6 +11,7 @@ from threading import Thread
 from ttkthemes import ThemedTk
 from langdetect import detect
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import random
 from selenium.webdriver.common.action_chains import ActionChains
@@ -34,13 +35,32 @@ from cryptography.fernet import Fernet
 
 # Get key for decryption
 # First do this with key on file - then later make it so you get it from the api end point. 
-with open("key.key", "rb") as key_file:
+with open("login_access.key", "rb") as key_file:
     key = key_file.read()
 cipher_suite = Fernet(key)
 
 
 
+def contact_requested_by_g(conversation):
+    # Split the conversation into lines
+    lines = conversation.splitlines()
 
+    # Only keep lines that start with "G:"
+    g_lines = [line for line in lines if line.startswith('G:')]
+
+    # Join these lines into a single string
+    g_conversation = ' '.join(g_lines)
+
+    # Compile the regular expressions for WhatsApp and Instagram
+    whatsapp_pattern = re.compile(r'whatsapp|what\'?s\s?app', re.IGNORECASE)
+    instagram_pattern = re.compile(r'instagram|insta|ig', re.IGNORECASE)
+
+    # Search for the patterns in the filtered conversation
+    whatsapp_found = whatsapp_pattern.search(g_conversation)
+    instagram_found = instagram_pattern.search(g_conversation)
+
+    # Return True if either pattern is found, otherwise return False
+    return bool(whatsapp_found) or bool(instagram_found)
 
 def count_A_lines(text):
     return sum(1 for line in text.strip().split('\n') if line.startswith("A:"))
@@ -732,7 +752,7 @@ def complex_method(formatted_text2, name, language):
 
     # Define the messages list with the {text} field
     system_message = replace_tags(system_message)
-    print("This is the system message: ", system_message)
+    #print("This is the system message: ", system_message)
     content = '{prompt}: \n "{text}"'.format(prompt=system_message, text=formatted_text2)
     messages = [{"role": "user", "content": content}]
 
@@ -740,7 +760,7 @@ def complex_method(formatted_text2, name, language):
     while True:
         # Use openai.ChatCompletion.create() with the updated messages list
         response = get_response(messages)
-        
+        print("This is the response: ", response)
 
         assistant_reply = response['choices'][0]['message']['content']
         print("Assistant reply RAW: ", assistant_reply)
@@ -1249,7 +1269,9 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
                 driver_path = ChromeDriverManager().install()
                 print(f"Driver path: {driver_path}")
                 print(f"Driver path type: {type(driver_path)}")
-                driver = webdriver.Chrome(driver_path, options=chrome_options)
+                chrome_service = Service(executable_path=driver_path)
+                chrome_service.service_log_path = 'NUL'
+                driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
                 print(f"Successfully initialized WebDriver")
                 print(f"Successfully initialized WebDriver on attempt {attempt}")
                 time.sleep(random.uniform(3, 6))
@@ -1674,7 +1696,15 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
             try:
                 # service = webdriver.chrome.service.Service(executable_path=chromedriver_path)
                 # service.start()
-                driver = webdriver.Chrome(ChromeDriverManager().install(), options = chrome_options)
+                # Install ChromeDriver
+                driver_path = ChromeDriverManager().install()
+
+                # Create a service with 'NUL' log path to suppress console window
+                chrome_service = Service(executable_path=driver_path)
+                chrome_service.service_log_path = 'NUL'
+
+                # Initialize WebDriver with service and options
+                driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
                 print(f"Successfully initialized WebDriver on attempt {attempt}")
                 time.sleep(random.uniform(3, 6))
                 break  # Exit the loop if initialization is successful
@@ -1985,19 +2015,34 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
 
                             # Take the first line
                             first_line = lines[0]
+                            
+                            with open("personal_details.txt", "r") as f:
+                                content = f.read()
 
-                            # Check if the first line contains either "Hola hermosa," or "Hello beautiful,"
-                            if "bella bombón" in first_line or "Hello beautiful," in first_line:
-                                # Run certain code
-                                print("Simple method used")
-                                assistant_reply = simple_method(formatted_text2, name, language)
-                            else:
-                                # Run other code
-                                print("Complex method used")
-                                assistant_reply = complex_method(formatted_text2, name, language)
+                            # Step 2: Find the phone number
+                            phone_number = None
+                            match = re.search(r'Your phone number:\s*([\+\d]+)', content)
+                            if match:
+                                phone_number = match.group(1).strip() 
+
+                            
+                            if contact_requested_by_g(formatted_text2):
+                                print("Contact requested - give phone number")
+                                print("Phone number to give: ", phone_number)
+                                assistant_reply = f"{phone_number}"
+                            else: 
+                                # Check if the first line contains either "Hola hermosa," or "Hello beautiful,"
+                                if "bella bombón" in first_line or "Hello beautiful," in first_line:
+                                    # Run certain code
+                                    print("Simple method used")
+                                    assistant_reply = simple_method(formatted_text2, name, language)
+                                else:
+                                    # Run other code
+                                    print("Complex method used")
+                                    assistant_reply = complex_method(formatted_text2, name, language)
                             
 
-
+                            
 
 
 

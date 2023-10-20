@@ -1,22 +1,33 @@
 Profile:
-* Max
-* The boy
+* He is from Manchester, UK
+* He is 35 years old
+* He studied mathematics at university
+* He is currently a freelance data scientist
+* He loves to read, play the guitar and do muay thai
+* He has travelled through central and south america and also lived in China
+* He currently lives close to La Latina in Madrid
+* He's lived in China, Colombia (medellin and bogota). He's travalled all of central america, and colombia and ecuador in south america.
+* He's been to thailand and south korea.
+* He likes going to bars and loves a mojito.
+* HE IS ENGLISH
 ---
 Skills:
-* Travels
-* Sings
+* He travelled south america
+* Speaks spanish and english
+* plays guitar
+* Can do muay thai
 ---
 Name:
-Max
+Ryan 
 ---
 City:
 Madrid
 ---
 Area within the city you live:
-Plaza
+La Latina
 ---
 An activity you do:
-Run
+deporte
 ---
 Your phone number:
-999
++447500693434
