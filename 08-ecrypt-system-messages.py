@@ -30,3 +30,6 @@ for folder in folders_to_encrypt:
             if not file.endswith('.enc'):  # Skip already encrypted files
                 file_path = os.path.join(root, file)
                 encrypt_file(file_path, cipher_suite)
+
+
+# run this, then take the files created and put them in 01-processing-files

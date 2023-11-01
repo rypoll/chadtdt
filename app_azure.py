@@ -103,8 +103,12 @@ class App(ttk.Frame):
         #5. Within n days
         self.days_entry = tk.IntVar()
         
+        
         #6. First n convs
         self.conversations_entry = tk.IntVar()
+        
+        #7. First match in what square
+        self.first_match_square = tk.IntVar()
 
 
         # Create widgets :)
@@ -327,7 +331,7 @@ class App(ttk.Frame):
 
     def start_execution(self, func_name):
         self.should_run[func_name] = True
-        args_to_pass = (self.should_run, self.toggle_var, self.manual_login_var, self.simple_mode_var, self.language_combo, self.days_entry, self.conversations_entry)
+        args_to_pass = (self.should_run, self.toggle_var, self.manual_login_var, self.simple_mode_var, self.language_combo, self.days_entry, self.conversations_entry, self.first_match_square)
         if func_name == 'first_messages':
             t = Thread(target=execute_first_messages, args=args_to_pass)
         elif func_name == 'conversations':
@@ -543,12 +547,13 @@ class App(ttk.Frame):
                 "When enabled, simple model aims to obtain the phone number in 4 messages and relies on a script and also a trained LLM.\nWhen disabled, it's less dependent on a script the and more dependent the trained LLM--allowing for more unique conversations.",
                 "Choose the language you want to have the conversations in.",
                 "Only message matches matched within n days of today.\nFor example, choosing 10 will only message matches matched 10 or less days ago.\nThis is good if you don't want to bother with old matches.",
-                "Only message the first n matches.\nFor example, choosing 5 will message only the 5 most recent conversations you're having."
+                "Only message the first n matches.\nFor example, choosing 5 will message only the 5 most recent conversations you're having.",
+                "In what number square does the first match apppear?"
             ]
 
             # Checkbuttons and Labels
             for i, (text, tooltip_text) in enumerate(zip(
-                ["Active Mode", "First time use", "Simple Mode", "Select Opener Language", "Msg matched within n days", "Msg first n conv"],
+                ["Active Mode", "First time use", "Simple Mode", "Select Opener Language", "Msg matched within n days", "Msg first n conv", "First match in n square"],
                 tooltip_texts
             )):
                 # Create a frame to hold the label and info icon
@@ -621,6 +626,10 @@ class App(ttk.Frame):
             self.conversations_entry = ttk.Spinbox(self.check_frame,  from_=1, to=10000, increment=1)
             self.conversations_entry.grid(row=5, column=1, padx=5, pady=10, sticky="nsew")  # Adjusted column
             self.conversations_entry.insert(0,"10")  # Default value
+            
+            self.first_match_square = ttk.Spinbox(self.check_frame,  from_=1, to=3, increment=1)
+            self.first_match_square.grid(row=6, column=1, padx=5, pady=10, sticky="nsew")  # Adjusted column
+            self.first_match_square.insert(0,"3")  # Default value
             
 
 

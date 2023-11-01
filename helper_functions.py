@@ -1024,7 +1024,7 @@ def simple_method(formatted_text2, name, language):
             decrypted_data = cipher_suite.decrypt(encrypted_data)
             temp_system_message = decrypted_data.d
             
-        if "Today is [today]" in system_message:
+        if "Today is [today]" in temp_system_message:
             temp_system_message = temp_system_message.replace("[today]", current_day)
         temp_system_message = replace_tags(temp_system_message)
         content = '{prompt}: \n "{text}"'.format(prompt=temp_system_message, text=formatted_text2)
@@ -1051,7 +1051,7 @@ def simple_method(formatted_text2, name, language):
     with open(system_message_file, "rb") as f:  # Note the "rb" for reading in binary mode
         encrypted_data = f.read()
         decrypted_data = cipher_suite.decrypt(encrypted_data)
-        system_message_file = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
+        system_message = decrypted_data.decode().strip()  # Decoding bytes to string and then stripping
 
     if "Today is [today]" in system_message:
         system_message = system_message.replace("[today]", current_day)
@@ -1191,9 +1191,9 @@ def simple_method(formatted_text2, name, language):
     return assistant_reply2
 
 
-def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode_var, language_combo, days_entry, conversations_entry):
+def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode_var, language_combo, days_entry, conversations_entry, first_match_square):
 
-
+    first_match_loc = int(first_match_square.get())
     language = language_combo.get()
     print("Language is:", language)
     simple_mode = simple_mode_var.get() 
@@ -1238,8 +1238,8 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
         is_empty = not bool(os.listdir(profile_directory))
 
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--window-size=1920x1080")
-        #chrome_options.add_argument("--start-minimized")
+        #chrome_options.add_argument("--window-size=1920x1080")
+        chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         chrome_options.add_argument("--disable-logging")
@@ -1295,8 +1295,9 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
             except:
                 pass
             return  # This will exit the function immediately        
-        ######################### END 0. Define the driver       
-        driver.minimize_window()
+        ######################### END 0. Define the driver 
+        #driver.maximize_window()      
+        #driver.minimize_window()
         # service = webdriver.chrome.service.Service(executable_path=chromedriver_path)
         # service.start()
         # driver = webdriver.Chrome(options=chrome_options)
@@ -1315,7 +1316,7 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
         if manual_login_var.get() == 1 :
             print("First time user detected - you must log in.")
             print("After first time log in you need not log in again.")
-            wait = WebDriverWait(driver, 120)
+            wait = WebDriverWait(driver, 12000)
             matches_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Matches']")))
         else:
             wait = WebDriverWait(driver, 20)
@@ -1407,12 +1408,17 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
 
         ############################### START 1b. Determine if user has gold or not
 
-
-        try:
-            element = driver.find_element(By.XPATH, "//*[contains(@class, 'ds-background-gold')]")
-            first_match = 3
-        except NoSuchElementException:
-            first_match = 2
+        first_match = first_match_loc
+        # try:
+        #     element = driver.find_element(By.XPATH, "//*[contains(@class, 'ds-background-gold')]")
+            
+        #     #first_match = 3
+            
+        #     first_match = 3
+        #     print(f"The first match should be the {first_match} square")
+        # except NoSuchElementException:
+        #     first_match = 2
+        #     print(f"The first match should be the {first_match} square")
 
         if not should_run['first_messages']:
             print("Stopping First Messages execution...")
@@ -1623,11 +1629,12 @@ def execute_first_messages(should_run, toggle_var, manual_login_var, simple_mode
         print(f"An error occurred: {e}")
     time.sleep(1)
 
-def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_var, language_combo, days_entry, conversations_entry):
+def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_var, language_combo, days_entry, conversations_entry, first_match_square ):
 
 
     days_threshold = int(days_entry.get())
     convs_amt = int(conversations_entry.get())
+    #first_match_loc = int(first_match_square.get())
     language = language_combo.get()
     try:
         #print("Executing conversations...")
@@ -1668,8 +1675,8 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
         #chrome_options = webdriver.ChromeOptions()
         chrome_options = webdriver.ChromeOptions()
         #chrome_options.add_extension(extension_path2)
-        chrome_options.add_argument("--window-size=1920x1080")
-        #chrome_options.add_argument("--start-minimized")
+        #chrome_options.add_argument("--window-size=1920x1080")
+        chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument(f"user-data-dir={profile_directory}")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         chrome_options.add_argument("--disable-logging")
@@ -1728,8 +1735,8 @@ def execute_conversations(should_run, toggle_var, manual_login_var, simple_mode_
                     
                     
                     
-                    
-        driver.minimize_window()       
+        #driver.maximize_window()         
+        #driver.minimize_window()       
         driver.get('https://www.tinder.com/')   
         
         # Open the website
